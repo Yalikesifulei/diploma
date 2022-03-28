@@ -1,0 +1,439 @@
+% !TEX root = ../main.tex
+Результати теорем \ref{main_th} та \ref{cond_th} можуть бути застосовані
+з теоремою про неперервне відображення з \cite{Resnick_2007}. 
+В термінах грубої збіжності точкових процесів, її можна сформулювати наступним чином:
+\begin{theorem}[теорема про неперервне відображення]\label{cmt}
+    Нехай $\varphi$ є неперервним відображенням з простору
+    $\mathcal{M}^p_{[0,1]}$ точкових мір на $[0,1]$
+    з грубою топологією в $\R$ зі стандартною топологією.
+    Якщо $\xi_n$ --- послідовність точкових процесів,
+    що грубо збігається за розподілом до $\xi$, $\xi_n \overset{vd}{\longrightarrow} \xi$,
+    тоді 
+    $\varphi(\xi_n) \overset{d}{\longrightarrow} \varphi(\xi)$,
+    тобто послідовність випадкових величин $\varphi(\xi_n)$ збігається за розподілом
+    до $\varphi(\xi)$.
+\end{theorem}
+\begin{remark}
+    За означенням збіжності за розподілом, якщо $\varphi$ є обмеженою, то також
+    має місце
+    $\E\varphi(\xi_n) \to \E\varphi(\xi)$.
+\end{remark}
+
+Перед дослідженням граничних розподілів для деяких відображень,
+варто навести твердження 3.13 з \cite{Resnick_1987},
+яке можна сформулювати наступним чином:
+\begin{lemma}\label{point_conv}
+    Нехай $\mu_n$ --- грубо збіжна послідовність точкових мір в $\mathcal{M}^p_{[0,1]}$, тобто $\mu_n \overset{v}{\longrightarrow} \mu$.
+    Тоді
+    \begin{equation*}
+        \mu_n = \sum_{i=1}^k \delta_{x_i^{(n)}}, \;
+        \mu = \sum_{i=1}^k \delta_{x_i}
+    \end{equation*} 
+    де $\delta_x$ є мірою Дірака, зосередженою в $x$,
+    а $x_i^{(n)} \to x_i, n\to\infty$ для $i=1,\dots,k$.
+\end{lemma}
+Це означає, що будь-яка неперервна функція 
+з $\R^k$ (або принаймні $[0, 1]^k$) в $\R$ задає
+неперервне відносно грубої топології відображення.
+
+\subsection{Найменша та найбільша нерухомі точки}
+Для точкової міри $\mu$ відображення можна визначити два відображення
+$\min(\mu) = \sup \left\{x\in[0,1] :\mu([0, x]) = 0 \right\}$ 
+та $\max(\mu) = \inf \left\{x\in[0,1] :\mu([x, 1]) = 0 \right\}$, що ставлять у відповідність
+цій міри її найменший та найбільший атом, де для порожньої множини
+за домовленістю $\sup \varnothing = 0$ та $\inf \varnothing = 1$.
+Нехай $\mu_n \overset{v}{\longrightarrow} \mu$.
+Оскільки $\min\left\{x_1,\dots,x_k \right\}$ та
+$\max\left\{x_1,\dots,x_k \right\}$ є неперервними функціями з $\R^k$ в $\R$, 
+з леми \ref{point_conv}
+випливає, що $\min(\mu)$ та $\max(\mu)$ 
+є неперервними відносно грубої топології.
+
+Незважаючи на результат теореми \ref{cond_th}, простіше отримати розподіл
+ $\min(N)$ та $\max(N)$, ніж $\min(N')$ та $\max(N')$,
+оскільки умовний розподіл $\P{N(F) = k \mid N([0, 1]) = m}$ 
+є відомим (твердження 3.8, \cite{last_penrose_2017}) --- це
+біноміальний процес з {\color{red}розміром} $m$ та {\color{red}розподілом} $\Unif{0, 1}$.
+Іншим корисним фактом є такий: нехай $U_1, U_2, \dots, U_m$ є
+тоді розподіли $U_{(1)}$ та $U_{(m)}$ задаються
+\begin{gather*}
+    \P{U_{(1)} \leq x} = \begin{cases}
+        0, & x < 0 \\
+        1 - (1 - x)^m, & 0 \leq x < 1 \\
+        1, & x \geq 1
+    \end{cases}, \;
+    \P{U_{(m)} \leq x} = \begin{cases}
+        0, & x < 0 \\
+        x^m, & 0 \leq x < 1 \\
+        1, & x \geq 1
+    \end{cases}
+\end{gather*}
+Отже, розподіли $\min(N)$ та $\max(N)$ задаються
+\begin{gather}
+    \P{\min(N) \leq x} = \sum_{m=0}^{\infty} \P{\min(N) \leq x \mid N([0, 1]) = m} \P{N([0, 1]) = m} = \\ \nonumber
+     = \mathds{1}\left\{x\geq 1\right\}\cdot e^{-\theta} +
+    \sum_{m=1}^{\infty} \P{\min(N) \leq x \mid N([0, 1]) = m} \frac{\theta^m}{m!} e^{-\theta} = \\ \nonumber
+    = \begin{cases}
+        0, & x< 0 \\
+        \sum_{m=1}^{\infty} \left(1 - (1 - x)^m\right) \frac{\theta^m}{m!} e^{-\theta} = 1 - e^{-\theta x}, & 0 \leq x < 1 \\
+        1, & x \geq 1
+    \end{cases}
+\end{gather}
+\begin{gather}
+    \P{\max(N) \leq x} = \sum_{m=0}^{\infty} \P{\max(N) \leq x \mid N([0, 1]) = m} \P{N([0, 1]) = m} = \\ \nonumber
+     = \mathds{1}\left\{x\geq 0\right\}\cdot e^{-\theta} +
+    \sum_{m=1}^{\infty} \P{\max(N) \leq x \mid N([0, 1]) = m} \frac{\theta^m}{m!} e^{-\theta} = \\ \nonumber
+    = \begin{cases}
+        0, & x< 0 \\
+        e^{-\theta} + \sum_{m=1}^{\infty} x^m \frac{\theta^m}{m!} e^{-\theta} = e^{\theta(x-1)}, & 0 \leq x < 1 \\
+        1, & x \geq 1
+    \end{cases}
+\end{gather}
+Ці розподіли є змішаними, бо $\P{N([0, 1]) = 0} = e^{-\theta}$ і тому
+$\P{\min(N) = 1} = \P{\max(N) = 0} = e^{-\theta}$. 
+Відповідні умовні розподіли є абсолютно неперервними:
+\begin{gather}\label{cond_min}
+    \P{\min(N) \leq x \mid \min(N) < 1} = 
+    \begin{cases}
+        0, & x < 0 \\
+        \frac{1-e^{-\theta x}}{1-e^{-\theta}}, & 0 \leq x < 1 \\
+        1, & x \geq 1
+    \end{cases}
+\end{gather}
+\begin{gather}\label{cond_max}
+    \P{\max(N) \leq x \mid \max(N) > 0} = 
+    \begin{cases}
+        0, & x < 0 \\
+        \frac{e^{\theta x} - 1}{e^{\theta} - 1}, & 0 \leq x < 1 \\
+        1, & x \geq 1
+    \end{cases}
+\end{gather}
+Умови $\left\{ \min(N) < 1\right\}$ та $\left\{ \max(N) > 0\right\}$
+еквівалентні $\left\{N([0, 1]) > 0 \right\}$, тому 
+умовні розподіли \eqref{cond_min} та \eqref{cond_max} 
+задають безумовні розподіли $\min(N')$ та $\max(N')$.
+
+Для $P_n'$ $\min(P_n') = \sup\left\{x \in [0, 1] : \card\left\{
+    i \in \left\{1,\dots,\ceil*{x n}\right\} : Z(i) = i
+\right\} = 0\right\}$ означає супремум значень $x$, для яких усі
+$i \in \left\{1,\dots,\ceil*{x n}\right\}$ під дією 
+перестановки опиняються не на своїх місцях,
+аналогічно $\max(P_n')$ означає інфімум $x$, для
+$i \in \left\{\floor*{x n}+1,\dots,n\right\}$ опиняються не на своїх місцях. 
+Легко побачити, що такі $x$ можуть набувати лише значень, що є пропорційними $\frac{1}{n}$.
+\begin{center}
+    \texttt{----- CDF plot -----}
+\end{center}
+Обчислення $\P{\frac{k-1}{n} < \min(N') \leq \frac{k}{n}}$ та
+$\P{\frac{k-1}{n} < \max(N') \leq \frac{k}{n}}$ дає приблизну частку
+перестановок, для яких $k$ є відповідно найменшою та найбільшою нерухомою точкою.
+\begin{center}
+    \texttt{----- comparison table -----}
+\end{center}
+
+Також, 
+$\E\min(N') = \int_0^1 \left(1 -  \frac{1-e^{-\theta x}}{1-e^{-\theta}}\right) dx = \frac{1}{\theta} + \frac{1}{1-e^{\theta}}$ та
+$\E\max(N') = \int_0^1 \left(1 -  \frac{e^{\theta x} - 1}{e^{\theta} - 1}\right) dx = 1 - \frac{1}{\theta} + \frac{1}{e^{\theta} - 1}$,
+тому $\lim_{n\to\infty} \E\min(P_n') = \frac{1}{\theta} + \frac{1}{1-e^{\theta}}$ та
+$\lim_{n\to\infty} \E\max(P_n') = 1 - \frac{1}{\theta} + \frac{1}{e^{\theta} - 1}$.
+
+\subsection{Сума нерухомих точок}
+Граничний розподіл суми нерухомих точок можна отримати, користуючись функціоналом Лапласа точкового процесу Пуассона.
+З \cite{Resnick_2007}, для процесу Пуассона з мірою інтенсивності $\theta \cdot \mathrm{Leb}$ на $[0, 1]$, цей функціонал задається
+\begin{equation}\label{laplace_functional}
+    \psi_N(f) = \E \exp\left\{-\int_0^1 f (x) dN \right\}= \exp\left\{ - \; \theta \int_0^1 \left(1 - e^{-f(x)}\right) dx\right\}
+\end{equation}
+для вимірних, невід'ємних, обмежених функцій $f$ на $[0, 1]$.
+
+Позначатимемо $\Sum(N)$ суму атомів точкового процесу Пуассона $N$. 
+Для будь-якої точкової міри $\mu$, 
+$\Sum(\mu) = \int_0^1 x d\mu$. 
+Перетворення Лапласа невід'ємної випадкової величини $X$ задається
+$\L{X}(p) = \E e^{-pX}$. 
+Якщо порівняти це означення з \eqref{laplace_functional}, можна побачити, що
+перетворення Лапласа $\Sum(N)$ дорівнює значенню $\psi_N(f)$ для $f(x) = px$.
+Пряме обчислення дає наступний результат:
+\begin{gather}
+    \L{\Sum(N)}(p) = 
+    \exp\left\{- \theta \left( 1 + \frac{1}{p}(e^{-p} - 1)\right) \right\}
+\end{gather}
+
+Оскільки розподіл $\Sum(N)$ є сумішшю абсолютно неперервного розподілу та
+дискретного з атомом в 0, можна знайти перетворення Лапласа
+лише абсолютно неперервної частини, що також буде перетворення для
+$\Sum(N')$.
+\begin{gather*}
+    \L{\Sum(N)}(p) = \E e^{-p\cdot\Sum(N)} = 
+    1 \cdot \P{\Sum(N) = 0} +
+    \E e^{-p\cdot\Sum(N')} \cdot \P{\Sum(N) > 0} = \\ =
+    e^{-\theta} + \L{\Sum(N')}(p) \cdot (1-e^{-\theta})
+    \Rightarrow
+    \L{\Sum(N')}(p) = \frac{1}{1 - e^{-\theta}}
+    \left(\L{\Sum(N)}(p) - e^{-\theta}\right) = \\
+    = \frac{e^{-\theta}}{1 - e^{-\theta}}
+    \exp\left\{- \frac{\theta}{p}(e^{-p} - 1) \right\}
+\end{gather*}
+
+Оскільки $\Sum(N')$ є абсолютно неперервною випадковою величиною,
+$\L{\Sum(N')}(p)$ є перетворенням Лапласа для щільності, тому
+перетворення Лапласа для функції розподілу $\Sum(N')$
+задається 
+\begin{equation}\label{sum_cdf_laplace}
+    \L{F_{\Sum(N')}(x)}(p) = 
+    \frac{e^{-\theta}}{1 - e^{-\theta}} \frac{1}{p}
+    \exp\left\{- \frac{\theta}{p}(e^{-p} - 1) \right\}
+\end{equation}
+Знаходження оберненого перетворення для \eqref{sum_cdf_laplace}
+є доволі складним.
+
+Хоча, існує інший підхід до знаходження $F_{\Sum(N)}(x)$:
+\begin{gather*}
+    \P{\Sum(N) \leq x} = 
+    \sum_{m=0}^{\infty} \P{\Sum(N) \leq x \mid N([0, 1]) = m} \P{N([0, 1]) = m}
+    = \\ = \mathds{1}\left\{x\geq 0\right\}\cdot e^{-\theta} +
+    \sum_{m=1}^{\infty} \P{\Sum(N) \leq x \mid N([0, 1]) = m} \frac{\theta^m}{m!} e^{-\theta}
+\end{gather*}
+Умовні розподіли $\P{\Sum(N) \leq x \mid N([0, 1]) = m}$
+є розподілами Ірвіна-Голла --- розподілами 
+суми $m$ незалежних випадкових величин з розподілом $\Unif{0, 1}$. Їх
+функція розподілу наступна:
+\begin{gather*}
+    \begin{cases}
+        0, & x < 0 \\
+        \frac{1}{m!}\sum_{k=0}^{\floor*{x}} (-1)^k C_m^k (x-k)^m, & 0 \leq x < m \\
+        1, & x \geq m
+    \end{cases}
+\end{gather*}
+Для кожного інтервалу $[n, n+1)$, $n\in \N \cup \{0 \}$, 
+$\P{\Sum(N) \leq x}$  може бути виражена через $I_{\nu}(z)$, $\nu \in \R$  ---
+модифіковані функції Бесселя першого роду:
+\begin{equation*}
+    I_{\nu}(z) = \left(\frac{1}{2} z\right)^{\nu}
+    \sum_{k=0}^{\infty} \frac{
+        \left(\frac{1}{2} z\right)^{k}
+    }{
+        k! \Gamma(\nu + k + 1)
+    }
+\end{equation*}
+Наприклад:
+\begin{gather*}
+    x\in[0, 1),\; \P{\Sum(N) \leq x} = 
+    e^{-\theta}\left(1 + 
+    \sum_{m=1}^{\infty}
+    \frac{\theta^m}{(m!)^2} x^m\right) = 
+    e^{-\theta} \cdot I_0(2\sqrt{\theta x}) \\
+    x\in[1, 2), \; 
+    \P{\Sum(N) \leq x} = 
+    e^{-\theta}\left(1 + \frac{\theta}{1!} + 
+    \sum_{m=2}^{\infty}\frac{\theta^m}{(m!)^2} x^m -
+    \sum_{m=2}^{\infty}\frac{\theta^m}{(m-1)!m!}(x-1)^m \right) = \\
+    = e^{-\theta}\left(
+        I_0(2\sqrt{\theta x}) - \sqrt{\theta(x-1)} \cdot I_1(2\sqrt{\theta(x-1)})
+    \right) \\
+    x\in[2, 3), \;
+    \P{\Sum(N) \leq x} = 
+    e^{-\theta}\left(
+        1 + \frac{\theta}{1!} + \frac{\theta^2}{2!} + 
+        \sum_{m=3}^{\infty}\frac{\theta^m}{(m!)^2} x^m -
+        \sum_{m=3}^{\infty}\frac{\theta^m}{(m-1)!m!}(x-1)^m + \right. \\ \left. + 
+        \sum_{m=3}^{\infty}\frac{\theta^m}{(m-2)!m!}(x-2)^m
+    \right) = 
+    e^{-\theta}\left(
+        I_0(2\sqrt{\theta x}) - \sqrt{\theta (x-1) } \cdot I_1(2\sqrt{\theta (x-1)}) + \right. \\ \left.
+        +\frac{1}{2!}\theta(x-2) I_2(2\sqrt{\theta (x-2)})
+    \right)
+\end{gather*}
+В загальному випадку:
+\begin{gather*}
+    x \in [n, n+1), \;
+    \P{\Sum(N) \leq x} = 
+    e^{-\theta}
+    \sum_{k=0}^{n}
+    (-1)^k \frac{1}{k!} \left(\theta(x-k)\right)^{\frac{k}{2}} I_k\left(2\sqrt{\theta(x-k)}\right)
+\end{gather*}
+Отже, функція розподілу $\Sum(N)$ задається
+\begin{equation}
+    F_{\Sum(N)}(x) = \P{\Sum(N) \leq x} = \begin{cases}
+        0, & x < 0 \\
+        e^{-\theta}
+        \sum\limits_{k=0}^{\floor*{x}}
+        (-1)^k \frac{1}{k!}\left(\theta(x-k)\right)^{\frac{k}{2}} I_k\left(2\sqrt{\theta(x-k)}\right), & x \geq 0
+    \end{cases}
+\end{equation}
+Таким чином, функція розподіу $\Sum(N')$ 
+може бути виражена через $F_{\Sum(N)}(x)$ настуним чином:
+\begin{equation}
+    \P{\Sum(N') \leq x} = \P{\Sum(N) \leq x \mid \Sum(N) > 0} = \frac{1}{1-e^{-\theta}} \left(F_{\Sum(N)}(x) - e^{-\theta}\right)
+\end{equation}
+\begin{center}
+    \texttt{----- CDF plot -----}
+\end{center}
+
+При цьому, $\E\Sum(N)$ значно простіше знайти
+за формулою повного математичного сподівання,
+оскільки для $m > 0$ $\E\left(\Sum(N) \mid N([0, 1]) = m\right) = \frac{m}{2}$
+як математичне сподівання суми $m$ незалежних випадкових величин
+з розподілом $\Unif{0, 1}$:
+\begin{gather*}
+    \E\Sum(N) = 0\cdot \P{N([0, 1]) = 0} +
+    \sum_{m=1}^{\infty} \frac{m}{2} \frac{\theta^m}{m!} e^{-\theta} =
+    \frac{e^{-\theta}}{2}\sum_{m=1}^{\infty} \frac{\theta^m}{(m-1)!} = \frac{\theta}{2}
+\end{gather*}
+
+\subsection{Найменші і найбільші спейсинги}
+Визначимо граничні розподілу найменшого і найбільшого спейсингів --- відстаней
+між нерухомими точками.
+\begin{remark}
+    Щоб застосувати тут теоретичні результати, що стосуються
+    випадкового розбиття інтервалів, зручно вважати
+    $\min(N)$ and $1-\max(N)$ спейсингами. Для випадкової
+    перестановки $\left\{1, \dots, n\right\}$ це означатиме
+    вважати $0$ та $n+1$ <<штучними>> нерухомими точками.
+\end{remark}
+
+Нехай $U_1, U_2, \dots, U_{n}$ ---
+незалежні випадкові величин
+з розподілом $\Unif{0, 1}$, що розділяють відрізок $[0, 1]$ на $n+1$
+інтервалів з довжинами $S_1, S_2, \dots, S_{n+1}$, або, у відсортованому вигляді, 
+$S_{(1)}^{[n+1]} < S_{(2)}^{[n+1]} < \dots < S_{(n+1)}^{[n+1]}$
+(тут і далі, $S_{(i)}$ позначає $i$-ту порядкову статистику, а
+$S_{(i)}^{[n]}$ --- те ж саме, але з вказанням $n$ як кількості цих статистик).
+Розподіли $S_{(k)}^{[n+1]}$ отримано у багатьох роботах
+(наприклад, \cite{Holst_1980}, \cite{Pinelis_2019}). Зокрема, для $x\in[0,1]$:
+\begin{gather}
+    \label{min_spacing}
+    \P{S_{(1)}^{[n+1]} > x} = \left((1-(n+1)x)_+\right)^n \\
+    \label{max_spacing}
+    \P{S_{(n+1)}^{[n+1]} > x} = 
+    \sum_{j=1}^{n+1} (-1)^{j-1} C_{n+1}^j \left((1-jx)_+\right)^n
+\end{gather}
+де $x_+ = \max(x, 0)$.
+
+Отже, розподіли найменшого $\smin(N)$ та найбільшого $\smax(N)$ спейсингів 
+між атомами $N$ задаються
+(з домовленістю $S_{(1)}^{1} = 1$)
+\begin{gather}
+    \label{s_min}
+    \P{\smin(N) > x} = 
+    \sum_{n=0}^{\infty} \P{S_{(1)}^{[n+1]} > x} \P{N([0, 1]) = n} \\
+    \label{s_max}
+    \P{\smax(N) > x} = 
+    \sum_{n=0}^{\infty} \P{S_{(n+1)}^{[n+1]} > x} \P{N([0, 1]) = n}
+\end{gather}
+Хоча явні вирази для \eqref{s_min} та \eqref{s_max},
+скоріш за все, доволі складні, цікаво звернути увагу на дві випадкові величини
+з такими ж розподілами.
+
+Добре відомо (наприклад, \cite{Holst_1980}), що для незалежних величин 
+$X_1, X_2, \dots, X_{n}$ з розподілом $\Exp{1}$
+мають місце наступні три рівності:
+\begin{gather}
+    \label{distr_equal_1}
+    \left(
+        S_1, S_2, \dots, S_{n}
+    \right)^T
+    \overset{d}{=}
+    \left(
+        \frac{X_1}{\sum_{i=1}^{n}X_i},
+        \frac{X_2}{\sum_{i=1}^{n}X_i},
+        \dots,
+        \frac{X_{n}}{\sum_{i=1}^{n}X_i}
+    \right)^T \\
+    \label{distr_equal_2}
+    \left(
+        S_{(1)}, S_{(1)}, \dots, S_{(n)}
+    \right)^T
+    \overset{d}{=}
+    \left(
+        \frac{X_{(1)}}{\sum_{i=1}^{n}X_i},
+        \frac{X_{(2)}}{\sum_{i=1}^{n}X_i},
+        \dots,
+        \frac{X_{(n)}}{\sum_{i=1}^{n}X_i}
+    \right)^T \\
+    \label{distr_equal_3}
+    X_{(i)} \overset{d}{=}
+    \frac{X_n}{n} + \frac{X_{n-1}}{n-1} + \dots + \frac{X_{n-i+1}}{n-i+1}
+\end{gather}
+Виявляється, \eqref{distr_equal_2} та \eqref{distr_equal_3}
+можна узагальнити в наступну неочікувану рівність:
+\begin{lemma}\label{distr_equal}
+    Для порядкових статистик спейсингів між незалежними величинами з розподілом $\Unif{0, 1}$ та
+    та незалежних величин 
+    $X_1, X_2, \dots, X_{n}$ з розподілом $\Exp{1}$ має місце
+    \begin{gather}\label{distr_equal_4}
+        S_{(i)}^{[n]} \overset{d}{=}
+        \frac{
+            \frac{X_n}{n} + \frac{X_{n-1}}{n-1} + \dots + \frac{X_{n-i+1}}{n-i+1}
+        }{
+            \sum_{i=1}^{n}X_i
+        }, i = 1, \dots, n
+    \end{gather}
+\end{lemma}
+\begin{proof}
+    Позначимо спейсинги між $X_1, X_2, \dots, X_n$ через
+    $\Delta_1 = X_{(1)}$,
+    $\Delta_i = X_{(i)} - X_{(i-1)}, i=2, \dots, n$. З \cite{Arnold_et_al_2008} відомо, що
+    всі $\Delta_i$ незалежні та мають розподіли $\Exp{n-i+1}$.
+    Отже, праву частину $S_{(i)} \overset{d}{=} \frac{X_{(i)}}{\sum_{j=1}^{n}X_j}$
+    можна переписати як
+    \begin{gather*}
+        \frac{X_{(i)}}{\sum_{j=1}^{n}X_j} = 
+        \frac{X_{(i)}}{\sum_{j=1}^{n}X_{(j)}} = 
+        \frac{
+            \Delta_1 + \dots + \Delta_i
+        }{
+            \Delta_1 + \left(\Delta_1 + \Delta_2\right) +
+            \dots + \left(\Delta_1 + \dots + \Delta_n\right)
+        }
+    \end{gather*}
+    Введемо нові незалежні випадкові величини
+    $Y_i = (n-i+1)\Delta_i$ з розподілом
+    $\Exp{1}$. В термінах $Y_i$,
+    верхню рівність можна переписати як
+    \begin{gather*}
+        \frac{X_{(i)}}{\sum_{j=1}^{n}X_j} = 
+        \frac{
+            \sum_{j=1}^i \frac{Y_j}{n-j+1} 
+        }{
+            \sum_{j=1}^n Y_j
+        }
+    \end{gather*}
+    Оскільки $X_i$ та $Y_i$ незалежні та мають однакові розподіли, то отримуємо \eqref{distr_equal_4}.
+\end{proof}
+
+Окремими випадками леми \ref{distr_equal}
+є $S_{(1)}^{[n]} \overset{d}{=} \frac{X_1}{n\sum_{i=1}^n X_i}$
+та $S_{(n)}^{[n]} \overset{d}{=} \frac{\sum_{i=1}^n \frac{X_i}{n-i+1}}{\sum_{i=1}^n X_i}
+\overset{d}{=} \frac{\sum_{i=1}^n \frac{X_i}{i}}{\sum_{i=1}^n X_i}$.
+Разом з \eqref{s_min} та \eqref{s_max}
+вони приводять до наступних рівностей за розподілом:
+\begin{gather}\label{distr_equal_5}
+    \smin(N) \overset{d}{=}
+    \frac{X_1}{(\nu+1)\sum_{i=1}^{\nu+1} X_i} , \;
+    \smax(N) \overset{d}{=} 
+    \frac{\sum_{i=1}^{\nu+1} \frac{X_i}{i}}{\sum_{i=1}^{\nu+1} X_i}
+\end{gather}
+де $\nu$ має розподіл $\Poiss{\theta}$, а $\left(X_i, i\in\N\right)$ незалежні і мають розподіл $\Exp{1}$.
+
+$\E\smin(N)$ та $\E\smax(N)$ можна знайти з \eqref{distr_equal_5}. 
+Нехай $n\in\N \cup \{0\}$, тоді
+\begin{gather*}
+    \E\left(
+        \frac{X_1}{(n+1)\sum_{i=1}^{n+1} X_i}
+    \right) = \frac{1}{(n+1)^2}\cdot \E \left(
+        \frac{X_1}{\sum_{i=1}^{n+1} X_i} + \dots + \frac{X_{n+1}}{\sum_{i=1}^{n+1} X_i}
+    \right) = \frac{1}{(n+1)^2} \\
+    \E\left(
+        \frac{\sum_{i=1}^{n+1} \frac{X_i}{i}}{\sum_{i=1}^{n+1} X_i}
+    \right) = 
+    \sum_{i=1}^{n+1} \frac{1}{i} \cdot \E\left(\frac{X_i}{\sum_{i=1}^{n+1} X_i}\right) = 
+    \frac{1}{n+1} \cdot \sum_{i=1}^{n+1} \frac{1}{i}
+\end{gather*}
+Оскільки $\P{\nu = n} = \frac{\theta^n}{n!}e^{-\theta}$, то
+\begin{gather*}
+    \E\smin(N) = \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{\theta^n}{n\cdot n!} = \frac{e^{-\theta}}{\theta}\int_0^\theta \frac{e^t-1}{t}dt \\
+    \E\smax(N) = \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{H_n}{n!} \theta^n
+\end{gather*}
+де $H_n = \sum_{k=1}^n \frac{1}{k}$ --- $n$-те гармонічне число
+Зокрема, для $\theta = 1$ (випадок рівномірного розподілу) 
+$\E\smin(N) \approx 0.48483$ and $\E\smax(N) \approx 0.7966$.
