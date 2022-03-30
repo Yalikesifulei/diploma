@@ -1,0 +1,49 @@
+\renewcommand{\P}[1]{\mathbb{P}\left\{#1\right\}}
+
+\newcommand{\Pn}[1]{\mathbb{P}'\left\{#1\right\}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\g}{\gamma}
+\newcommand{\Poiss}[1]{\mathrm{Poiss}\left(#1\right)}
+\newcommand{\Unif}[1]{\mathrm{Unif}\left(#1\right)}
+\newcommand{\Exp}[1]{\mathrm{Exp}\left(#1\right)}
+\DeclareMathOperator{\card}{card}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclareMathOperator{\Sum}{sum}
+\renewcommand{\L}[1]{\mathcal{L}\left\{#1\right\}}
+\DeclareMathOperator{\smax}{s-max}
+\DeclareMathOperator{\smin}{s-min}
+\DeclareMathOperator{\cycle}{c}
+\DeclareMathOperator{\inv}{i}
+\newcommand{\cov}[2]{\mathrm{cov}\left(#1, #2\right)}
+
+\newcommand*{\defeq}{\stackrel{\text{def}}{=}}
+\makeatletter
+\newcommand\incircbin
+{%
+  \mathpalette\@incircbin
+}
+\newcommand\@incircbin[2]
+{%
+  \mathbin%
+  {%
+    \ooalign{\hidewidth$#1#2$\hidewidth\crcr$#1\bigcirc$}%
+  }%
+}
+\newcommand{\oeq}{\incircbin{=}}
+\makeatother
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem*{theorem*}{Теорема}
+\newtheorem{corollary}{Наслідок}[theorem]
+\newtheorem{lemma}[theorem]{Лема}
+\newtheorem*{remark}{Зауваження}
+
+\theoremstyle{definition} % "Определение"
+\newtheorem{definition}{Означення}[section]
+\newtheorem*{definition*}{Означення}
