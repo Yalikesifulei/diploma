@@ -1,16 +1,16 @@
 % !TEX root = ../main.tex
 Розглянемо ймовірнісний розподіл на групі перестановок $S_n$, 
-заданий наступним чином:
+заданий у такий спосіб:
 \begin{equation}\label{ESF}
     \mathbb{P}(\{\pi\}) = \frac{
         \theta^{\cycle(\pi)}
     }{
         \theta (\theta + 1) \dots (\theta + n - 1)
-    }, \pi \in S_n
+    }, \; \pi \in S_n,
 \end{equation}
-де $\theta > 0$, а $\cycle(\pi)$ позначає кількість циклів у $\pi$.
+де $\theta > 0$ --- фіксований параметр, а $\cycle(\pi)$ позначає кількість циклів у $\pi$.
 Цей розподіл також відомий як
-\emph{міра Юенса}. Тут і далі,
+\emph{міра Юенса}. Тут і далі
 відповідні випадкові перестановки називатимемо
 \emph{перестановками Юенса}.
 
@@ -31,7 +31,7 @@
     $\sigma$ серед перших $\ceil*{\g n}$ натуральних чисел.
     Тоді $X_n$ за розподілом збігається до $\Poiss{\gamma\theta}$, тобто
     \begin{gather}
-        \lim_{n\to\infty} \P{X_n = k} = \frac{(\gamma\theta)^k}{k!}e^{-\gamma\theta}, k \in \N_0
+        \lim_{n\to\infty} \P{X_n = k} = \frac{(\gamma\theta)^k}{k!}e^{-\gamma\theta}, \; k \in \N_0.
     \end{gather} 
 \end{lemma}
 \begin{proof}
@@ -43,19 +43,20 @@
         1 - 
             \sum_{i} \mathbb{P}\left(F_i\right) +
             \sum_{i<j} \mathbb{P}\left(F_i \cap F_j\right) - \dots
-            + (-1)^{\ceil*{\g n}}\mathbb{P}\left(F_1 \cap F_2 \cap \dots \cap F_{\ceil*{\g n}} \right)
+            + (-1)^{\ceil*{\g n}}\mathbb{P}\left(F_1 \cap F_2 \cap \dots \cap F_{\ceil*{\g n}} \right).
     \end{gather*}
     У цьому виразі $\ceil*{\g n}$ однакових доданків виду $\mathbb{P}\left(F_i\right)$,
     $C_{\ceil*{\g n}}^2$ однакових доданків виду $\mathbb{P}\left(F_i \cap F_j\right)$ і так далі.
     Це означає, що достатньо знайти вирази для цих ймовірностей лише для конкретних наборів індексів.
-    Якщо 1 є нерухомою точкою перестановки $\pi$, то вона має містити <<тотожній>>
+    Якщо 1 є нерухомою точкою перестановки $\pi$, то вона має містити <<тотожний>>
     цикл $(1)$, тобто $\pi = (1) \circ \tilde{\pi}$, де 
     $\tilde{\pi}$ є перестановкою множини $\left\{2, \dots, n\right\}$.
     Аналогічно, якщо 1 і 2 є нерухомими точками $\pi$,
-    то $\pi = (1) (2) \circ \tilde{\pi}$.
+    то $\pi = (1) (2) \circ \tilde{\pi}$, де 
+    $\tilde{\pi}$ вже є перестановкою множини $\left\{3, \dots, n\right\}$.
     Отже,
     \begin{gather*}
-        \P{1, 2, \dots, i \text{ are the fixed points of }\sigma} = 
+        \P{1, 2, \dots, i \text{ є нерухомими точками }\sigma} = 
         \sum_{\pi = (1) (2) \dots (i) \circ \tilde{\pi} \in S_n}
         \mathbb{P}\left(\{\pi\}\right) = \\ =
         \sum_{\pi = (1) (2) \dots (i) \circ \tilde{\pi} \in S_n}
@@ -63,28 +64,33 @@
             \theta^{\cycle(\pi)}
         }{
             \theta (\theta + 1) \dots (\theta + n - 1)
-        } = \left[\cycle(\pi) > i\right] = \\ =
+        } = \left[\cycle(\pi) \geq i\right] = \\ =
         \frac{
             \theta^i
         }{
             \theta (\theta + 1) \dots (\theta + n - 1)
-        } \sum_{\pi = (1) (2) \dots (i) \circ \tilde{\pi} \in S_n} \theta^{\cycle(\pi) - i}
+        } \sum_{\pi = (1) (2) \dots (i) \circ \tilde{\pi} \in S_n} \theta^{\cycle(\pi) - i} = 
+        \frac{
+            \theta^i
+        }{
+            \theta (\theta + 1) \dots (\theta + n - 1)
+        } \sum_{\tilde{\pi} \in S_{n-i}} \theta^{\cycle(\tilde{\pi})}.
     \end{gather*} 
     Остання сума є сумою ймовірностей розподілу Юенса \eqref{ESF} на $S_{n-i}$, 
-    але без константи нормалізації, тому дорівнює
+    але без константи нормування, тому дорівнює
     $\theta (\theta + 1) \dots (\theta + n - i - 1)$, отже
     \begin{gather*}
-        \P{1, 2, \dots, i \text{ are the fixed points of }\sigma} = 
+        \P{1, 2, \dots, i \text{ є нерухомими точками }\sigma} = 
         \frac{\theta^i}{
-            (\theta + n - 1) \dots (\theta + n - i)
-        }
+            (\theta + n - i) \dots (\theta + n - 1)
+        }.
     \end{gather*}
     З цього отримуємо
     \begin{gather*}
         \P{X_n = 0} = \sum_{i=0}^{\ceil*{\gamma n}}
         (-1)^i C_{\ceil*{\gamma n}}^i \frac{\theta^i}{
-            (\theta + n - 1) \dots (\theta + n - i)
-        }
+            (\theta + n - i) \dots (\theta + n - 1)
+        }.
     \end{gather*}
     $\P{X_n = k}$ для $k>0$ можна отримати аналогічно:
     існує $C_{\ceil*{\gamma n}}^k$ способів
@@ -92,8 +98,8 @@
     а для інших $\ceil*{\gamma n} - k$ застосувати формулу, аналогічну до $\P{X_n = 0}$:
     \begin{gather*}
         \P{X_n = k} = C_{\ceil*{\gamma n}}^k \sum_{i=0}^{\ceil*{\gamma n}-k} (-1)^i C_{\ceil*{\gamma n}-k}^i \frac{\theta^{i+k}}{
-            (\theta + n - 1) \dots (\theta + n - i - k)
-        }
+            (\theta + n - i - k) \dots (\theta + n - 1)
+        }.
     \end{gather*}
     Тепер доведемо $\lim_{n\to\infty} \P{X_n = k} = \frac{(\gamma\theta)^k}{k!}e^{-\gamma\theta}$.
     \begin{gather*}
@@ -117,7 +123,7 @@
             \ceil*{\g n} (\ceil*{\g n} - 1) (\ceil*{\g n} - 2) \dots (\ceil*{\g n} - k - i + 1)
         }{
             (\theta + n - 1) \dots (\theta + n - i - k)
-        }
+        }.
     \end{gather*}
     Нехай $N$ достатньо велике і $N < \ceil*{\g n}-k$, тоді
     $\P{X_n = k}$ можна розбити на дві суми ---
@@ -145,7 +151,7 @@
             \ceil*{\g n}
         }{
             n - \ceil*{\g n}
-        }\right)^{i+k}
+        }\right)^{i+k}.
     \end{gather*}
     Оскільки $\lim_{n\to\infty} \frac{
         \ceil*{\g n}
@@ -163,9 +169,9 @@
         \frac{\theta^i}{i!} C^i \leq
         C^k
         \sum_{i=N}^{\infty}
-        \frac{\theta^i}{i!} C^i \to 0, N \to \infty
+        \frac{\theta^i}{i!} C^i \to 0, \; N \to \infty.
     \end{gather*}
-    Якщо $\gamma = 1$, 
+    Якщо $\gamma = 1$, то
     \begin{gather*}
         \frac{
             \ceil*{\g n} (\ceil*{\g n} - 1) (\ceil*{\g n} - 2) \dots (\ceil*{\g n} - k - i + 1)
@@ -181,7 +187,7 @@
             n (n - 1) (n - 2) \dots (n - k - i + 1)
         }{
             (n - 1) \dots (n - i - k)
-        } = \frac{n}{n - i - k} \to 1, n\to\infty 
+        } = \frac{n}{n - i - k} \to 1, \; n\to\infty,
     \end{gather*}
     тому цей дріб теж обмежений і
     $\lim_{N\to\infty} S_2 = 0$ також справджується.
@@ -197,17 +203,19 @@
         \frac{\theta^k}{k!} \sum_{i=0}^{N-1} (-1)^i
         \frac{\theta^i}{i!} \gamma^{i+k} = 
         \frac{(\gamma\theta)^k}{k!} \sum_{i=0}^{N-1} (-1)^i
-        \frac{(\gamma\theta)^i}{i!} \to \frac{(\gamma\theta)^k}{k!}e^{-\gamma\theta}, N\to\infty
+        \frac{(\gamma\theta)^i}{i!} \to \frac{(\gamma\theta)^k}{k!}e^{-\gamma\theta}, \; N\to\infty.
     \end{gather*}
 \end{proof}
 
 Користуючись позначеннями з леми \ref{main_lemma}, $X_n$ можна інтерпретувати як
 $P_n\left([0, \gamma] \right)$, де $P_n$ 
-є деякою випадковою точковою мірою, тому результат леми можна записати як 
+є випадковою точковою мірою 
+з атомами у нерухомих точках, нормованих $n$, 
+тому результат леми можна записати як 
 \begin{gather*}
-    \lim_{n\to\infty} \P{P_n\left([0, \gamma] \right) = k} = \P{N\left([0, \gamma] \right) = k}, k\in\N_0
+    \lim_{n\to\infty} \P{P_n\left([0, \gamma] \right) = k} = \P{N\left([0, \gamma] \right) = k}, \; k\in\N_0.
 \end{gather*}
-де $N$ є точковим процесом Пуассона
+Тут $N$ є точковим процесом Пуассона
 з {\color{red}мірою інтенсивності} $\theta \cdot \mathrm{Leb}$ on $[0, 1]$. 
 Виявляється, що має місце узагальнення цієї збіжності:
 \begin{theorem}\label{main_th}
