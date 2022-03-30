@@ -1,0 +1,91 @@
+% !TEX root = ../main.tex
+\begin{definition}[\cite{Kallenberg_2017}, ст. 19]
+    Для будь-якого простору $X$
+    непорожня сім'я підмножин $\mathcal{R}$ 
+    називається \emph{кільцем}, якщо
+    вона замкнена відносно скінченних об'єднань, перетинів
+    та різниць. Еквівалентне означення (\cite{Berezanskij}, ст. 4):
+    $\mathcal{R}$ непорожня та
+    $\left(A, B \in \mathcal{R}\right) \Rightarrow \left(A \cup B, A \setminus B\in \mathcal{R}\right)$.
+\end{definition}
+\begin{definition}[\cite{Kallenberg_2017}, ст. 19]
+    Для будь-якого простору $X$
+    непорожня сім'я підмножин $\mathcal{S}$ 
+    називається \emph{напівкільцем}, якщо
+    вона замкнена відносно скінченних перетинів та кожна різниця
+    множин з $\mathcal{S}$ представляється
+    у вигляді диз'юнктного об'єднання множин з $\mathcal{S}$, тобто
+    для будь-яких $A, B \in \mathcal{S}$ існують
+    множини $K_i \in \mathcal{S}, i = 1,\dots,n$,
+    що попарно не перетинаються і $A \setminus B = \bigcup_{i=1}^n K_i$.
+\end{definition}
+\begin{definition}[\cite{Bog}, ст. 139]
+    Для будь-якого простору $X$
+    непорожня сім'я підмножин $\mathcal{A}$ 
+    називається \emph{$\sigma$-алгеброю},
+    якщо виконуються наступні три умови:
+    \begin{enumerate}
+        \item $\left(A \in \mathcal{A}\right) \Rightarrow \left(A^C = X \setminus A \in \mathcal{A}\right)$;
+        \item $\left(A, B \in \mathcal{A}\right) \Rightarrow \left(A \cup B\in \mathcal{A}\right)$; 
+        \item $\left(A_1, A_2, A_3, ... \in \mathcal{A}\right) \Rightarrow \left(\bigcup_{n=1}^{\infty} A_n \in \mathcal{A}\right)$.
+    \end{enumerate} 
+\end{definition}
+\begin{definition}[\cite{Bog}, ст. 147]
+    Нехай $X$ --- метричний простір, $\mathcal{O}$ ---
+    сім'я всіх відкритих підмножин $X$. Мінімальна $\sigma$-алгебра
+    $\mathcal{B}(X)$, що містить $\mathcal{O}$, називається
+    \emph{борелевою $\sigma$-алгеброю}, а множини
+    $A \in \mathcal{B}(X)$ --- \emph{борелевими множинами.}
+\end{definition}
+\begin{definition}
+    Сім'я підмножин $\mathcal{S}$ сепарабельного метричного простору $X$ називається
+    \emph{розсікаючою}, якщо виконуються наступні дві умови:
+    \begin{enumerate}
+        \item Кожну відкриту підмножину $X$ можна представити у 
+        вигляді зліченного об'єднання множин з $\mathcal{S}$;
+        \item Кожну підмножину $X$ можна покрити скінченною кількістю множин з $\mathcal{S}$.
+    \end{enumerate}
+\end{definition}
+\begin{definition}[\cite{Berezanskij}, ст. 8]
+    Нехай $\mathcal{A}$ --- $\sigma$-алгебра
+    у просторі $X$. Функція $\mu: \mathcal{A} \to \R$ називається
+    \emph{мірою} на вимірному просторі $\left(X, \mathcal{A}\right)$, якщо виконуються наступні дві умови:
+    \begin{enumerate}
+        \item Невід'ємність: $\forall \; A \in \mathcal{A} : \mu(A) \geq 0$;
+        \item $\sigma$-адитивність: довільних множин $A_1, A_2, A_3, ... \in \mathcal{A}$,
+        що попарно не перетинаються, 
+        $\mu\left(\bigcup_{n=1}^{\infty} A_n\right) = \sum_{n=1}^{\infty}\mu(A_n)$.
+    \end{enumerate}
+\end{definition}
+\begin{definition}[\cite{Kallenberg_2017}, ст. 22]
+    Точка $x \in X$ називається \emph{атомом} міри $\mu$ на
+    вимірному просторі$\left(X, \mathcal{A}\right)$, якщо $\mu\left(\{x \}\right) > 0$.
+\end{definition}
+\begin{definition}[\cite{Kallenberg_2017}, ст. 22; \cite{Resnick_1987}, ст. 123]
+    \emph{Міра Дірака}, зосереджена
+    в точці $x \in X$ --- це міра $\delta_x$ на 
+    на вимірному просторі $\left(X, \mathcal{A}\right)$,
+    для якої $\forall A \in \mathcal{A}: \delta_x(A) = \mathds{1}\left\{x \in A\right\} = 
+    \begin{cases}
+        1, & x \in A \\
+        0, & x \notin A
+    \end{cases}$.
+\end{definition}
+\begin{definition}[\cite{Resnick_1987}, ст. 123]
+    \emph{Точкова міра} --- це міра $\mu$ на 
+    на вимірному просторі $\left(X, \mathcal{A}\right)$,
+    для якої $\forall A \in \mathcal{A}: \mu(A) = \sum_{i=1}^{\infty} \delta_{x_i}(A)$,
+    де $\left\{x_i, i \geq 1\right\}$ --- зліченний набір точок $X$, не обов'язково різних.
+    Точкова міра називається \emph{радоновою},
+    якщо міра компактних множин з $\mathcal{A}$ завжди є скінченною.
+\end{definition}
+\begin{definition}
+    Нехай $\left\{\mu_n, n \geq 1\right\}$ --- послідовність мір на
+    на вимірному просторі $\left(X, \mathcal{A}\right)$,
+    а $C_K^+(X)$ --- множина неперервних невід'ємних функцій
+    $X \to \R$ з компактним носієм.
+    Послідовність $\left\{\mu_n, n \geq 1\right\}$
+    \emph{грубо збігається} до міри $\mu$ на тому ж вимірному просторі,
+    якщо $\int_X f d\mu_n \to \int_X f d\mu$ для всіх $f \in C_K^+(X)$.
+    Ця збіжність позначається $\mu_n \overset{v}{\longrightarrow} \mu$.
+\end{definition}
