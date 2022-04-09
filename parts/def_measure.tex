@@ -29,6 +29,15 @@
         \item $\left(A, B \in \mathcal{A}\right) \Rightarrow \left(A \cup B\in \mathcal{A}\right)$; 
         \item $\left(A_1, A_2, A_3, ... \in \mathcal{A}\right) \Rightarrow \left(\bigcup_{n=1}^{\infty} A_n \in \mathcal{A}\right)$.
     \end{enumerate} 
+    Пара $\left(X, \mathcal{A}\right)$ називається \emph{вимірним простором}.
+\end{definition}
+\begin{definition}[\cite{Bog}, ст. 146]
+    Нехай $\left(X, \mathcal{A}_X\right)$ та $\left(Y, \mathcal{A}_Y\right)$ ---
+    два вимірних простори. Відображення $f: X \to Y$ називається 
+    \emph{вимірним}, якщо для кожної множини
+    $A \in \mathcal{A}_Y$ її повний прообраз
+    $f^{-1}(A) = \left\{x : f(x) \in A\right\}$
+    належить $\mathcal{A}_X$.
 \end{definition}
 \begin{definition}[\cite{Bog}, ст. 147]
     Нехай $X$ --- метричний простір, $\mathcal{O}$ ---
@@ -37,7 +46,7 @@
     \emph{борелевою $\sigma$-алгеброю}, а множини
     $A \in \mathcal{B}(X)$ --- \emph{борелевими множинами.}
 \end{definition}
-\begin{definition}
+\begin{definition}[\cite{Kallenberg_2017}, ст. 24]
     Сім'я підмножин $\mathcal{S}$ сепарабельного метричного простору $X$ називається
     \emph{розсікаючою}, якщо виконуються наступні дві умови:
     \begin{enumerate}
@@ -75,17 +84,30 @@
     \emph{Точкова міра} --- це міра $\mu$ на 
     на вимірному просторі $\left(X, \mathcal{A}\right)$,
     для якої $\forall A \in \mathcal{A}: \mu(A) = \sum_{i=1}^{\infty} \delta_{x_i}(A)$,
-    де $\left\{x_i, i \geq 1\right\}$ --- зліченний набір точок $X$, не обов'язково різних.
+    де $\left(x_i, i \geq 1\right)$ --- зліченний набір точок $X$, не обов'язково різних.
     Точкова міра називається \emph{радоновою},
     якщо міра компактних множин з $\mathcal{A}$ завжди є скінченною.
 \end{definition}
-\begin{definition}
-    Нехай $\left\{\mu_n, n \geq 1\right\}$ --- послідовність мір на
+\begin{definition}[\cite{Resnick_1987}, ст. 140]
+    Нехай $\left(\mu_n, n \geq 1\right)$ --- послідовність мір на
     на вимірному просторі $\left(X, \mathcal{A}\right)$,
     а $C_K^+(X)$ --- множина неперервних невід'ємних функцій
     $X \to \R$ з компактним носієм.
-    Послідовність $\left\{\mu_n, n \geq 1\right\}$
+    Послідовність $\left(\mu_n, n \geq 1\right)$
     \emph{грубо збігається} до міри $\mu$ на тому ж вимірному просторі,
     якщо $\int_X f d\mu_n \to \int_X f d\mu$ для всіх $f \in C_K^+(X)$.
     Ця збіжність позначається $\mu_n \overset{v}{\longrightarrow} \mu$.
 \end{definition}
+Наведемо теорему, що характеризує збіжність послідовності точкових мір.
+\begin{theorem}[\cite{Resnick_1987}, ст. 144]
+    Нехай $\left(\mu_n, n \geq 1\right)$ та $\mu$ --- міри
+    на вимірному просторі $\left(X, \mathcal{A}\right)$ і
+    $\mu_n \overset{v}{\longrightarrow} \mu$. Для кожної компактної множини
+    $K \subset X$ з $\mu(\partial K)$ існує номер $N = N(K)$ такий,
+    що при $n \geq N$ існує нумерація атомів $\mu_n$ та $\mu$ такі, що
+    $$
+        \mu_n(A \cap K) = \sum_{i=1}^p \delta_{x_i^{(n)}} (A), \;
+        \mu(A \cap K) = \sum_{i=1}^p \delta_{x_i} (A)
+    $$
+    для всіх $A \in \mathcal{A}$ і $x_i^{(n)} \to x_i$ для всіх $1 \leq i \leq p$.
+\end{theorem}

@@ -1,0 +1,168 @@
+% !TEX root = ../main.tex
+Точкові випадкові процеси є основним поняттям, що досліджується в роботі.
+Наведемо початкові означення з \cite{Resnick_1987}.
+В межах цього пункту, якщо не сказано інакше,
+$E$ --- підмножина скінченновимірного евклідового простору,
+$\mathcal{E} = \mathcal{B}(E)$ --- борелева $\sigma$-алгебра підмножин $E$.
+Для точкової міри $\mu$ позначимо 
+$S_\mu = \left\{x \in E : \mu\left(\{x\}\right) \neq 0\right\}$ ---
+множину атомів.
+\begin{definition}[\cite{Resnick_1987}, ст. 124]
+    Точкова міра $\mu$ називається \emph{простою},
+    якщо $\mu\left(\{x\}\right) \leq 1$ для всіх $x \in E$.
+\end{definition}
+Позначимо $M_p(E)$ множину усіх точкових мір, визначених на $E$,
+а $\mathcal{M}_p(E)$ --- найменшу $\sigma$-алгебру
+підмножин $M_p(E)$, що містить усі множини виду
+$\left\{
+    \mu \in M_p(E) : \mu(F) \in B
+\right\}$ для всіх $F \in \mathcal{E}$ і $B \in \mathcal{B}\left([0, +\infty]\right)$.
+Також зафіксуємо деякий ймовірнісний простір --- трійку
+$\left(\Omega, \mathcal{A}, \mathbb{P}\right)$, де
+$\Omega$ --- простір елементарних подій, $\mathcal{A}$ ---
+$\sigma$-алгебра підмножин $\Omega$, а $\mathbb{P}$ --- міра на цьому просторі,
+що додатково задовольняє умову $\mathbb{P}\left(\Omega\right) = 1$.
+\begin{definition} 
+    \emph{Точковий випадковий процес} $N$ --- вимірне відображення
+    з ймовірнісного простору $\left(\Omega, \mathcal{A}, \mathbb{P}\right)$
+    в $\left(M_p(E), \mathcal{M}_p(E)\right)$.
+\end{definition}
+Якщо зафіксувати $\omega \in \Omega$, то $N(\omega, \cdot)$
+буде точковою мірою. З іншого боку, якщо зафіксувати $F \in \mathcal{E}$,
+то $N(F)$ буде випадковою величиною зі значеннями в $[0, +\infty]$.
+Також, точковий процес $N$ задає ймовірнісну міру 
+$P_N = \mathbb{P} \circ N^{-1} = \mathbb{P}\left[N \in \cdot \; \right]$
+на $\mathcal{M}_p(E)$.
+
+Надалі для спрощення точкові випадкові процеси
+будемо називати просто \emph{точковими процесами}. Наведемо
+декілька теорем, що стосуються означення точкового процесу.
+
+\begin{theorem}[\cite{Resnick_1987}, ст. 124]
+    $N$ є точковим процесом тоді і тільки тоді, коли для кожного
+    $F \in \mathcal{E}$
+    відображення $\omega \mapsto N(\omega, F)$
+    з $\left(\Omega, \mathcal{A}\right)$
+    в $\left([0, +\infty], \mathcal{B}([0, +\infty])\right)$
+    є вимірним.
+\end{theorem}
+\begin{theorem}[\cite{Resnick_1987}, ст. 126]
+    Нехай $N$ --- точковий процес на вимірному просторі
+    $\left(E, \mathcal{E}\right)$, а сім'я передкомпактних множин $\mathcal{F}$
+    задовольняє наступні умови:
+    \begin{enumerate}
+        \item $\left(A, B \in \mathcal{F}\right) \Rightarrow \left(A \cap B \in \mathcal{F}\right)$;
+        \item $\mathcal{E}$ є мінімальною $\sigma$-алгеброю, що містить $\mathcal{F}$;
+        \item Існує послідовність множин $E_n \in \mathcal{F}$, для якої
+        $E_1 \subset E_2 \subset ...$ і $\bigcup_{n=1}^{\infty} E_n = E$.
+    \end{enumerate}
+    Для $k \in \mathbb{N}$ визначимо скінченновимірні розподіли
+    $$
+        P_{I_1,...,I_k} \left(n_1, ..., n_k\right) = 
+        \P{N(I_j) = n_j, 1\leq j \leq k}
+    $$
+    для $I_i \in \mathcal{F}$ та цілих $n_i \geq 0$, $1 \leq i \leq k$.
+    
+    Тоді система скінченновимірних розподілів
+    $\left\{P_{I_1,...,I_k}, k = 1,2,..., I_j \in \mathcal{F} \right\}$
+    однозначно визначає розподіл $P_N$.
+\end{theorem}
+
+{\color{red}Означення незалежності процесів --- чи потрібно?}
+
+{\color{red}Означення функціоналу Лапласа --- чи потрібно?}
+
+Як і для випадкових величин, для
+точкових процесів можна ввести поняття <<середнього значення>>.
+\begin{definition}[\cite{Kallenberg_2017}, ст. 127]
+    \emph{Мірою інтенсивності} або \emph{середньою мірою} точкового процесу $N$
+    називається міра $\mu$, що для $F \in \mathcal{E}$ визначена як
+    $$
+        \mu(F) = \E N(F) = \int_{\Omega} N(\omega, F) d\mathbb{P} = 
+        \int_{M_p(E)} m(F) d P_N
+    $$.
+\end{definition}
+
+Наведемо приклад точкового процесу.
+\begin{definition}[\cite{last_penrose_2017}, ст. 11]
+    Нехай $P$ --- деяка ймовірнісна міра на $\left(E, \mathcal{E}\right)$, а
+    $X_1, \dots, X_m$ --- незалежні випадкові величини з відповідним розподілом.
+    Для кожного $i = 1, \dots, m$ $\delta_{X_i}$ --- це точковий процес,
+    для якого $\P{\delta_{X_i}(F) = 1} = \P{X_i \in F}$,
+    $\P{\delta_{X_i}(F) = 0} = \P{X_i \notin F}$ для $F \in \mathcal{E}$.
+    Точковий процес $X = \delta_{X_1} + \delta_{X_2} + \dots + \delta_{X_m}$
+    називається \emph{біноміальний процесом}
+    з розміром вибірки $m$ та розподілом $P$. Для нього
+    $$
+        \P{X(F) = k} = C_m^k P(F)^k (1 - P(F))^{m-k}, \; k = 0,\dots,m, \; F \in \mathcal{E}
+    $$.
+\end{definition}
+
+Перейдемо до означення процесу Пуассона, який є центральним у роботі.
+\begin{definition}[\cite{Resnick_1987}, ст. 130]
+    Нехай $\mu$ --- радонова міра на $\mathcal{E}$.
+    Точковий процес $N$ називається \emph{процесом Пуассона} або
+    \emph{випадковою мірою Пуассона} з мірою інтенсивності $\mu$, якщо $N$ 
+    задовольняє наступні умови:
+    \begin{enumerate}
+        \item Для будь-якої $F \in \mathcal{E}$ 
+        та будь-якого невід'ємного цілого числа $k$
+        \begin{gather*}
+            \P{N(F) = k} = \begin{cases}
+                % \frac{(\mu(F))^k}{k!} \exp\left\{-\mu(F)\right\}, & \mu(F) < \infty \\
+                \frac{(\mu(F))^k}{k!} e^{-\mu(F)}, & \mu(F) < \infty, \\
+                0, & \mu(F) = \infty;
+            \end{cases}
+        \end{gather*}
+        \item Для будь-якого натурального $k$, 
+        якщо $F_1, \dots, F_k$ з $\mathcal{E}$ попарно не перетинаються, то
+        $\left(N(F_i), 1\leq i \leq k\right)$ є незалежними в сукупності випадковими величинами.
+    \end{enumerate}
+\end{definition}
+% {\color{red}окреме означення функція від міри? --- Resnick, ст. 127}
+
+Як і для невипадкових точкових мір, для точкових процесів також можна ввести поняття
+грубої збіжності.
+\begin{definition}[\cite{Kallenberg_2017}, ст. 109]
+    Нехай $\left(\xi_n, n \geq 1\right)$ --- послідовність 
+    точкових процесів на вимірному просторі $\left(E, \mathcal{E}\right)$.
+    Якщо $\E \varphi(\xi_n) \to \E \varphi(\xi)$ 
+    для кожної обмеженої функції $\varphi$, 
+    неперервної на $M_p(E)$ відносно грубої збіжності мір,
+    то послідовність $\left(\xi_n, n \geq 1\right)$
+    \emph{грубо збігається за розподілом}, що позначається
+    $\xi_n \overset{vd}{\longrightarrow} \xi$.
+\end{definition}
+Наведемо критерій грубої збіжності за розподілом.
+\begin{theorem}[\cite{Kallenberg_2017}, ст. 121]
+    Нехай $\left(\xi_n, n \geq 1\right)$ --- послідовність 
+    точкових процесів на вимірному просторі $\left(E, \mathcal{E}\right)$,
+    а точковий процес $\xi$ --- простий. Нехай також
+    $\mathcal{U} \subset \hat{\mathcal{E}}_\xi$ --- фіксоване
+    розсікаюче кільце, де $\hat{\mathcal{E}}_\xi$ позначає сім'ю
+    борелевих підмножин $E$, для яких $\E \xi (\partial B) = 0$,
+    а $\mathcal{I}\subset\mathcal{U}$ --- напів-кільце. 
+    Тоді 
+    $\xi_n \overset{vd}{\longrightarrow} \xi$ тоді і тільки тоді, коли
+    \begin{enumerate}
+        \item $\underset{n\to\infty}{\lim}\;\P{\xi_n(U) = 0} = \P{\xi(U) = 0}$ для $U\in\mathcal{U}$;
+        \item $\underset{n\to\infty}{\limsup}\; \P{\xi_n(I) > 1} \leq \P{\xi(I) > 1}$ для $I \in \mathcal{I}$.
+    \end{enumerate}
+\end{theorem}
+Для практичних застосувань є корисною наступна теорема про неперервне відображення.
+\begin{theorem}[\cite{Resnick_2007}, ст. 42]
+    Нехай $\left(\xi_n, n \geq 1\right)$ --- послідовність 
+    точкових процесів на вимірному просторі $\left(E, \mathcal{E}\right)$,
+    яка грубо збігається за розподілом до точкового процесу $\xi$,
+    а відображення $\varphi: M_p(E) \to \R$ таке, що
+    $\P{\xi \in \left\{ 
+        \mu \in M_p(E) : \varphi \text{
+             не є неперевною в 
+        } \mu
+    \right\}} = 0$.
+
+    Тоді послідовність випадкових величин 
+    $\left(\varphi(\xi_n), n \geq 1\right)$
+    збігається за розподілом до $\varphi(\xi)$,
+    тобто $\varphi(\xi_n) \overset{d}{\longrightarrow} \varphi(\xi)$.
+\end{theorem}
