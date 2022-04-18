@@ -22,8 +22,8 @@
 Перед тим, як вводити подальші поняття, розглянемо і доведемо наступну лему:
 \begin{lemma}\label{main_lemma}
     Нехай $\sigma$ --- випадкова перестановка на множині
-    $\left\{1, \dots, n\right\}$, що задана розподілом \eqref{ESF}
-    (тобто, $\sigma$ є перестановкою Юенса з $S_n$).
+    $\left\{1, \dots, n\right\}$, що задана розподілом \eqref{ESF}.
+    % (тобто, $\sigma$ є перестановкою Юенса з $S_n$).
     Для $a \in \R$ позначимо $\ceil*{a} = \min\left\{k\in\Z : k \geq a\right\}$.
     Нехай $\gamma \in [0, 1]$, а
     $X_n = \card\left\{i\in \left\{1,\dots,\ceil*{\gamma n} \right\} : \sigma(i) = i\right\}$
@@ -69,7 +69,7 @@
             \theta^i
         }{
             \theta (\theta + 1) \dots (\theta + n - 1)
-        } \sum_{\pi = (1) (2) \dots (i) \circ \tilde{\pi} \in S_n} \theta^{\cycle(\pi) - i} = 
+        } \sum_{\pi = (1) (2) \dots (i) \circ \tilde{\pi} \in S_n} \theta^{\cycle(\pi) - i} = \\ =
         \frac{
             \theta^i
         }{
@@ -103,7 +103,7 @@
     \end{gather*}
     Тепер доведемо $\lim_{n\to\infty} \P{X_n = k} = \frac{(\gamma\theta)^k}{k!}e^{-\gamma\theta}$.
     \begin{gather*}
-        \P{X_n = k} = 
+        \P{X_n = k} = \\ =
         \frac{
             (\ceil*{\g n})!
         }{
@@ -177,7 +177,7 @@
             (\ceil*{\g n} - k - i + 1) \dots (\ceil*{\g n} - 2) (\ceil*{\g n} - 1) \ceil*{\g n}
         }{
             (\theta + n - i - k) \dots (\theta + n - 1)
-        } = 
+        } = \\ =
         \frac{
             (n - k - i + 1) \dots (n - 2) (n - 1) n
         }{
@@ -277,8 +277,8 @@ $P_n$ на $(E, \mathcal{E}) = \left([0, 1], \mathcal{B}([0, 1])\right)$ за п
     \end{enumerate}
 \end{theorem*}
 
-Розглянемо сім'ю  множин $\mathcal{X}$, що складається зі
-скінченних диз'юнктних об'єднань інтервалів $\left<a,b\right> \subset [0, 1]$,
+Розглянемо сім'ю множин $\mathcal{X}$, що складається зі
+скінченних диз'юнктних об'єд\-нань інтервалів $\left<a,b\right> \subset [0, 1]$,
 де $\left<a,b\right>$ позначає одне з $[a, b]$, $(a, b)$, $[a, b)$ чи $(a, b]$.
 Для точкового процесу Пуассона $N$
 з мірою інтенсивності $\Lambda = \theta \cdot \mathrm{Leb}$ на $[0, 1]$ 
@@ -295,10 +295,10 @@ $\partial B$ складається зі скінченного об'єднан�
 $\hat{\mathcal{E}}_N = \mathcal{U} = \mathcal{I} = \mathcal{X}$.
 
 \begin{proof}[Доведення теореми \ref{main_th}]\label{main_proof}
-    Нехай $\left<\gamma_1, \delta_1 \right>, ..., \left<\gamma_m, \delta_m \right>$ 
-    ($\gamma_1 < \delta_1 < \gamma_2 < ... < \gamma_m < \delta_m$) --- 
+    Нехай $\left<\gamma_1, \delta_1 \right>, ..., \left<\gamma_m, \delta_m \right>$ ,
+    де $\gamma_1 < \delta_1 < \gamma_2 < ... < \gamma_m < \delta_m$, --- 
     набір інтервалів в $[0, 1]$, що попарно не перетинаються, 
-    $\floor*{a} = \max\left\{k\in\Z : k \leq a\right\}$,
+    $\floor*{a}$ позначає $\max\left\{k\in\Z : k \leq a\right\}$,
     $I_j = \left<\gamma_j, \delta_j\right>$ і $I = \bigvee_{j=1}^m I_j \in \mathcal{X}$.
     Позначимо $Y_n = P_n (I)$, де $P_n(I)$ визначено формулою \eqref{Pn_def}.
     % Як у і лемі \ref{main_lemma},
@@ -345,12 +345,13 @@ $\hat{\mathcal{E}}_N = \mathcal{U} = \mathcal{I} = \mathcal{X}$.
     \begin{gather*}
         \lim_{n\to\infty}\P{P_n(I) > 1} = \P{N(I) > 1}, I\in\mathcal{X}.
     \end{gather*}
+
     Отже, обидві умови теореми \ref{kallenberg_th} справджуються, що і доводить
-    $P_n \overset{vd}{\longrightarrow} N, \; n\to\infty$.
+    $P_n \overset{vd}{\longrightarrow} N$ при $n\to\infty$.
 \end{proof}
 
 Для наступних досліджень будуть важливі перестановки з принаймні однією нерухомою точкою.
-З теореми \ref{main_th}, для $\gamma = 1$ має місце $\P{X_n = 0} \to e^{-\theta}, n \to \infty$. 
+З теореми \ref{main_th}, для $\gamma = 1$ виконується $\P{X_n = 0} \to e^{-\theta}, n \to \infty$. 
 Введемо ще один точковий процес $P_n'$, що визначений для борелевих множин $F \in \mathcal{B}([0, 1])$ як 
 \begin{gather}
     \P{P_n' (F) = k} = \P{P_n(F) = k \mid P_n([0, 1]) > 0} = \begin{cases}
