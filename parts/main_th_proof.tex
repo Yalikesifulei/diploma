@@ -356,7 +356,7 @@ $\hat{\mathcal{E}}_N = \mathcal{U} = \mathcal{I} = \mathcal{X}$.
 \begin{gather}
     \P{P_n' (F) = k} = \P{P_n(F) = k \mid P_n([0, 1]) > 0} = \begin{cases}
         \frac{\P{P_n(F) = k}}{1 - \P{P_n([0, 1]) = 0}}, & k > 0; \\
-        \frac{1 - \P{P_n\left(F^C\right) = 0}}{1 - \P{P_n([0, 1]) = 0}}, & k = 0.
+        \frac{\P{P_n(F) = 0, P_n(F^C) > 0}}{1 - \P{P_n([0, 1]) = 0}}, & k = 0.
     \end{cases} 
 \end{gather}
 Повторенням доведення \ref{main_th} можна отримати наступний результат:
@@ -367,11 +367,28 @@ $\hat{\mathcal{E}}_N = \mathcal{U} = \mathcal{I} = \mathcal{X}$.
         \P{N' (F) = k} =
         \begin{cases}
             \frac{(\Lambda(F))^k}{k!} \cdot \frac{e^{-\Lambda(F)}}{1 - e^{-\theta}}, & k > 0 \\
-            \frac{1 - e^{-\left(\theta - \Lambda(F)\right)}}{1 - e^{-\theta}}, & k = 0.
+            \frac{\P{N(F) = 0, N(F^C) > 0}}{1 - e^{-\theta}}, & k = 0.
         \end{cases}
     \end{gather}
     для всіх $F \in \mathcal{B}([0, 1])$ та $k \in \N$.
 \end{theorem}
+За властивістю 2 у означенні \ref{def:poiss_proc} маємо
+\begin{gather*}
+    \P{N(F) = 0, N(F^C) > 0} = \P{N(F) = 0}\cdot \P{N(F^C) > 0} = \\ =
+    \P{N(F) = 0} \cdot \left(1 - \P{N(F^C) = 0}\right) = 
+    e^{-\Lambda(F)} \cdot \left(1 - e^{-\Lambda(F^C)}\right) = \\ =
+    e^{-\Lambda(F)} \cdot \left(1 - e^{-\theta} e^{\Lambda(F)}\right) = 
+    e^{-\Lambda(F)} - e^{-\theta},
+\end{gather*}
+тому можна записати
+\begin{gather}
+    \P{N' (F) = k} =
+    \begin{cases}
+        \frac{(\Lambda(F))^k}{k!} \cdot \frac{e^{-\Lambda(F)}}{1 - e^{-\theta}}, & k > 0 \\
+        \frac{e^{-\Lambda(F)} - e^{-\theta}}{1 - e^{-\theta}}, & k = 0.
+    \end{cases}
+\end{gather}
+
 Зокрема, для $F = [0, 1]$:
 \begin{gather}
     \P{N' ([0, 1]) = k} = 

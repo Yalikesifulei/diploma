@@ -5,8 +5,9 @@
     називається \emph{кільцем}, якщо
     вона замкнена відносно скінченних об'єднань, перетинів
     та різниць. Еквівалентне означення (\cite{Berezanskij}, ст. 4):
-    $\mathcal{R}$ непорожня та
-    $\left(A, B \in \mathcal{R}\right) \Rightarrow \left(A \cup B, A \setminus B\in \mathcal{R}\right)$.
+    сім'я $\mathcal{R}$ непорожня та
+    замкнена відносно скінченних об'єднань та різниць.
+    % $\left(A, B \in \mathcal{R}\right) \Rightarrow \left(A \cup B, A \setminus B\in \mathcal{R}\right)$.
 \end{definition}
 \begin{definition}[\cite{Kallenberg_2017}, ст. 19]
     Для будь-якого простору $X$
@@ -50,10 +51,11 @@
     Сім'я підмножин $\mathcal{S}$ сепарабельного метричного простору $X$ називається
     \emph{розсікаючою}, якщо виконуються наступні дві умови:
     \begin{enumerate}
-        \item Кожну відкриту підмножину $X$ можна представити у 
-        вигляді зліченного об'єднання множин з $\mathcal{S}$;
-        \item Кожну підмножину $X$ можна покрити скінченною кількістю множин з $\mathcal{S}$.
+        \item Кожну відкриту підмножину $X$ можна зобразити як зліченне об'єднання множин з $\mathcal{S}$;
+        \item Кожну обмежену підмножину $X$ можна покрити скінченною кількістю множин з $\mathcal{S}$.
     \end{enumerate}
+    Для простору $\R^n$ прикладом розсікаючої сім'ї множин є сім'я куль з
+    раціональними радіусами та центрами в точках з раціональними координатами.
 \end{definition}
 \begin{definition}[\cite{Berezanskij}, ст. 8]
     Нехай $\mathcal{A}$ --- $\sigma$-алгебра
@@ -61,14 +63,16 @@
     \emph{мірою} на вимірному просторі $\left(X, \mathcal{A}\right)$, якщо виконуються наступні дві умови:
     \begin{enumerate}
         \item Невід'ємність: $\forall \; A \in \mathcal{A} : \mu(A) \geq 0$;
-        \item $\sigma$-адитивність: довільних множин $A_1, A_2, A_3, ... \in \mathcal{A}$,
+        \item $\sigma$-адитивність: для довільних множин $A_1, A_2, A_3, ... \in \mathcal{A}$,
         що попарно не перетинаються, 
         $\mu\left(\bigcup_{n=1}^{\infty} A_n\right) = \sum_{n=1}^{\infty}\mu(A_n)$.
     \end{enumerate}
 \end{definition}
 \begin{definition}[\cite{Kallenberg_2017}, ст. 22]
+    Нехай $\left(X, \mathcal{A}\right)$ --- вимірний простір, для якого $\{ x \} \in \mathcal{A}$
+    для всіх $x \in X$.
     Точка $x \in X$ називається \emph{атомом} міри $\mu$ на
-    вимірному просторі$\left(X, \mathcal{A}\right)$, якщо $\mu\left(\{x \}\right) > 0$.
+    $\left(X, \mathcal{A}\right)$, якщо $\mu\left(\{x \}\right) > 0$.
 \end{definition}
 \begin{definition}[\cite{Kallenberg_2017}, ст. 22; \cite{Resnick_1987}, ст. 123]
     \emph{Міра Дірака}, зосереджена
@@ -85,26 +89,32 @@
     на вимірному просторі $\left(X, \mathcal{A}\right)$,
     для якої $\forall A \in \mathcal{A}: \mu(A) = \sum_{i=1}^{\infty} \delta_{x_i}(A)$,
     де $\left(x_i, i \geq 1\right)$ --- зліченний набір точок $X$, не обов'язково різних.
-    Точкова міра називається \emph{радоновою},
+    У випадку, коли $X$ --- метричний простір, точкова міра називається \emph{радоновою},
     якщо міра компактних множин з $\mathcal{A}$ завжди є скінченною.
 \end{definition}
 \begin{definition}[\cite{Resnick_1987}, ст. 140]
     Нехай $\left(\mu_n, n \geq 1\right)$ --- послідовність мір на
     на вимірному просторі $\left(X, \mathcal{A}\right)$,
+    де $X$ є метричним простором,
     а $C_K^+(X)$ --- множина неперервних невід'ємних функцій
     $X \to \R$ з компактним носієм.
     Послідовність $\left(\mu_n, n \geq 1\right)$
     \emph{грубо збігається} до міри $\mu$ на тому ж вимірному просторі,
-    якщо $\int_X f d\mu_n \to \int_X f d\mu$ для всіх $f \in C_K^+(X)$.
+    якщо виконується $\int_X f \d\mu_n \to \int_X f \d\mu$ для всіх $f \in C_K^+(X)$.
     Ця збіжність позначається $\mu_n \overset{v}{\longrightarrow} \mu$.
 \end{definition}
+
+Надалі вважатимемо, що якщо мова йде про
+грубу збіжність послідовності мір, то простір, на якому вони задані,
+є метричним.
 Наведемо теорему, що характеризує збіжність послідовності точкових мір.
 \begin{theorem}[\cite{Resnick_1987}, ст. 144]
     Нехай $\left(\mu_n, n \geq 1\right)$ та $\mu$ --- міри
     на вимірному просторі $\left(X, \mathcal{A}\right)$ і
     $\mu_n \overset{v}{\longrightarrow} \mu$. Для кожної компактної множини
-    $K \subset X$ з $\mu(\partial K)$ існує номер $N = N(K)$ такий,
-    що при $n \geq N$ існує нумерація атомів $\mu_n$ та $\mu$ такі, що
+    $K \subset X$ з $\mu(\partial K) = 0$ існує номер $N = N(K)$ такий,
+    що при $n \geq N$ існують нумерації атомів $\mu_n$ та 
+    $\mu$, $x_i^{(n)}, 1 \leq i \leq p$ та $x_i, 1 \leq i \leq p$ відповідно, такі, що
     $$
         \mu_n(A \cap K) = \sum_{i=1}^p \delta_{x_i^{(n)}} (A), \;
         \mu(A \cap K) = \sum_{i=1}^p \delta_{x_i} (A)
