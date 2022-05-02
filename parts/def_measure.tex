@@ -92,6 +92,10 @@
     У випадку, коли $X$ --- метричний простір, точкова міра називається \emph{радоновою},
     якщо міра компактних множин з $\mathcal{A}$ завжди є скінченною.
 \end{definition}
+\begin{definition}[\cite{Resnick_1987}, ст. 124]
+    Точкова міра $\mu$ називається \emph{простою},
+    якщо для всіх $x \in E$ $\mu\left(\{x\}\right) \leq 1$.
+\end{definition}
 \begin{definition}[\cite{Resnick_1987}, ст. 140]
     Нехай $\left(\mu_n, n \geq 1\right)$ --- послідовність мір на
     на вимірному просторі $\left(X, \mathcal{A}\right)$,
@@ -108,7 +112,7 @@
 грубу збіжність послідовності мір, то простір, на якому вони задані,
 є метричним.
 Наведемо теорему, що характеризує збіжність послідовності точкових мір.
-\begin{theorem}[\cite{Resnick_1987}, ст. 144]
+\begin{theorem}[\cite{Resnick_1987}, ст. 144]\label{th:point_mes_conv}
     Нехай $\left(\mu_n, n \geq 1\right)$ та $\mu$ --- міри
     на вимірному просторі $\left(X, \mathcal{A}\right)$ і
     $\mu_n \overset{v}{\longrightarrow} \mu$. Для кожної компактної множини
@@ -121,3 +125,31 @@
     $$
     для всіх $A \in \mathcal{A}$ і $x_i^{(n)} \to x_i$ для всіх $1 \leq i \leq p$.
 \end{theorem}
+
+\begin{definition}[\cite{billingsley}, ст.121-124]
+    \emph{Простором càdlàg-функцій} на $[0, 1]$ називається простір $\mathcal{D}_{[0, 1]}$
+    функцій $f : [0, 1] \to \R$, які неперервні справа і мають границі зліва.
+\end{definition}
+
+\begin{definition}
+    \emph{Метрикою Скорохода} на $\mathcal{D}_{[0, 1]}$ називається метрика, визначена за формулою
+    \begin{gather*}
+        d(f, g) = \inf_{\lambda \in \Lambda} \max \left(
+            \sup_{x \in [0, 1]} \left|\lambda(x) - x\right|, 
+            \sup_{x \in [0, 1]} \left|f(x) - g(\lambda(x))\right|
+        \right),
+    \end{gather*}
+    де $\Lambda$ --- множина строго зростаючих неперервних відображень
+    $[0, 1]$ в себе.
+
+    Послідовність функцій $f_n \in \mathcal{D}_{[0, 1]}$ збігається за метрикою Скорохода до $f \in \mathcal{D}_{[0, 1]}$
+    тоді і тільки тоді, коли існує послідовність функцій $\lambda_n \in \Lambda$ таких, що
+    рівномірно за $x$
+    $\lim_{n\to\infty} f_n \left(\lambda_n(x)\right) = f(x)$ та
+    $\lim_{n\to\infty} \lambda_n(x) = x$, тобто
+    виконуються граничні співвідношення
+    \begin{gather*}
+        \lim_{n\to\infty} \sup_{x\in[0, 1]}\left| f_n \left(\lambda_n(x)\right) - f(x) \right| = 0, \;
+        \lim_{n\to\infty} \sup_{x\in[0, 1]}\left| \lambda_n(x) - x \right| = 0.
+    \end{gather*}
+\end{definition}

@@ -4,12 +4,9 @@
 В межах цього пункту, якщо не сказано інакше,
 $E$ --- підмножина скінченновимірного евклідового простору,
 $\mathcal{E} = \mathcal{B}(E)$ --- борелева $\sigma$-алгебра підмножин $E$.
-Для точкової міри $\mu$ позначимо множину атомів 
-$S_\mu = \left\{x \in E : \mu\left(\{x\}\right) \neq 0\right\}$.
-\begin{definition}[\cite{Resnick_1987}, ст. 124]
-    Точкова міра $\mu$ називається \emph{простою},
-    якщо для всіх $x \in E$ $\mu\left(\{x\}\right) \leq 1$
-\end{definition}
+% Для точкової міри $\mu$ позначимо множину атомів 
+% $S_\mu = \left\{x \in E : \mu\left(\{x\}\right) \neq 0\right\}$.
+
 Позначимо через $M_p(E)$ множину усіх точкових мір, визначених на $E$,
 а через $\mathcal{M}_p(E)$ --- найменшу $\sigma$-алгебру
 підмножин $M_p(E)$, що містить усі множини виду
@@ -67,6 +64,14 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     однозначно визначає розподіл $P_N$.
 \end{theorem}
 
+\begin{theorem}[\cite{last_penrose_2017}, ст. 50]\label{th:point_proc_uniqueness_simple}
+    Нехай $N$ та $N'$ --- прості точкові процеси на $\left(E, \mathcal{E}\right)$ і
+    \begin{gather*}
+        \P{N(F) = 0} = \P{N'(F) = 0}, \; F \in \mathcal{E}.
+    \end{gather*}
+    Тоді $N$ та $N'$ мають однакові розподіли.
+\end{theorem}
+
 \begin{definition}[\cite{Resnick_1987}, ст. 129]
     Нехай $N$ --- точковий процес на вимірному просторі
     $\left(E, \mathcal{E}\right)$. \emph{Функціоналом Лапласа} для $N$
@@ -75,7 +80,7 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     за правилом
     \begin{gather}
         \psi_N(f) = \E e^{-N(f)} = \int_{\Omega} e^{-N(\omega, f)} \d \mathbb{P} = 
-        \int_{M_p(E)} \exp\left\{ -\int_E f(x) \d x\right\} \d P_N
+        \int_{M_p(E)} \exp\left\{ -\int_E f(x) \d \mu\right\} \d P_N (\mu)
     \end{gather}
 \end{definition}
 
@@ -90,7 +95,7 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     \emph{Мірою інтенсивності} або \emph{середньою мірою} точкового процесу $N$
     називається міра $\mu$ на $\mathcal{E}$, визначена як
     $$
-        \mu(F) = \E N(F) = \int_{\Omega} N(\omega, F) d\mathbb{P} = 
+        \mu(F) = \E N(F) = \int_{\Omega} N(\omega, F) \d\mathbb{P} = 
         \int_{M_p(E)} m(F) \d P_N.
     $$
 \end{definition}
@@ -168,7 +173,7 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     \end{enumerate}
 \end{theorem}
 Для практичних застосувань є корисною наступна теорема про неперервне відображення.
-\begin{theorem}[\cite{Resnick_2007}, ст. 42]
+\begin{theorem}[\cite{Resnick_2007}, ст. 42]\label{th:cont_map}
     Нехай $\left(\xi_n, n \geq 1\right)$ --- послідовність 
     точкових процесів на вимірному просторі $\left(E, \mathcal{E}\right)$,
     яка грубо збігається за розподілом до точкового процесу $\xi$,
@@ -182,4 +187,62 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     $\left(\varphi(\xi_n), n \geq 1\right)$
     збігається за розподілом до $\varphi(\xi)$,
     тобто $\varphi(\xi_n) \overset{d}{\longrightarrow} \varphi(\xi)$.
+\end{theorem}
+
+Розглянемо також поняття звичайних випадкових процесів.
+
+\begin{definition}[\cite{Kallenberg_FMP}, ст. 83]
+    Нехай $\left(E, \mathcal{E}\right)$ --- вимірний простір,
+    $T \subset \R$ --- множина індексів. Відображення
+    $X : \Omega \to U \subset S^T$ називається \emph{випадковим процесом}
+    на $T$ зі значеннями в $E$ та траєкторіями в $U$,
+    якщо відображення $X_t : \Omega \to S$ вимірні для кожного $t \in T$.
+\end{definition}
+
+\begin{definition}
+    Нехай $X$ --- випадковий процес на $[0, 1]$ зі значеннями в $\R$. Якщо
+    траєкторії $X(t)$ з ймовірністю 1 належать простору $\mathcal{D}_{[0, 1]}$,
+    то $X$ називається \emph{càdlàg-процесом}.
+\end{definition}
+
+\begin{definition}[\cite{Kallenberg_FMP}, ст. 512]
+    Нехай $\left(X_n, n \geq 1\right)$ --- послідовність
+    càdlàg-процесів. Якщо 
+    $\E \varphi \left(X_n\right) \to \E \varphi \left(X\right)$,
+    для кожного обмеженого функціонала
+    $\varphi: \mathcal{D}_{[0, 1]} \to \R$, 
+    неперервного на $\mathcal{D}_{[0, 1]}$ 
+    відносно метрики Скорохода,
+    то послідовність $\left(X_n, n \geq 1\right)$
+    \emph{збігається за розподілом у топології Скорохода},
+    що позначається
+    $X_n \overset{Sd}{\longrightarrow} X$.
+\end{definition}
+
+Наведемо ще один тип збіжності точкових процесів та його зв'язок
+з грубою збіжністю за розподілом.
+
+\begin{definition}[\cite{Kallenberg_2017}, ст. 127]
+    Нехай $\left(\xi_n, n \geq 1\right)$ --- послідовність 
+    точкових процесів на вимірному просторі $\left(E, \mathcal{E}\right)$,
+    де $E = [0, 1]$.
+    Якщо для $X_n (t) = \xi_n \left([0, t]\right)$ та
+    $X (t) = \xi \left([0, t]\right)$ виконується
+    $X_n \overset{Sd}{\longrightarrow} X$, то
+    то послідовність $\left(\xi_n, n \geq 1\right)$
+    \emph{збігається за розподілом у топології Скорохода}, 
+    що позначається
+    $\xi_n \overset{Sd}{\longrightarrow} \xi$.
+\end{definition}
+
+\begin{theorem}[\cite{Kallenberg_2017}, ст. 127]\label{th:Skorohod_conv}
+    Нехай $\left(\xi_n, n \geq 1\right)$ --- послідовність 
+    точкових процесів на вимірному просторі $\left(E, \mathcal{E}\right)$,
+    де $E = [0, 1]$.
+    Тоді 
+    $\left(\xi_n \overset{Sd}{\longrightarrow} \xi\right) \Rightarrow \left(\xi_n \overset{vd}{\longrightarrow} \xi\right)$. 
+    Якщо ж
+    додатково $\xi$ --- простий і $\xi\left(\{ 0\}\right) = 0$, 
+    то
+    $\left(\xi_n \overset{Sd}{\longrightarrow} \xi\right) \Leftrightarrow \left(\xi_n \overset{vd}{\longrightarrow} \xi\right)$. 
 \end{theorem}

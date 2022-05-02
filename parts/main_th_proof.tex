@@ -1,30 +1,32 @@
 % !TEX root = ../main.tex
-Розглянемо ймовірнісний розподіл на групі перестановок $S_n$, 
+Розглянемо ймовірнісний розподіл на групі перестановок $\Sym{n}$, 
 заданий у такий спосіб:
 \begin{equation}\label{ESF}
     \mathbb{P}(\{\pi\}) = \frac{
         \theta^{\cycle(\pi)}
     }{
         \theta (\theta + 1) \dots (\theta + n - 1)
-    }, \; \pi \in S_n,
+    }, \; \pi \in \Sym{n},
 \end{equation}
 де $\theta > 0$ --- фіксований параметр, а $\cycle(\pi)$ позначає кількість циклів у $\pi$.
 Цей розподіл також відомий як
 \emph{міра Юенса}. Тут і далі
 відповідні випадкові перестановки називатимемо
-\emph{перестановками Юенса}.
+\emph{перестановками Юенса} і, за потреби, для позначення
+відповідної
+випадкової перестановки $\sigma$ на $\Sym{n}$ застосовуватимемо
+позначення $\sigma \sim \ESF{n, \theta}$.
 
 \begin{remark}
-    Якщо $\theta = 1$, \eqref{ESF} задає рівномірний розподіл,
-    тобто $\mathbb{P}(\{\pi\}) = \frac{1}{n!}$ для всіх $\pi \in S_n$.
+    Якщо $\theta = 1$, то формула \eqref{ESF} задає рівномірний розподіл,
+    тобто $\mathbb{P}(\{\pi\}) = \frac{1}{n!}$ для всіх $\pi \in \Sym{n}$.
 \end{remark}
 
 Перед тим, як вводити подальші поняття, розглянемо і доведемо наступну лему:
 \begin{lemma}\label{main_lemma}
     Нехай $\sigma$ --- випадкова перестановка на множині
     $\left\{1, \dots, n\right\}$, що задана розподілом \eqref{ESF}.
-    % (тобто, $\sigma$ є перестановкою Юенса з $S_n$).
-    Для $a \in \R$ позначимо $\ceil*{a} = \min\left\{k\in\Z : k \geq a\right\}$.
+    (тобто, $\sigma$ є перестановкою Юенса з $\Sym{n}$).
     Нехай $\gamma \in [0, 1]$, а
     $X_n = \card\left\{i\in \left\{1,\dots,\ceil*{\gamma n} \right\} : \sigma(i) = i\right\}$
     --- кількість нерухомих точок
@@ -76,7 +78,7 @@
             \theta (\theta + 1) \dots (\theta + n - 1)
         } \sum_{\tilde{\pi} \in S_{n-i}} \theta^{\cycle(\tilde{\pi})}.
     \end{gather*} 
-    Остання сума є сумою ймовірностей розподілу Юенса \eqref{ESF} на $S_{n-i}$, 
+    Остання сума є сумою ймовірностей розподілу Юенса \eqref{ESF} на $\Sym{n-i}$, 
     але без константи нормування, тому дорівнює
     $\theta (\theta + 1) \dots (\theta + n - i - 1)$, отже
     \begin{gather*}
@@ -229,57 +231,27 @@ $P_n$ на $(E, \mathcal{E}) = \left([0, 1], \mathcal{B}([0, 1])\right)$ за п
     ($P_n \overset{vd}{\longrightarrow} N, n\to\infty$).
 \end{theorem}
 
-% Як сказано в \cite{Kallenberg_2017}, \emph{груба збіжність за розподілом} 
-% $\xi_n \overset{vd}{\longrightarrow} \xi$ послідовності випадкових мір $\xi_n$
-% на деякому просторі $S$ до деякої випадкової міри $\xi$ означає, зо
-% $\E \varphi(\xi_n) \to \E \varphi(\xi)$
-% для кожної обмеженої функції $\varphi$, неперервної відносно \emph{грубої топології} на
-% просторі (невипадкових) мір на $S$. У цій грубій топології, $\mu_n \overset{v}{\longrightarrow} \mu$
-% означає $\int_S f d\mu_n \to \int_S f d\mu$ 
-% для всіх обмежених неперервних функцій $f$ на $S$ з обмеженим носієм.
-% Оскільки $S = [0,1]$, усі функції на $S$
-% мають обмежений носій, а їх власна обмеженість випливає з неперервності.
-
-% Наведемо визначення точкового процесу Пуассона (з \cite{Resnick_1987}). 
-% Нехай $\mu$ --- {\color{red}міра Радона (радонова міра?)}
-% на $\sigma$-алгебрі борелевих підмножин множини $S$ --- $\mathcal{B}(S)$.
-% Точковий процес $N$ називається \emph{процесом Пуассона} або
-% \emph{випадковою мірою Пуассона} з мірою інтенсивності $\mu$, якщо $N$ 
-% задовольняє наступні умови:
-% \begin{enumerate}
-%     \item Для будь-якої $F \in \mathcal{B}(S)$ та будь-якого невід'ємного цілого числа $k$
-%     \begin{gather*}
-%         \P{N(F) = k} = \begin{cases}
-%             \frac{(\mu(F))^k}{k!} \exp\left\{-\mu(F)\right\}, & \mu(F) < \infty \\
-%             0, & \mu(F) = \infty
-%         \end{cases}
-%     \end{gather*}
-%     \item Для будь-якого натурального $k$, 
-%     якщо $F_1, \dots, F_k$ з $\mathcal{B}(S)$ попарно не перетинаються, то
-%     $\left(N(F_i), 1\leq i \leq k\right)$ є незалежними в сукупності випадковими величинами.
-% \end{enumerate}
-
 Теорема \ref{kallenberg_th} формулює критерій грубої збіжності
-точкових процесів:
-\begin{theorem*}
-    Нехай $\left(\xi_n, n \geq 1\right)$ --- послідовність 
-    точкових процесів на вимірному просторі $\left(E, \mathcal{E}\right)$,
-    а точковий процес $\xi$ --- простий. Нехай також
-    $\mathcal{U} \subset \hat{\mathcal{E}}_\xi$ --- фіксоване
-    розсікаюче кільце, де $\hat{\mathcal{E}}_\xi$ позначає сім'ю
-    борелевих підмножин $E$, для яких $\E \xi (\partial B) = 0$,
-    а $\mathcal{I}\subset\mathcal{U}$ --- напів-кільце. 
-    Тоді 
-    $\xi_n \overset{vd}{\longrightarrow} \xi$ тоді і тільки тоді, коли
-    \begin{enumerate}
-        \item $\underset{n\to\infty}{\lim}\;\P{\xi_n(U) = 0} = \P{\xi(U) = 0}$ для $U\in\mathcal{U}$;
-        \item $\underset{n\to\infty}{\limsup}\; \P{\xi_n(I) > 1} \leq \P{\xi(I) > 1}$ для $I \in \mathcal{I}$.
-    \end{enumerate}
-\end{theorem*}
+точкових процесів, скористаємось позначеннями з неї.
+% \begin{theorem*}
+%     Нехай $\left(\xi_n, n \geq 1\right)$ --- послідовність 
+%     точкових процесів на вимірному просторі $\left(E, \mathcal{E}\right)$,
+%     а точковий процес $\xi$ --- простий. Нехай також
+%     $\mathcal{U} \subset \hat{\mathcal{E}}_\xi$ --- фіксоване
+%     розсікаюче кільце, де $\hat{\mathcal{E}}_\xi$ позначає сім'ю
+%     борелевих підмножин $E$, для яких $\E \xi (\partial B) = 0$,
+%     а $\mathcal{I}\subset\mathcal{U}$ --- напів-кільце. 
+%     Тоді 
+%     $\xi_n \overset{vd}{\longrightarrow} \xi$ тоді і тільки тоді, коли
+%     \begin{enumerate}
+%         \item $\underset{n\to\infty}{\lim}\;\P{\xi_n(U) = 0} = \P{\xi(U) = 0}$ для $U\in\mathcal{U}$;
+%         \item $\underset{n\to\infty}{\limsup}\; \P{\xi_n(I) > 1} \leq \P{\xi(I) > 1}$ для $I \in \mathcal{I}$.
+%     \end{enumerate}
+% \end{theorem*}
 
 Розглянемо сім'ю множин $\mathcal{X}$, що складається зі
-скінченних диз'юнктних об'єд\-нань інтервалів $\left<a,b\right> \subset [0, 1]$,
-де $\left<a,b\right>$ позначає одне з $[a, b]$, $(a, b)$, $[a, b)$ чи $(a, b]$.
+скінченних диз'юнктних об'єд\-нань інтервалів $\left<a,b\right> \subset [0, 1]$.
+% де $\left<a,b\right>$ позначає одне з $[a, b]$, $(a, b)$, $[a, b)$ чи $(a, b]$.
 Для точкового процесу Пуассона $N$
 з мірою інтенсивності $\Lambda = \theta \cdot \mathrm{Leb}$ на $[0, 1]$ 
 (який є простим),
@@ -298,8 +270,8 @@ $\hat{\mathcal{E}}_N = \mathcal{U} = \mathcal{I} = \mathcal{X}$.
     Нехай $\left<\gamma_1, \delta_1 \right>, ..., \left<\gamma_m, \delta_m \right>$ ,
     де $\gamma_1 < \delta_1 < \gamma_2 < ... < \gamma_m < \delta_m$, --- 
     набір інтервалів в $[0, 1]$, що попарно не перетинаються, 
-    $\floor*{a}$ позначає $\max\left\{k\in\Z : k \leq a\right\}$,
-    $I_j = \left<\gamma_j, \delta_j\right>$ і $I = \bigvee_{j=1}^m I_j \in \mathcal{X}$.
+    % $\floor*{a}$ позначає $\max\left\{k\in\Z : k \leq a\right\}$,
+    $I_j = \left<\gamma_j, \delta_j\right>$ і $I = \bigcup_{j=1}^m I_j \in \mathcal{X}$.
     Позначимо $Y_n = P_n (I)$, де $P_n(I)$ визначено формулою \eqref{Pn_def}.
     % Як у і лемі \ref{main_lemma},
     % позначимо $F_i$ множину перестановок, для яких $i$ є нерухомою точкою, тоді
@@ -350,21 +322,28 @@ $\hat{\mathcal{E}}_N = \mathcal{U} = \mathcal{I} = \mathcal{X}$.
     $P_n \overset{vd}{\longrightarrow} N$ при $n\to\infty$.
 \end{proof}
 
+Варто також зауважити важливий наслідок теореми \ref{main_th}.
+\begin{corollary*}[\ref{main_th}]
+    Оскільки граничний процес Пуассона $N$ простий і $N\left(\{0\}\right) = 0$ з ймовірністю 1, то в силу теореми
+    \eqref{th:Skorohod_conv} має місце збіжність $P_n \overset{Sd}{\longrightarrow} N$.
+\end{corollary*}
+
 Для наступних досліджень будуть важливі перестановки з принаймні однією нерухомою точкою.
 З теореми \ref{main_th}, для $\gamma = 1$ виконується $\P{X_n = 0} \to e^{-\theta}, n \to \infty$. 
-Введемо ще один точковий процес $P_n'$, що визначений для борелевих множин $F \in \mathcal{B}([0, 1])$ як 
+Введемо ще один точковий процес $\widehat{P}_n$, що визначений для борелевих множин $F \in \mathcal{B}([0, 1])$ як 
 \begin{gather}
-    \P{P_n' (F) = k} = \P{P_n(F) = k \mid P_n([0, 1]) > 0} = \begin{cases}
+    \P{\widehat{P}_n (F) = k} = \P{P_n(F) = k \mid P_n([0, 1]) > 0} = \begin{cases}
         \frac{\P{P_n(F) = k}}{1 - \P{P_n([0, 1]) = 0}}, & k > 0; \\
         \frac{\P{P_n(F) = 0, P_n(F^C) > 0}}{1 - \P{P_n([0, 1]) = 0}}, & k = 0.
     \end{cases} 
 \end{gather}
+В силу теореми \ref{th:point_proc_uniqueness_simple} достатньо визначити лише одновимірні розподіли.
 Повторенням доведення \ref{main_th} можна отримати наступний результат:
 \begin{theorem}\label{cond_th}
-    Точковий процес $P_n'$ грубо збігається за розподілом до точкового процесу $N'$ на $[0, 1]$, 
+    Точковий процес $\widehat{P}_n$ грубо збігається за розподілом до точкового процесу $\widehat{N}$ на $[0, 1]$, 
     для якого
-    \begin{gather}
-        \P{N' (F) = k} =
+    \begin{gather}\label{Pn_cond_def}
+        \P{\widehat{N} (F) = k} =
         \begin{cases}
             \frac{(\Lambda(F))^k}{k!} \cdot \frac{e^{-\Lambda(F)}}{1 - e^{-\theta}}, & k > 0 \\
             \frac{\P{N(F) = 0, N(F^C) > 0}}{1 - e^{-\theta}}, & k = 0.
@@ -382,23 +361,22 @@ $\hat{\mathcal{E}}_N = \mathcal{U} = \mathcal{I} = \mathcal{X}$.
 \end{gather*}
 тому можна записати
 \begin{gather}
-    \P{N' (F) = k} =
+    \P{\widehat{N} (F) = k} =
     \begin{cases}
         \frac{(\Lambda(F))^k}{k!} \cdot \frac{e^{-\Lambda(F)}}{1 - e^{-\theta}}, & k > 0 \\
         \frac{e^{-\Lambda(F)} - e^{-\theta}}{1 - e^{-\theta}}, & k = 0.
     \end{cases}
 \end{gather}
-
 Зокрема, для $F = [0, 1]$:
 \begin{gather}
-    \P{N' ([0, 1]) = k} = 
+    \P{\widehat{N} ([0, 1]) = k} = 
     \begin{cases}
         \frac{\theta^k}{k!} \cdot \frac{e^{-\theta}}{1 - e^{-\theta}}, & k > 0 \\
         0, & k = 0.
     \end{cases}
 \end{gather}
 
-% Точковий процес $N'$ можна назвати обумовленим процесом Пуассона, бо
+% Точковий процес $\widehat{N}$ можна назвати обумовленим процесом Пуассона, бо
 % \begin{gather*}
 %     \P{N(F) = k \mid N(F) > 0} = \frac{\P{N(F) = k, N(F) > 0}}{\P{N(F) > 0}} =
 %     \begin{cases}
@@ -406,4 +384,4 @@ $\hat{\mathcal{E}}_N = \mathcal{U} = \mathcal{I} = \mathcal{X}$.
 %         0, & k = 0
 %     \end{cases}
 % \end{gather*}
-% тому $\P{N(F) = k \mid N(F) > 0} = \P{N'(F) = k}$ для $k \in \N$.
+% тому $\P{N(F) = k \mid N(F) > 0} = \P{\widehat{N}(F) = k}$ для $k \in \N$.
