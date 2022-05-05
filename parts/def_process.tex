@@ -42,6 +42,13 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     в $\left([0, +\infty], \mathcal{B}([0, +\infty])\right)$
     є вимірним.
 \end{theorem}
+
+\begin{definition}
+    Точковий процес $N$ на вимірному просторі
+    $\left(E, \mathcal{E}\right)$ називається \emph{простим}, якщо 
+    для всіх $x \in E$ виконується $\P{N\left(\{ x \}\right) \leq 1} = 1$.
+\end{definition}
+
 \begin{theorem}[\cite{Resnick_1987}, ст. 126]\label{th:point_proc_uniqueness}
     Нехай $N$ --- точковий процес на вимірному просторі
     $\left(E, \mathcal{E}\right)$, а сім'я передкомпактних множин $\mathcal{F}$
@@ -80,7 +87,7 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     за правилом
     \begin{gather}
         \psi_N(f) = \E e^{-N(f)} = \int_{\Omega} e^{-N(\omega, f)} \d \mathbb{P} = 
-        \int_{M_p(E)} \exp\left\{ -\int_E f(x) \d \mu\right\} \d P_N (\mu)
+        \int_{M_p(E)} \exp\left\{ -\int_E f(x) \d \nu\right\} \d P_N (\nu)
     \end{gather}
 \end{definition}
 
@@ -96,7 +103,7 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     називається міра $\mu$ на $\mathcal{E}$, визначена як
     $$
         \mu(F) = \E N(F) = \int_{\Omega} N(\omega, F) \d\mathbb{P} = 
-        \int_{M_p(E)} m(F) \d P_N.
+        \int_{M_p(E)} \nu(F) \d P_N (\nu).
     $$
 \end{definition}
 
@@ -128,7 +135,7 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
             \P{N(F) = k} = \begin{cases}
                 % \frac{(\mu(F))^k}{k!} \exp\left\{-\mu(F)\right\}, & \mu(F) < \infty \\
                 \frac{(\mu(F))^k}{k!} e^{-\mu(F)}, & \mu(F) < \infty, \\
-                0, & \mu(F) = \infty;
+                0, & \mu(F) = \infty.
             \end{cases}
         \end{gather*}
         У випадку $\mu(F) = \infty$ покладаємо $N(F) = \infty$ з ймовірністю 1.
@@ -164,7 +171,7 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     $\mathcal{U} \subset \hat{\mathcal{E}}_\xi$ --- фіксоване
     розсікаюче кільце, де $\hat{\mathcal{E}}_\xi$ позначає сім'ю
     борелевих підмножин $E$, для яких $\E \xi (\partial B) = 0$,
-    а $\mathcal{I}\subset\mathcal{U}$ --- напів-кільце. 
+    а $\mathcal{I}\subset\mathcal{U}$ --- розсікаюче напів-кільце. 
     Тоді 
     $\xi_n \overset{vd}{\longrightarrow} \xi$ тоді і тільки тоді, коли
     \begin{enumerate}
@@ -194,9 +201,9 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
 \begin{definition}[\cite{Kallenberg_FMP}, ст. 83]
     Нехай $\left(E, \mathcal{E}\right)$ --- вимірний простір,
     $T \subset \R$ --- множина індексів. Відображення
-    $X : \Omega \to U \subset S^T$ називається \emph{випадковим процесом}
+    $X : \Omega \to U \subset E^T$ називається \emph{випадковим процесом}
     на $T$ зі значеннями в $E$ та траєкторіями в $U$,
-    якщо відображення $X_t : \Omega \to S$ вимірні для кожного $t \in T$.
+    якщо відображення $X_t : \Omega \to E$ вимірні для кожного $t \in T$.
 \end{definition}
 
 \begin{definition}
@@ -206,9 +213,9 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
 \end{definition}
 
 \begin{definition}[\cite{Kallenberg_FMP}, ст. 512]
-    Нехай $\left(X_n, n \geq 1\right)$ --- послідовність
+    Нехай $\left(X_n, n \geq 1\right)$ --- послідовність випадкових
     càdlàg-процесів. Якщо 
-    $\E \varphi \left(X_n\right) \to \E \varphi \left(X\right)$,
+    $\E \varphi \left(X_n\right) \to \E \varphi \left(X\right)$
     для кожного обмеженого функціонала
     $\varphi: \mathcal{D}_{[0, 1]} \to \R$, 
     неперервного на $\mathcal{D}_{[0, 1]}$ 

@@ -44,8 +44,8 @@
 
 \subsection{Найменша та найбільша нерухомі точки}
 Для точкової міри $\mu$ можна визначити два відображення
-$\min(\mu)$ та $\max(\mu)$ що ставлять у відповідність
-цій мірі її найменший та найбільший атоми, за формулами
+$\min(\mu)$ та $\max(\mu)$, що ставлять у відповідність
+цій мірі її найменший та найбільший атоми за формулами
 \begin{gather}
     \min(\mu) = \sup \left\{x\in[0,1] :\mu([0, x]) = 0 \right\} \\
     \max(\mu) = \inf \left\{x\in[0,1] :\mu([x, 1]) = 0 \right\},
@@ -106,20 +106,25 @@ $\max\left\{x_1,\dots,x_k \right\}$ є неперервними функціям
 % Таким чином, маємо $\P{\min(N) \leq x \mid N([0, 1]) = m} = \P{U_{(1)}^{[m]} \leq x}$ і, 
 % аналогічно, $\P{\max(N) \leq x \mid N([0, 1]) = m} = \P{U_{(m)}^{[m]} \leq x}$
 Отже, розподіли $\min(N)$ та $\max(N)$ мають вигляд
-\begin{gather}
-    \P{\min(N) \leq x} = \sum_{m=0}^{\infty} \P{\min(N) \leq x \mid N([0, 1]) = m} \P{N([0, 1]) = m} = \\ \nonumber
+\begin{gather*}
+    \P{\min(N) \leq x} = \sum_{m=0}^{\infty} \P{\min(N) \leq x \mid N([0, 1]) = m} \P{N([0, 1]) = m} = \\
      = \mathds{1}\left\{x\geq 1\right\}\cdot e^{-\theta} +
-    \sum_{m=1}^{\infty} \P{\min(N) \leq x \mid N([0, 1]) = m} \cdot \frac{\theta^m}{m!} e^{-\theta} = \\ \nonumber
+    \sum_{m=1}^{\infty} \P{\min(N) \leq x \mid N([0, 1]) = m} \cdot \frac{\theta^m}{m!} e^{-\theta} = \\
+\end{gather*}
+\begin{gather}
     = \begin{cases}
         0, & x < 0, \\
         \sum_{m=1}^{\infty} \left(1 - (1 - x)^m\right) \frac{\theta^m}{m!} e^{-\theta} = 1 - e^{-\theta x}, & 0 \leq x < 1, \\
         1, & x \geq 1;
     \end{cases}
 \end{gather}
-\begin{gather}
-    \P{\max(N) \leq x} = \sum_{m=0}^{\infty} \P{\max(N) \leq x \mid N([0, 1]) = m} \P{N([0, 1]) = m} = \\ \nonumber
+$\begin{aligned}
+    \P{\max(N) \leq x} = \sum_{m=0}^{\infty} \P{\max(N) \leq x \mid N([0, 1]) = m} \P{N([0, 1]) = m} = \\
      = \mathds{1}\left\{x\geq 0\right\}\cdot e^{-\theta} +
-    \sum_{m=1}^{\infty} \P{\max(N) \leq x \mid N([0, 1]) = m} \cdot \frac{\theta^m}{m!} e^{-\theta} = \\ \nonumber
+    \sum_{m=1}^{\infty} \P{\max(N) \leq x \mid N([0, 1]) = m} \cdot \frac{\theta^m}{m!} e^{-\theta} = \\
+\end{aligned}$
+\vspace{-10pt}
+\begin{gather} 
     = \begin{cases}
         0, & x < 0, \\
         e^{-\theta} + \sum_{m=1}^{\infty} x^m \frac{\theta^m}{m!} e^{-\theta} = e^{\theta(x-1)}, & 0 \leq x < 1, \\
@@ -251,7 +256,7 @@ $\E\max(\widehat{P}_n) \approx \frac{1}{e - 1} \cdot n \approx 0.582 \cdot n$.
 \subsection{Сума нерухомих точок}
 Граничний розподіл суми нерухомих точок можна отримати, користуючись функціоналом Лапласа точкового процесу Пуассона.
 Згідно з означенням \ref{def:poiss_proc}, для процесу Пуассона з мірою інтенсивності 
-$\theta \cdot \mathrm{Leb}$ на $[0, 1]$, цей функціонал задається
+$\theta \cdot \mathrm{Leb}$ на $[0, 1]$ цей функціонал задається як
 \begin{equation}\label{laplace_functional}
     \psi_N(f) = \exp\left\{ - \; \theta \int_0^1 \left(1 - e^{-f(x)}\right) \d x\right\}
 \end{equation}
@@ -265,7 +270,7 @@ $\L{X}(p) = \E e^{-pX}$.
 Якщо порівняти це означення з \eqref{laplace_functional}, можна побачити, що
 перетворення Лапласа $\Sum(N)$ дорівнює значенню $\psi_N(f)$ для $f(x) = px$.
 Пряме обчислення дає наступний результат:
-\begin{gather}
+\begin{gather}\label{laplace_of_sum}
     \L{\Sum(N)}(p) = 
     \exp\left\{- \theta \left( 1 + \frac{1}{p}(e^{-p} - 1)\right) \right\}.
 \end{gather}
@@ -343,9 +348,7 @@ $\P{\Sum(N) \leq x}$  може бути виражена через $I_{\nu}(z)$
     \sum_{m=0}^{n} \frac{\theta^m}{m!} + 
     \sum_{k=0}^{n} \frac{(-1)^k}{k!} \left(
         \sum_{m=n+1}^{\infty} \frac{1}{m! (m-k)!} (x - k)^m \theta^m
-    \right) = \left[m - k = l \right] = 
-\end{gather*}
-\begin{gather*}
+    \right) = \left[m - k = l \right] = \\
     = \sum_{m=0}^{n} \frac{\theta^m}{m!} + 
     \sum_{k=0}^{n} \frac{(-1)^k}{k!} \left(
         \sum_{l=n-k+1}^{\infty} \frac{1}{l! (l+k)!} (x - k)^{l+k} \theta^{l+k}
@@ -364,10 +367,10 @@ $\P{\Sum(N) \leq x}$  може бути виражена через $I_{\nu}(z)$
     = \sum_{k=0}^{n} \frac{(-1)^k}{k!}
     \left(\theta (x - k)\right)^{\frac{k}{2}} I_k\left(2\sqrt{\theta(x-k)}\right) + \\ +
     \sum_{m=0}^{n} \frac{\theta^m}{m!}
-    - \sum_{k=0}^{n} \sum_{l=0}^{n-k}  \frac{(-1)^k}{k!} \frac{1}{l! (l+k)!} (x - k)^{l} \theta^{l}
+    - \sum_{k=0}^{n} \sum_{l=0}^{n-k}  \frac{(-1)^k}{k!} \frac{1}{l! (l+k)!} (x - k)^{k+l} \theta^{k+l}
 \end{gather*} 
 Позначимо $R(n) = \sum_{m=0}^{n} \frac{\theta^m}{m!}$,
-$L(n) = \sum_{k=0}^{n} \sum_{l=0}^{n-k} \frac{(-1)^k}{k!} \frac{1}{l! (l+k)!} (x - k)^{l} \theta^{l}$.
+$L(n) = \sum_{k=0}^{n} \sum_{l=0}^{n-k} \frac{(-1)^k}{k!} \frac{1}{l! (l+k)!} (x - k)^{k+l} \theta^{k+l}$.
 Покажемо, що $R(n) - R(n-1) = L(n) - L(n-1)$ для всіх $n \in \N$:
 \begin{gather*}
     R(n) - R(n-1) = \frac{\theta^n}{n!}, \\
@@ -382,7 +385,7 @@ $\Delta f(x) = f(x) - f(x-1)$, другого порядку --- $\Delta^2 f(x) 
 f(x) - 2f(x-1) + f(x-2)$,
 аналогічно рекурентно визначаються скінченні різниці вищих порядків.
 Загальною формулою для різниці $k$-того порядку буде
-$\Delta^k f(x) = \sum_{i=0}^k C_k^i f(x-i) = \sum_{i=0}^k C_k^i (x - i)^n$,
+$\Delta^k f(x) = \sum_{i=0}^k (-1)^i C_k^i f(x-i) = \sum_{i=0}^k (-1)^i C_k^i (x - i)^n$,
 тому вираз $\sum_{i=0}^n (-1)^i C_n^i (x-i)^n$ --- це ліва скінченна різниця $n$-того порядку для
 $x^n$. Оскільки кожна скінченна різниця є поліном порядку на 1 менше, ніж попередня,
 то різниця $n$-того порядку вже буде константою. Виявляється,
@@ -438,16 +441,17 @@ $R(0) = L(0) = 1$, то $R(n) = L(n)$ для всіх $n \in \N$.
     $S_n = \sum_{i : \sigma(i) = i} i$ --- сума нерухомих точок $\sigma$.
     Тоді при $n\to\infty$ виконується граничне
     співвідношення
-    $\frac{S_n}{n} \overset{d}{\longrightarrow} S$
+    $\frac{S_n}{n} \overset{d}{\longrightarrow} S$,
     де функція розподілу випадкової величини $S$ дорівнює
     \begin{gather}
         F_{S}(x) = \begin{cases}
             0, & x < 0, \\
             e^{-\theta}
             \sum\limits_{k=0}^{\floor*{x}}
-            (-1)^k \frac{1}{k!}\left(\theta(x-k)\right)^{\frac{k}{2}} I_k\left(2\sqrt{\theta(x-k)}\right), & x \geq 0.
+            (-1)^k \frac{1}{k!}\left(\theta(x-k)\right)^{\frac{k}{2}} I_k\left(2\sqrt{\theta(x-k)}\right), & x \geq 0,
         \end{cases}
     \end{gather}
+    а її перетворення Лапласа має вигляд \eqref{laplace_of_sum}.
 \end{theorem}
 
 \subsection{Найменші і найбільші спейсинги}
@@ -462,20 +466,20 @@ $R(0) = L(0) = 1$, то $R(n) = L(n)$ для всіх $n \in \N$.
 \end{remark}
 
 Нехай $U_1, U_2, \dots, U_{n}$ ---
-незалежні випадкові величин
+незалежні випадкові величини
 з розподілом $\Unif{0, 1}$, що розділяють відрізок $[0, 1]$ на $n+1$
 інтервалів з довжинами $S_1, S_2, \dots, S_{n+1}$, або, у відсортованому вигляді, 
 $S_{(1)}^{[n+1]} < S_{(2)}^{[n+1]} < \dots < S_{(n+1)}^{[n+1]}$
 (нагадаємо, $S_{(i)}$ позначає $i$-ту порядкову статистику, а
-$S_{(i)}^{[n]}$ --- те ж саме, але з вказанням $n$ як кількості цих статистик).
+$S_{(i)}^{[n+1]}$ --- те ж саме, але з вказанням $n+1$ як кількості цих статистик).
 Розподіли $S_{(k)}^{[n+1]}$ отримано у багатьох роботах
-(наприклад, \cite{Holst_1980}, \cite{Pinelis_2019}). Зокрема, для $x\in[0,1]$:
+(наприклад, \cite{Holst_1980}, \cite{Pinelis_2019}). Зокрема, для $x\in[0,1]$
 \begin{gather}
     \label{min_spacing}
-    \P{S_{(1)}^{[n+1]} > x} = \left((1-(n+1)x)_+\right)^n \\
+    \P{S_{(1)}^{[n+1]} > x} = \left((1-(n+1)x)_+\right)^n, \\
     \label{max_spacing}
     \P{S_{(n+1)}^{[n+1]} > x} = 
-    \sum_{j=1}^{n+1} (-1)^{j-1} C_{n+1}^j \left((1-jx)_+\right)^n
+    \sum_{j=1}^{n+1} (-1)^{j-1} C_{n+1}^j \left((1-jx)_+\right)^n,
 \end{gather}
 де $x_+ = \max(x, 0)$.
 
@@ -495,58 +499,64 @@ $S_{(i)}^{[n]}$ --- те ж саме, але з вказанням $n$ як кі
 з такими ж розподілами.
 
 Відомо (наприклад, \cite{Holst_1980}), що для незалежних величин 
-$X_1, X_2, \dots, X_{n}$ з розподілом $\Exp{1}$
+$X_1, X_2, \dots, X_{n+1}$ з розподілом $\Exp{1}$
 мають місце наступні три рівності:
 \begin{gather}
     \label{distr_equal_1}
     \left(
-        S_1, S_2, \dots, S_{n}
+        S_1, S_2, \dots, S_{n+1}
     \right)^T
     \overset{d}{=}
     \left(
-        \frac{X_1}{\sum_{i=1}^{n}X_i},
-        \frac{X_2}{\sum_{i=1}^{n}X_i},
+        \frac{X_1}{\sum_{i=1}^{n+1} X_i},
+        \frac{X_2}{\sum_{i=1}^{n+1} X_i},
         \dots,
-        \frac{X_{n}}{\sum_{i=1}^{n}X_i}
+        \frac{X_{n+1}}{\sum_{i=1}^{n+1} X_i}
     \right)^T \\
     \label{distr_equal_2}
     \left(
-        S_{(1)}, S_{(1)}, \dots, S_{(n)}
+        S_{(1)}, S_{(1)}, \dots, S_{(n+1)}
     \right)^T
     \overset{d}{=}
     \left(
-        \frac{X_{(1)}}{\sum_{i=1}^{n}X_i},
-        \frac{X_{(2)}}{\sum_{i=1}^{n}X_i},
+        \frac{X_{(1)}}{\sum_{i=1}^{n+1} X_i},
+        \frac{X_{(2)}}{\sum_{i=1}^{n+1} X_i},
         \dots,
-        \frac{X_{(n)}}{\sum_{i=1}^{n}X_i}
+        \frac{X_{(n+1)}}{\sum_{i=1}^{n+1} X_i}
     \right)^T \\
     \label{distr_equal_3}
     X_{(i)} \overset{d}{=}
-    \frac{X_n}{n} + \frac{X_{n-1}}{n-1} + \dots + \frac{X_{n-i+1}}{n-i+1}
+    \frac{X_{n+1}}{n+1} + \frac{X_{n}}{n} + \dots + \frac{X_{n-i+2}}{n-i+2} = 
+    \sum_{k=0}^{i-1} \frac{X_{n+1-k}}{n+1-k}
 \end{gather}
-Виявляється, \eqref{distr_equal_2} та \eqref{distr_equal_3}
-можна узагальнити в наступну неочікувану рівність:
+Рівності \eqref{distr_equal_2} та \eqref{distr_equal_3}
+можна узагальнити в наступну рівність:
 \begin{lemma}\label{distr_equal}
     Для порядкових статистик спейсингів 
     $S_{(1)}^{[n+1]}, ..., S_{(n+1)}^{[n+1]}$
     між незалежними величинами з розподілом $\Unif{0, 1}$
     та незалежних величин 
-    $X_1, X_2, \dots, X_{n}$ з розподілом $\Exp{1}$ має місце
+    $X_1, X_2, \dots, X_{n+1}$ з розподілом $\Exp{1}$ має місце
+    рівність 
     \begin{gather}\label{distr_equal_4}
-        S_{(i)}^{[n]} \overset{d}{=}
+        S_{(i)}^{[n+1]} \overset{d}{=}
         \frac{
-            \frac{X_n}{n} + \frac{X_{n-1}}{n-1} + \dots + \frac{X_{n-i+1}}{n-i+1}
+            \frac{X_{n+1}}{n+1} + \frac{X_{n}}{n} + \dots + \frac{X_{n-i+2}}{n-i+2}
         }{
-            \sum_{i=1}^{n}X_i
-        }, i = 1, \dots, n
+            \sum_{i=1}^{n+1} X_i
+        } = \frac{
+            \sum_{k=0}^{i-1} \frac{X_{n+1-k}}{n+1-k}
+        }{
+            \sum_{i=1}^{n+1} X_i
+        }, \; i = 1, \dots, n
     \end{gather}
 \end{lemma}
 \begin{proof}
-    Позначимо спейсинги між $X_1, X_2, \dots, X_n$ через
+    Позначимо спейсинги між $X_1, X_2, \dots, X_{n+1}$ через
     $\Delta_1 = X_{(1)}$,
-    $\Delta_i = X_{(i)} - X_{(i-1)}, i=2, \dots, n$. З \cite{Arnold_et_al_2008} відомо, що
-    всі $\Delta_i$ незалежні та мають розподіли $\Exp{n-i+1}$.
-    Отже, праву частину $S_{(i)} \overset{d}{=} \frac{X_{(i)}}{\sum_{j=1}^{n}X_j}$
+    $\Delta_i = X_{(i)} - X_{(i-1)}, i=2, \dots, n+1$. З \cite{Arnold_et_al_2008} відомо, що
+    всі $\Delta_i$ незалежні та мають розподіли $\Exp{n-i+2}$.
+    Отже, праву частину $S_{(i)} \overset{d}{=} \frac{X_{(i)}}{\sum_{j=1}^{n+1}X_j}$
     можна переписати як
     \begin{gather*}
         \frac{X_{(i)}}{\sum_{j=1}^{n}X_j} = 
@@ -559,24 +569,25 @@ $X_1, X_2, \dots, X_{n}$ з розподілом $\Exp{1}$
         }
     \end{gather*}
     Введемо нові незалежні випадкові величини
-    $Y_i = (n-i+1)\Delta_i$ з розподілом
+    $Y_i = (n-i+2)\Delta_i$ з розподілом
     $\Exp{1}$. В термінах $Y_i$,
     верхню рівність можна переписати як
     \begin{gather*}
-        \frac{X_{(i)}}{\sum_{j=1}^{n}X_j} = 
+        \frac{X_{(i)}}{\sum_{j=1}^{n+1}X_j} = 
         \frac{
-            \sum_{j=1}^i \frac{Y_j}{n-j+1} 
+            \sum_{j=1}^i \frac{Y_j}{n-j+2} 
         }{
-            \sum_{j=1}^n Y_j
+            \sum_{j=1}^{n+1} Y_j
         }
     \end{gather*}
     Оскільки $X_i$ та $Y_i$ незалежні та мають однакові розподіли, то отримуємо \eqref{distr_equal_4}.
 \end{proof}
 
 Окремими випадками леми \ref{distr_equal}
-є $S_{(1)}^{[n]} \overset{d}{=} \frac{X_1}{n\sum_{i=1}^n X_i}$
-та $S_{(n)}^{[n]} \overset{d}{=} \frac{\sum_{i=1}^n \frac{X_i}{n-i+1}}{\sum_{i=1}^n X_i}
-\overset{d}{=} \frac{\sum_{i=1}^n \frac{X_i}{i}}{\sum_{i=1}^n X_i}$.
+є рівності для мінімального і максимального спейсингів
+$S_{(1)}^{[n+1]} \overset{d}{=} \frac{X_1}{(n+1)\sum_{i=1}^{n+1} X_i}$
+та $S_{(n+1)}^{[n+1]} \overset{d}{=} \frac{\sum_{i=1}^{n+1} \frac{X_i}{n-i+2}}{\sum_{i=1}^{n+1} X_i}
+\overset{d}{=} \frac{\sum_{i=1}^{n+1} \frac{X_i}{i}}{\sum_{i=1}^{n+1} X_i}$.
 Разом з \eqref{s_min} та \eqref{s_max}
 вони приводять до наступних рівностей за розподілом:
 \begin{gather}\label{distr_equal_5}
@@ -585,7 +596,7 @@ $X_1, X_2, \dots, X_{n}$ з розподілом $\Exp{1}$
     \smax(N) \overset{d}{=} 
     \frac{\sum_{i=1}^{\nu+1} \frac{X_i}{i}}{\sum_{i=1}^{\nu+1} X_i}
 \end{gather}
-де $\nu$ має розподіл $\Poiss{\theta}$, а $\left(X_i, i\in\N\right)$ незалежні і мають розподіл $\Exp{1}$.
+де $\nu$ має розподіл $\Poiss{\theta}$, а $\left(X_i, i\geq 1\right)$ незалежні і мають розподіл $\Exp{1}$.
 
 Відповідні математичні сподівання $\E\smin(N)$ та $\E\smax(N)$ можна знайти з \eqref{distr_equal_5}. 
 Нехай $n \in \N_0$, тоді
@@ -628,6 +639,7 @@ $\E\smin(N) \approx 0.48483$ і $\E\smax(N) \approx 0.7966$.
         \Delta \overset{d}{=} 
         \frac{\sum_{i=1}^{\nu+1} \frac{X_i}{i}}{\sum_{i=1}^{\nu+1} X_i},
     \end{gather}
-    для незалежних між собою $X_1, ... ,X_n$
-    з розподілом $\Exp{1}$ та $\nu \sim \Poiss{\theta}$.
+    для незалежних між собою $\left(X_i, i \geq 1\right)$
+    з розподілом $\Exp{1}$ та $\nu \sim \Poiss{\theta}$,
+    незалежної від $\left(X_i, i \geq 1\right)$.
 \end{theorem}

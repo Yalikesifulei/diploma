@@ -23,7 +23,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
 % \usepackage[europeanresistors, RPvoltages]{circuitikz}
-\usetikzlibrary{arrows,decorations.markings}
+% \usetikzlibrary{arrows,decorations.markings}
 
 \usepackage[nodisplayskipstretch]{setspace}
 \onehalfspacing % полуторный интервал
@@ -100,7 +100,14 @@
 \renewcommand{\cfttoctitlefont}{\hspace{0.38\textwidth} \bfseries\texorpdfstring{\MakeUppercase}{}}
 \renewcommand{\cftbeforetoctitleskip}{0.em}
 %\renewcommand{\cftaftertoctitle}{\mbox{}\hfill \\ \mbox{}\hfill{\footnotesize Стр.}\vspace{-2.5em}}
-\renewcommand{\cftchapfont}{\normalsize \texorpdfstring{\MakeUppercase{\chaptername}}{{\chaptername}} }
+% \renewcommand{\cftchapfont}{\normalsize \texorpdfstring{\MakeUppercase{\chaptername}}{{\chaptername}} }
+
+\renewcommand{\cftchapfont}{}
+\renewcommand{\cftchappresnum}{РОЗДІЛ }
+\newlength{\xtraspace}
+\settowidth{\xtraspace}{\cftchappresnum} % extra space = Chapter + space
+\addtolength{\cftchapnumwidth}{\xtraspace} % makes  the indent of the  chapter title larger
+
 \renewcommand\cftchappagefont{\mdseries}
 \renewcommand{\cftsecfont}{\hspace{-11pt}}
 \renewcommand{\cftsubsecfont}{\hspace{11pt}}
@@ -120,9 +127,9 @@
     \newcommand{\l@likechapter}[2]{{\@dottedtocline{0}{0pt}{0pt}{#1}{#2}}}
 \makeatother
 \newcommand{\likechapter}[1]{    
-    \likechapterheading{#1}
-    \phantomsection    
-    \addcontentsline{toc}{likechapter}{\texorpdfstring{\MakeUppercase{#1}}{{#1}}}}
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{{#1}}}
+}
 
 \usepackage[square,numbers,sort&compress]{natbib}
 \renewcommand{\bibnumfmt}[1]{#1.\hfill} % нумерация источников в самом списке — через точку

@@ -10,11 +10,10 @@
 \end{equation}
 де $\theta > 0$ --- фіксований параметр, а $\cycle(\pi)$ позначає кількість циклів у $\pi$.
 Цей розподіл також відомий як
-\emph{міра Юенса}. Тут і далі
+\emph{міра Юенса} \cite{Manstavicius}. Тут і далі
 відповідні випадкові перестановки називатимемо
 \emph{перестановками Юенса} і, за потреби, для позначення
-відповідної
-випадкової перестановки $\sigma$ на $\Sym{n}$ застосовуватимемо
+такої перестановки $\sigma$ на $\Sym{n}$ застосовуватимемо
 позначення $\sigma \sim \ESF{n, \theta}$.
 
 \begin{remark}
@@ -25,8 +24,8 @@
 Перед тим, як вводити подальші поняття, розглянемо і доведемо наступну лему:
 \begin{lemma}\label{main_lemma}
     Нехай $\sigma$ --- випадкова перестановка на множині
-    $\left\{1, \dots, n\right\}$, що задана розподілом \eqref{ESF}.
-    (тобто, $\sigma$ є перестановкою Юенса з $\Sym{n}$).
+    $\left\{1, \dots, n\right\}$, що задана розподілом \eqref{ESF},
+    тобто, $\sigma$ є перестановкою Юенса з $\Sym{n}$.
     Нехай $\gamma \in [0, 1]$, а
     $X_n = \card\left\{i\in \left\{1,\dots,\ceil*{\gamma n} \right\} : \sigma(i) = i\right\}$
     --- кількість нерухомих точок
@@ -214,7 +213,7 @@ $P_n$ на $(E, \mathcal{E}) = \left([0, 1], \mathcal{B}([0, 1])\right)$ за п
 \begin{gather}\label{Pn_def}
     P_n(F) = \card \left\{ i \in \{1, ..., n\} : \sigma(i) = i \text { та } \frac{i}{n} \in F\right\}, \; F \in \mathcal{E}.
 \end{gather}
-Тобто, $P_n$
+Отже, $P_n$
 є випадковою точковою мірою 
 з атомами у нерухомих точках перестановки Юенса $\sigma$, нормованих $n$, 
 тому результат леми можна записати як 
@@ -258,13 +257,13 @@ $P_n$ на $(E, \mathcal{E}) = \left([0, 1], \mathcal{B}([0, 1])\right)$ за п
 $\E N(\partial B) = \Lambda (\partial B)$, тому 
 для всіх $B \subset \mathcal{X}$ $\E N(\partial B) = 0$, бо
 $\partial B$ складається зі скінченного об'єднання окремих точок.
-Це означає, що $\hat{\mathcal{E}}_N = \mathcal{X}$.
+Це означає, що $\mathcal{X} \subset \hat{\mathcal{E}}_N $.
 Також, $\mathcal{X}$ є кільцем і розсікаючим класом, оскільки всі необхідні
 умови очевидно виконуються.
 Отже, для доведення теореми \ref{main_th}, можна використати теорему
 \ref{kallenberg_th}
 для $\xi_n = P_n$, $\xi = N$ та
-$\hat{\mathcal{E}}_N = \mathcal{U} = \mathcal{I} = \mathcal{X}$.
+$\mathcal{U} = \mathcal{I} = \mathcal{X}$.
 
 \begin{proof}[Доведення теореми \ref{main_th}]\label{main_proof}
     Нехай $\left<\gamma_1, \delta_1 \right>, ..., \left<\gamma_m, \delta_m \right>$ ,
@@ -323,13 +322,20 @@ $\hat{\mathcal{E}}_N = \mathcal{U} = \mathcal{I} = \mathcal{X}$.
 \end{proof}
 
 Варто також зауважити важливий наслідок теореми \ref{main_th}.
-\begin{corollary*}[\ref{main_th}]
-    Оскільки граничний процес Пуассона $N$ простий і $N\left(\{0\}\right) = 0$ з ймовірністю 1, то в силу теореми
-    \eqref{th:Skorohod_conv} має місце збіжність $P_n \overset{Sd}{\longrightarrow} N$.
-\end{corollary*}
 
+\vspace{10pt}
+\noindent
+\textbf{Наслідок \ref{main_th}.}
+\textit{Оскільки граничний процес Пуассона $N$ простий і $N\left(\{0\}\right) = 0$ з ймовірністю 1, то в силу теореми
+\ref{th:Skorohod_conv} має місце збіжність $P_n \overset{Sd}{\longrightarrow} N$.}
+\vspace{10pt}
+
+% \begin{corollary*}[\ref{main_th}]
+%     Оскільки граничний процес Пуассона $N$ простий і $N\left(\{0\}\right) = 0$ з ймовірністю 1, то в силу теореми
+%     \eqref{th:Skorohod_conv} має місце збіжність $P_n \overset{Sd}{\longrightarrow} N$.
+% \end{corollary*}
 Для наступних досліджень будуть важливі перестановки з принаймні однією нерухомою точкою.
-З теореми \ref{main_th}, для $\gamma = 1$ виконується $\P{X_n = 0} \to e^{-\theta}, n \to \infty$. 
+З теореми \ref{main_th} для $\gamma = 1$ виконується $\P{X_n = 0} \to e^{-\theta}, n \to \infty$. 
 Введемо ще один точковий процес $\widehat{P}_n$, що визначений для борелевих множин $F \in \mathcal{B}([0, 1])$ як 
 \begin{gather}
     \P{\widehat{P}_n (F) = k} = \P{P_n(F) = k \mid P_n([0, 1]) > 0} = \begin{cases}

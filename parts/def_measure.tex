@@ -27,7 +27,7 @@
     якщо виконуються наступні три умови:
     \begin{enumerate}
         \item $\left(A \in \mathcal{A}\right) \Rightarrow \left(A^C = X \setminus A \in \mathcal{A}\right)$;
-        \item $\left(A, B \in \mathcal{A}\right) \Rightarrow \left(A \cup B\in \mathcal{A}\right)$; 
+        % \item $\left(A, B \in \mathcal{A}\right) \Rightarrow \left(A \cup B\in \mathcal{A}\right)$; 
         \item $\left(A_1, A_2, A_3, ... \in \mathcal{A}\right) \Rightarrow \left(\bigcup_{n=1}^{\infty} A_n \in \mathcal{A}\right)$.
     \end{enumerate} 
     Пара $\left(X, \mathcal{A}\right)$ називається \emph{вимірним простором}.
@@ -80,9 +80,9 @@
     на вимірному просторі $\left(X, \mathcal{A}\right)$,
     для якої $\forall A \in \mathcal{A}: \delta_x(A) = \mathds{1}\left\{x \in A\right\} = 
     \begin{cases}
-        1, & x \in A \\
-        0, & x \notin A
-    \end{cases}$.
+        1, & x \in A, \\
+        0, & x \notin A.
+    \end{cases}$
 \end{definition}
 \begin{definition}[\cite{Resnick_1987}, ст. 123]
     \emph{Точкова міра} --- це міра $\mu$ на 
@@ -144,7 +144,7 @@
 
     Послідовність функцій $f_n \in \mathcal{D}_{[0, 1]}$ збігається за метрикою Скорохода до $f \in \mathcal{D}_{[0, 1]}$
     тоді і тільки тоді, коли існує послідовність функцій $\lambda_n \in \Lambda$ таких, що
-    рівномірно за $x$
+    рівномірно відносно $x$
     $\lim_{n\to\infty} f_n \left(\lambda_n(x)\right) = f(x)$ та
     $\lim_{n\to\infty} \lambda_n(x) = x$, тобто
     виконуються граничні співвідношення
