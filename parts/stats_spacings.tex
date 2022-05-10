@@ -1,0 +1,199 @@
+\subsection{Найменші і найбільші спейсинги}
+Визначимо граничні розподіли найменшого і найбільшого спейсингів --- відстаней
+між нерухомими точками.
+\begin{remark}
+    Щоб застосувати тут теоретичні результати, що стосуються
+    випадкового розбиття інтервалів, зручно вважати
+    $\min(N)$ і $1-\max(N)$ спейсингами. Для випадкової
+    перестановки $\left\{1, \dots, n\right\}$ це означатиме
+    вважати $0$ та $n+1$ <<штучними>> нерухомими точками.
+\end{remark}
+
+Нехай $U_1, U_2, \dots, U_{n}$ ---
+незалежні випадкові величини
+з розподілом $\Unif{0, 1}$, що розділяють відрізок $[0, 1]$ на $n+1$
+інтервалів з довжинами $S_1, S_2, \dots, S_{n+1}$, або, у відсортованому вигляді, 
+$S_{(1)}^{[n+1]} < S_{(2)}^{[n+1]} < \dots < S_{(n+1)}^{[n+1]}$
+(нагадаємо, $S_{(i)}$ позначає $i$-ту порядкову статистику, а
+$S_{(i)}^{[n+1]}$ --- те ж саме, але з вказанням $n+1$ як кількості цих статистик).
+Розподіли $S_{(k)}^{[n+1]}$ отримано у багатьох роботах
+(наприклад, \cite{Holst_1980}, \cite{Pinelis_2019}). Зокрема, для $x\in[0,1]$
+\begin{gather}
+    \label{min_spacing}
+    \P{S_{(1)}^{[n+1]} > x} = \left((1-(n+1)x)_+\right)^n, \\
+    \label{max_spacing}
+    \P{S_{(n+1)}^{[n+1]} > x} = 
+    \sum_{j=1}^{n+1} (-1)^{j-1} C_{n+1}^j \left((1-jx)_+\right)^n,
+\end{gather}
+де $x_+ = \max(x, 0)$.
+
+Отже, розподіли найменшого $\smin(N)$ та найбільшого $\smax(N)$ спейсингів 
+між атомами $N$ задаються
+(з домовленістю $S_{(1)}^{1} = 1$)
+\begin{gather}
+    \label{s_min}
+    \P{\smin(N) > x} = 
+    \sum_{n=0}^{\infty} \P{S_{(1)}^{[n+1]} > x} \P{N([0, 1]) = n} \\
+    \label{s_max}
+    \P{\smax(N) > x} = 
+    \sum_{n=0}^{\infty} \P{S_{(n+1)}^{[n+1]} > x} \P{N([0, 1]) = n}
+\end{gather}
+Хоча явні вирази для \eqref{s_min} та \eqref{s_max},
+скоріш за все, доволі складні, цікаво звернути увагу на дві випадкові величини
+з такими ж розподілами.
+
+Відомо (наприклад, \cite{Holst_1980}), що для незалежних величин 
+$X_1, X_2, \dots, X_{n+1}$ з розподілом $\Exp{1}$
+мають місце наступні три рівності:
+\begin{gather}
+    \label{distr_equal_1}
+    \left(
+        S_1, S_2, \dots, S_{n+1}
+    \right)^T
+    \overset{d}{=}
+    \left(
+        \frac{X_1}{\sum_{i=1}^{n+1} X_i},
+        \frac{X_2}{\sum_{i=1}^{n+1} X_i},
+        \dots,
+        \frac{X_{n+1}}{\sum_{i=1}^{n+1} X_i}
+    \right)^T, \\
+    \label{distr_equal_2}
+    \left(
+        S_{(1)}, S_{(1)}, \dots, S_{(n+1)}
+    \right)^T
+    \overset{d}{=}
+    \left(
+        \frac{X_{(1)}}{\sum_{i=1}^{n+1} X_i},
+        \frac{X_{(2)}}{\sum_{i=1}^{n+1} X_i},
+        \dots,
+        \frac{X_{(n+1)}}{\sum_{i=1}^{n+1} X_i}
+    \right)^T, \\
+    \label{distr_equal_3}
+    X_{(i)} \overset{d}{=}
+    \frac{X_{n+1}}{n+1} + \frac{X_{n}}{n} + \dots + \frac{X_{n-i+2}}{n-i+2} = 
+    \sum_{k=0}^{i-1} \frac{X_{n+1-k}}{n+1-k}.
+\end{gather}
+Рівності \eqref{distr_equal_2} та \eqref{distr_equal_3}
+можна доповнити наступною рівністю:
+\begin{lemma}\label{distr_equal}
+    Для порядкових статистик спейсингів 
+    $S_{(1)}^{[n+1]}, ..., S_{(n+1)}^{[n+1]}$
+    між незалежними величинами з розподілом $\Unif{0, 1}$
+    та незалежних величин 
+    $X_1, X_2, \dots, X_{n+1}$ з розподілом $\Exp{1}$ має місце
+    рівність 
+    \begin{gather}\label{distr_equal_4}
+        S_{(i)}^{[n+1]} \overset{d}{=}
+        \frac{
+            \frac{X_{n+1}}{n+1} + \frac{X_{n}}{n} + \dots + \frac{X_{n-i+2}}{n-i+2}
+        }{
+            \sum_{j=1}^{n+1} X_j
+        } = \frac{
+            \sum_{k=0}^{i-1} \frac{X_{n+1-k}}{n+1-k}
+        }{
+            \sum_{j=1}^{n+1} X_j
+        }, \; i = 1, \dots, n+1.
+    \end{gather}
+\end{lemma}
+\begin{proof}
+    Позначимо спейсинги між $X_1, X_2, \dots, X_{n+1}$ через
+    $\Delta_1 = X_{(1)}$,
+    $\Delta_i = X_{(i)} - X_{(i-1)}, i=2, \dots, n+1$. З \cite{Arnold_et_al_2008}, ст. 72, відомо, що
+    всі $\Delta_i$ незалежні та мають розподіли $\Exp{n-i+2}$.
+    Отже, праву частину $S_{(i)} \overset{d}{=} \frac{X_{(i)}}{\sum_{j=1}^{n+1}X_j}$
+    можна переписати як
+    \begin{gather*}
+        \frac{X_{(i)}}{\sum_{j=1}^{n+1}X_j} = 
+        \frac{X_{(i)}}{\sum_{j=1}^{n+1}X_{(j)}} = 
+        \frac{
+            \Delta_1 + \dots + \Delta_i
+        }{
+            \Delta_1 + \left(\Delta_1 + \Delta_2\right) +
+            \dots + \left(\Delta_1 + \dots + \Delta_{n+1}\right)
+        }.
+    \end{gather*}
+    Введемо нові незалежні випадкові величини
+    $Y_i = (n-i+2)\Delta_i$ з розподілом
+    $\Exp{1}$. В термінах $Y_i$
+    верхню рівність можна переписати як
+    \begin{gather*}
+        \frac{X_{(i)}}{\sum_{j=1}^{n+1}X_j} = 
+        \frac{
+            \sum_{j=1}^i \frac{Y_j}{n-j+2} 
+        }{
+            \sum_{j=1}^{n+1} Y_j
+        }.
+    \end{gather*}
+    Оскільки $X_i$ та $Y_i$ незалежні та мають однакові розподіли, то отримуємо \eqref{distr_equal_4}.
+\end{proof}
+
+Окремими випадками леми \ref{distr_equal}
+є рівності для мінімального і максимального спейсингів
+$S_{(1)}^{[n+1]} \overset{d}{=} \frac{X_{n+1}}{(n+1)\sum_{i=1}^{n+1} X_i}$
+та $S_{(n+1)}^{[n+1]} \overset{d}{=} \frac{\sum_{i=1}^{n+1} \frac{X_i}{n-i+2}}{\sum_{i=1}^{n+1} X_i}
+\overset{d}{=} \frac{\sum_{i=1}^{n+1} \frac{X_i}{i}}{\sum_{i=1}^{n+1} X_i}$.
+Разом з \eqref{s_min} та \eqref{s_max}
+вони приводять до наступних рівностей за розподілом:
+\begin{gather}\label{distr_equal_5}
+    \smin(N) \overset{d}{=}
+    \frac{X_{\nu+1}}{(\nu+1)\sum_{i=1}^{\nu+1} X_i} , \;
+    \smax(N) \overset{d}{=} 
+    \frac{\sum_{i=1}^{\nu+1} \frac{X_i}{i}}{\sum_{i=1}^{\nu+1} X_i},
+\end{gather}
+де $\nu$ має розподіл $\Poiss{\theta}$, а $\left(X_i, i\geq 1\right)$ незалежні між собою та від $\nu$ 
+і мають розподіл $\Exp{1}$.
+
+Відповідні математичні сподівання $\E\smin(N)$ та $\E\smax(N)$ можна знайти з \eqref{distr_equal_5}. 
+Нехай $n \in \N_0$, тоді
+\begin{gather*}
+    \E\left(
+        \frac{X_{n+1}}{(n+1)\sum_{i=1}^{n+1} X_i}
+    \right) = \frac{1}{(n+1)^2}\cdot \E \left(
+        \frac{X_1}{\sum_{i=1}^{n+1} X_i} + \dots + \frac{X_{n+1}}{\sum_{i=1}^{n+1} X_i}
+    \right) = \frac{1}{(n+1)^2} \\
+    \E\left(
+        \frac{\sum_{i=1}^{n+1} \frac{X_i}{i}}{\sum_{i=1}^{n+1} X_i}
+    \right) = 
+    \sum_{i=1}^{n+1} \frac{1}{i} \cdot \E\left(\frac{X_i}{\sum_{i=1}^{n+1} X_i}\right) = 
+    \frac{1}{n+1} \cdot \sum_{i=1}^{n+1} \frac{1}{i}
+\end{gather*}
+Оскільки $\P{\nu = n} = \frac{\theta^n}{n!}e^{-\theta}$, то
+\begin{gather*}
+    \E\smin(N) = \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{\theta^n}{n\cdot n!} =
+    \frac{e^{-\theta}}{\theta} \sum_{n=1}^{\infty} \frac{1}{n!} \int_0^{\theta} t^{n-1} \d t = 
+    \frac{e^{-\theta}}{\theta} \int_0^{\theta} \left( \sum_{n=1}^{\infty} \frac{t^{n-1}}{n!} \right) \d t = \\ =
+    \frac{e^{-\theta}}{\theta} \int_0^{\theta} \frac{1}{t} \left( \sum_{n=1}^{\infty} \frac{t^{n}}{n!} \right) \d t = 
+    \frac{e^{-\theta}}{\theta}\int_0^\theta \frac{e^t-1}{t}\d t, \\
+    \E\smax(N) = \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{H_n}{n!} \theta^n = 
+    \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{\theta^n}{n!} \int_0^1 \left(1 + s + ... + s^{n-1}\right) \d s = \\ =
+    \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{\theta^n}{n!} \int_0^1 \frac{1 - s^n}{1 - s} \d s = 
+    \frac{e^{-\theta}}{\theta} \int_0^1 \frac{1}{1 - s} \left(
+        \sum_{n=1}^{\infty} \frac{(1 - s^n)\theta^n}{n!}
+    \right) \d s = \\ =
+    \frac{e^{-\theta}}{\theta} \int_0^1 \frac{e^{\theta} - e^{s \theta}}{1 - s} \d s = 
+    \left[ t = \theta (1 - s)\right] = 
+    \frac{e^{-\theta}}{\theta} \int_0^{\theta} \frac{e^{\theta} - e^{\theta - t}}{t} \d t = 
+    \frac{1}{\theta} \int_0^{\theta} \frac{1-e^{-t}}{t}\d t.
+\end{gather*}
+де $H_n = \sum_{k=1}^n \frac{1}{k}$ --- $n$-те гармонічне число.
+Зокрема, для $\theta = 1$ (випадок рівномірного розподілу) 
+$\E\smin(N) \approx 0.48483$ і $\E\smax(N) \approx 0.7966$.
+
+Сформулюємо отриманий результат у вигляді теореми.
+\begin{theorem}
+    Нехай $\sigma \sim \ESF{n, \theta}$, а $\delta_n$ та $\Delta_n$ ---
+    відповідно, найменша та найбільша відстані між нерухомими точками $\sigma$.
+    Тоді при $n\to\infty$ виконуються граничні
+    співвідношення
+    $\frac{\delta_n}{n} \overset{d}{\longrightarrow} \delta$ і 
+    $\frac{\Delta_n}{n} \overset{d}{\longrightarrow} \Delta$, де
+    \begin{gather}
+        \delta \overset{d}{=}
+        \frac{X_1}{(\nu+1)\sum_{i=1}^{\nu+1} X_i}, \;
+        \Delta \overset{d}{=} 
+        \frac{\sum_{i=1}^{\nu+1} \frac{X_i}{i}}{\sum_{i=1}^{\nu+1} X_i},
+    \end{gather}
+    для незалежних між собою $\left(X_i, i \geq 1\right)$
+    з розподілом $\Exp{1}$ та $\nu \sim \Poiss{\theta}$,
+    незалежної від $\left(X_i, i \geq 1\right)$.
+\end{theorem}
