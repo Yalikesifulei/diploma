@@ -91,9 +91,8 @@ $\P{\min(N) = 1} = \P{\max(N) = 0} = e^{-\theta}$.
         0, & x < 0, \\
         \frac{1-e^{-\theta x}}{1-e^{-\theta}}, & 0 \leq x < 1, \\
         1, & x \geq 1,
-    \end{cases}
-\end{gather}
-\begin{gather}\label{cond_max}
+    \end{cases} \\
+\label{cond_max}
     \P{\max(N) \leq x \mid \max(N) > 0} = 
     \begin{cases}
         0, & x < 0, \\
@@ -119,16 +118,14 @@ $n \cdot \min(\widehat{P}_n)$ --- найменша нерухома точка
     \frac{1}{1 - e^{-\theta}} \cdot \left(
         \frac{1 - e^{-\theta}}{\theta} - e^{-\theta}
     \right) = 
-    \frac{1}{\theta} - \frac{e^{-\theta}}{1 - e^{-\theta}}
-\end{gather*}
-\begin{gather*}
+    \frac{1}{\theta} - \frac{e^{-\theta}}{1 - e^{-\theta}}, \\
     \E\max(\widehat{N}) = \int_0^1 \left(1 - \P{\max(\widehat{N}) \leq x}\right) \d x = 
     \int_0^1 \left(1 -  \frac{e^{\theta x} - 1}{e^{\theta} - 1}\right) \d x = \\ =
     \int_0^1 \left(\frac{e^{\theta} - e^{\theta x}}{e^{\theta} - 1}\right) \d x = 
     \frac{1}{e^{\theta} - 1} \cdot \left(
         e^{\theta} - \frac{e^{\theta} - 1}{\theta}
     \right) = 
-    \frac{e^{\theta}}{e^{\theta} - 1} - \frac{1}{\theta}
+    \frac{e^{\theta}}{e^{\theta} - 1} - \frac{1}{\theta}.
 \end{gather*}
 Оскільки $\lim_{n\to\infty} \E\min(\widehat{P}_n) = \E\min(\widehat{N})$ та 
 $\lim_{n\to\infty} \E\max(\widehat{P}_n) = \E\max(\widehat{N})$, то, наприклад,
@@ -137,7 +134,7 @@ $\E\min(\widehat{P}_n) \approx \frac{1 - 2e^{-1}}{1 - e^{-1}} \cdot n \approx 0.
 $\E\max(\widehat{P}_n) \approx \frac{1}{e - 1} \cdot n \approx 0.582 \cdot n$.
 
 Сформулюємо отриманий результат у вигляді теореми.
-\begin{theorem}
+\begin{theorem}\label{th:min_max_limit}
     Нехай $\sigma \sim \ESF{n, \theta}$, а 
     $m_n = \min\left\{i\in \left\{1,\dots,n\right\}: \sigma(i) = i\right\}$
     та $M_n = \max\left\{i\in \left\{1,\dots,n\right\}: \sigma(i) = i\right\}$ --- відповідно,
@@ -152,9 +149,7 @@ $\E\max(\widehat{P}_n) \approx \frac{1}{e - 1} \cdot n \approx 0.582 \cdot n$.
             0, & x < 0, \\
             1 - e^{-\theta x}, & 0 \leq x < 1, \\
             1, & x \geq 1
-        \end{cases}
-    \end{gather}
-    \begin{gather}
+        \end{cases} \\
         F_M(x) = \begin{cases}
             0, & x < 0, \\
             e^{\theta(x - 1)}, & 0 \leq x < 1, \\
@@ -179,8 +174,7 @@ $\E\max(\widehat{P}_n) \approx \frac{1}{e - 1} \cdot n \approx 0.582 \cdot n$.
             \frac{\theta e^{-\theta x}}{1 - e^{-\theta}}, & 0 \leq x < 1, \\
             0, & x \geq 1,
         \end{cases}
-    \end{gather}
-    \begin{gather}
+        \\
         F_{\widehat{M}}(x) = \begin{cases}
             0, & x < 0, \\
             \frac{e^{\theta x} - 1}{e^{\theta} - 1}, & 0 \leq x < 1, \\
