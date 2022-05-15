@@ -43,7 +43,7 @@ $, як і в формулі \eqref{ESF}.
 Варто також зауважити, що цей алгоритм дозволяє отримати не просто
 випадкову перестановку з розподілом $\ESF{n, \theta}$,
 а послідовність перестановок з розподілами 
-$\ESF{2, \theta}, ..., \ESF{n-1, \theta}$, причому два числа,
+$\ESF{1, \theta}, ..., \ESF{n, \theta}$, причому два числа,
 що в якийсь момент опинилися в одному циклі, завжди залишаються в ньому ж.
 
 Розглянемо приклад для $n = 3$, який можна проілюструвати наступною діаграмою:
@@ -54,19 +54,11 @@ $\ESF{2, \theta}, ..., \ESF{n-1, \theta}$, причому два числа,
         \node[vertex, below right=1.5cm and 2.5cm of one] (one_two) {$(1) (2)$};
         \node[vertex, right=5cm of onetwo] (onetwothree) {$(1, 2, 3)$};
         \node[vertex, below right=0.75 and 5cm of onetwo] (onetwo_three) {$(1, 2) (3)$};
-        \node[vertex, above right=0.75cm and 3cm of onetwo] (onethreetwo) {$(1, 3, 2)$};
-        \node[vertex, above right=0.75cm and 3cm of one_two] (onethree_two) {$(1, 3) (2)$};
+        \node[vertex, above right=0.5cm and 3cm of onetwo] (onethreetwo) {$(1, 3, 2)$};
+        \node[vertex, above right=0.75cm and 5cm of one_two] (onethree_two) {$(1, 3) (2)$};
         \node[vertex, right=5cm of one_two] (one_twothree) {$(1) (2, 3)$};
-        \node[vertex, below right=0.75cm and 2.5cm of one_two] (one_two_three) {$(1) (2) (3)$};
+        \node[vertex, below right=0.5cm and 2.5cm of one_two] (one_two_three) {$(1) (2) (3)$};
         \path[-{Stealth[]}, every node/.style={sloped,anchor=south,auto=false}]
-            % (one) edge node {$\frac{1}{\theta + 1}$} (onetwo)
-            % (one) edge node[below] {$\frac{\theta}{\theta + 1}$} (one_two)
-            % (onetwo) edge node {$\frac{1}{\theta + 2}$} (onetwothree)
-            % (onetwo) edge node {$\frac{1}{\theta + 2}$} (onethreetwo)
-            % (onetwo) edge node[below] {$\frac{\theta}{\theta + 2}$} (onetwo_three)
-            % (one_two) edge node {$\frac{1}{\theta + 2}$} (onethree_two)
-            % (one_two) edge node {$\frac{1}{\theta + 2}$} (one_twothree)
-            % (one_two) edge node[below] {$\frac{\theta}{\theta + 2}$} (one_two_three);
             (one) edge node {$A_2 = 1$} (onetwo)
             (one) edge node[below] {$A_2 = 2$} (one_two)
             (onetwo) edge node {$A_3 = 2$} (onetwothree)
@@ -79,7 +71,7 @@ $\ESF{2, \theta}, ..., \ESF{n-1, \theta}$, причому два числа,
 \end{center}
 З цієї діаграми видно, що ймовірність отримати перестановку $(1) (2, 3)$
 обчислюється як 
-$\P{A_3 = 2} \cdot \P{A_2 = 1} = \frac{1}{\theta + 2} \cdot \frac{\theta}{\theta + 1}$.
+$\P{A_3 = 2} \cdot \P{A_2 = 2} = \frac{1}{\theta + 2} \cdot \frac{\theta}{\theta + 1}$.
 Аналогічно можна перевірити, шо ймовірність отримати інші перестановки з двома циклами
 теж дорівнює $\frac{1}{\theta + 2} \cdot \frac{\theta}{\theta + 1}$,
 перестановку $(1, 2, 3)$ з одним циклом --- $\frac{1}{\theta + 2} \cdot \frac{1}{\theta + 1}$,
@@ -97,7 +89,7 @@ $B_1, B_2, ...$ з розподілами
 \end{gather}
 Знову почнемо перший незалежний цикл з 1. Якщо $B_n = 1$,
 то цей цикл закінчується, а новий починається з 2, а інакше ---
-довільно (з рівними ймовірностями) обирається число одне з $n-1$ чисел,
+довільно (з рівними ймовірностями) обирається одне з $n-1$ чисел,
 що залишились, і додається до цього циклу справа від 1.
 На наступному кроці, якщо $B_{n-1} = 1$, то поточний цикл
 закінчується, а новий починається з найменшого

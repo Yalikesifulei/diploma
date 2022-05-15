@@ -2,37 +2,115 @@
 Для перевірки результатів леми \ref{main_lemma} та теорем
 \ref{th:min_max_limit}, \ref{th:sum_limit}, \ref{th:spacing_limit}
 скористаємося процесом китайського ресторану для отримання вибірок
-з $\ESF{n, \theta}$. Розмір вибірки в усіх випадках буде рівний 3000.
+з $\ESF{n, \theta}$. Розмір вибірки $m$ в усіх випадках буде рівний 3000.
 
 \subsection{Розподіл кількості нерухомих точок}
-Для демонстрації збіжності ймовірностей
-$\P{X_n = k} \to \P{N = k}$, де $N \sim \Poiss{\theta}$,
+Для демонстрації збіжностей
+$\P{X_n = k} \to \P{X = k}$, де $X \sim \Poiss{\theta}$,
 а $X_n$ визначено в лемі \ref{main_lemma} при $\gamma = 1$,
 порівняємо полігони розподілу для $X_n$ при $n = 50, 100, 500$ для
-різних значень $\theta$.
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.6]{plots/fp_prob_theta_0.5.png}
-    \caption{Полігони розподілу $X_n$ та $N$ для $\theta = 0.5$.}
-\end{figure}
+різних значень $\theta$. Ймовірності $\P{X_n = k}$ отримуватимемо наближено
+за допомогою закону великих чисел: 
+\begin{gather*}
+    \P{X_n = k} \approx \frac{1}{m} \sum_{i=1}^m \mathds{1}\left\{ 
+        \card\left\{j\in \left\{1,\dots,n\right\} : \sigma_i(j) = j\right\} = k
+    \right\},
+\end{gather*}
+де $\sigma_i \sim \ESF{n, \theta}$ і незалежні.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.6]{plots/fp_prob_theta_1.png}
-    \caption{Полігони розподілу $X_n$ та $N$ для $\theta = 1$.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.6]{plots/fp_prob_theta_2.png}
-    \caption{Полігони розподілу $X_n$ та $N$ для $\theta = 2$.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.6]{plots/fp_prob_theta_5.png}
-    \caption{Полігони розподілу $X_n$ та $N$ для $\theta = 5$.}
-\end{figure}
+\makeatletter
+    \@for\t:={0.5,1,2,5}\do{
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6]{plots/fp_prob_theta_\t.png}
+            \caption{Полігони розподілу $X_n$ та $X$ для $\theta = \t$.}
+        \end{figure}
+    }
+\makeatother
 
 Видно, що збіжність ймовірностей дійсно присутня, але для більших
 значень $\theta$ вона є повільнішою.
+
+\subsection{Розподіл найменшої та найбільшої нерухомих точок}
+Для демонстрації збіжностей
+$\frac{\widehat{m}_n}{n} \overset{d}{\longrightarrow} \widehat{m}$ і
+$\frac{\widehat{M}_n}{n} \overset{d}{\longrightarrow} \widehat{M}$,
+доведених в теоремі \ref{th:min_max_limit}, порівняємо
+гістограми $\frac{\widehat{m}_n}{n}$ та $\frac{\widehat{M}_n}{n}$
+для $n = 500$ з щільностями розподілу $\widehat{m}$ та $\widehat{M}$
+для різних значень $\theta$.
+
+\makeatletter
+    \@for\t:={0.5,1,2,5}\do{
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6]{plots/fp_min_theta_\t.png}
+            \caption{Гістограма $\frac{\widehat{m}_n}{n}$ та щільність $\widehat{m}$ для $\theta = \t$.}
+        \end{figure}
+    }
+\makeatother
+
+\makeatletter
+    \@for\t:={0.5,1,2,5}\do{
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6]{plots/fp_max_theta_\t.png}
+            \caption{Гістограма $\frac{\widehat{M}_n}{n}$ та щільність $\widehat{M}$ для $\theta = \t$.}
+        \end{figure}
+    }
+\makeatother
+
+\subsection{Розподіл суми нерухомих точок}
+Для демонстрації збіжності
+$\frac{\widehat{S}_n}{n} \overset{d}{\longrightarrow} \widehat{S}$
+доведеної в теоремі \ref{th:sum_limit}, порівняємо
+гістограми $\frac{\widehat{S}_n}{n}$
+для $n = 500$ з щільностями розподілу $\widehat{S}$
+для різних значень $\theta$.
+
+\makeatletter
+    \@for\t:={0.5,1,2,5}\do{
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6]{plots/fp_sum_theta_\t.png}
+            \caption{Гістограма $\frac{\widehat{S}_n}{n}$ та щільність $\widehat{S}$ для $\theta = \t$.}
+        \end{figure}
+    }
+\makeatother
+
+\subsection{Розподіл найменшого і найбільшого спейсингів}
+Для демонстрації збіжностей
+$\frac{\delta_n}{n} \overset{d}{\longrightarrow} \delta$ і
+$\frac{\Delta_n}{n} \overset{d}{\longrightarrow} \Delta$,
+доведених в теоремі \ref{th:spacing_limit}, порівняємо
+емпіричні функції розподілу $\frac{\delta_n}{n}$ та $\frac{\Delta_n}{n}$
+при $n = 50, 100, 500$ з емпіричними функціями $\delta$ та $\Delta$
+для різних значень $\theta$.
+
+Емпіричну функцію розподілу випадкової величини $X$ за вибіркою
+$X_1, ..., X_N$ тут визначено як 
+$F^*_X(x) = \frac{1}{m} \sum_{i=0}^{m} \mathds{1}\left\{X_i \leq x\right\}$.
+
+Оскільки для $x \geq 1$ 
+$\P{\frac{\delta_n}{n} \leq x} = \P{\frac{\Delta_n}{n} \leq x} = \P{\delta \leq x} = \P{\delta \leq x} = 1$,
+то на всіх рисунках емпіричні функції розподілу зображено лише для $x \in [0, 1)$.
+
+\makeatletter
+    \@for\t:={0.5,1,2,5}\do{
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6]{plots/fp_spacing_min_theta_\t.png}
+            \caption{Емпіричні функції розподілу $\frac{\delta_n}{n}$ та $\delta$ для $\theta = \t$.}
+        \end{figure}
+    }
+\makeatother
+
+\makeatletter
+    \@for\t:={0.5,1,2,5}\do{
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6]{plots/fp_spacing_max_theta_\t.png}
+            \caption{Емпіричні функції розподілу $\frac{\Delta_n}{n}$ та $\Delta$ для $\theta = \t$.}
+        \end{figure}
+    }
+\makeatother
