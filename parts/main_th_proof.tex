@@ -102,7 +102,8 @@
             (\theta + n - i - k) \dots (\theta + n - 1)
         }.
     \end{gather*}
-    Тепер доведемо $\lim_{n\to\infty} \P{X_n = k} = \frac{(\gamma\theta)^k}{k!}e^{-\gamma\theta}$.
+    Тепер доведемо $\lim_{n\to\infty} \P{X_n = k} = \frac{(\gamma\theta)^k}{k!}e^{-\gamma\theta}$ за
+    допомогою теореми \ref{th:series_dct}.
     \begin{gather*}
         \P{X_n = k} = \\ =
         \frac{
@@ -119,94 +120,73 @@
             (\theta + n - i - k) \dots (\theta + n - 1)
         } = \\ =
         \frac{\theta^k}{k!}
-        \sum_{i=0}^{\ceil*{\gamma n}-k} (-1)^i
-        \frac{\theta^i}{i!} \frac{
-            (\ceil*{\g n} - k - i + 1) \dots (\ceil*{\g n} - 2) (\ceil*{\g n} - 1) \ceil*{\g n}
+        \sum_{i=0}^{\ceil*{\gamma n}-k} 
+        \underbrace{(-1)^i \frac{\theta^i}{i!} \frac{
+            (\ceil*{\g n} - k - i + 1) \dots (\ceil*{\g n} - 1) \ceil*{\g n}
         }{
-            (\theta + n - i - k) \dots (\theta + n - 1)
-        }.
+            (\theta + n - i - k) \dots (\theta + n - 2)(\theta + n - 1)
+        }}_{f_n(i)} = \\ = 
+        \frac{\theta^k}{k!}
+        \sum_{i=0}^{\ceil*{\gamma n}-k} f_n(i) =
+        \frac{\theta^k}{k!} \sum_{i=0}^{\infty} f_n(i) \mathds{1}\left\{i \leq \ceil*{\gamma n}-k\right\} =
+        \frac{\theta^k}{k!} \sum_{i=0}^{\infty} \tilde{f}_n(i).
     \end{gather*}
-    Нехай $N$ достатньо велике і $\ceil*{\g n}-k > N$, тоді
-    $\P{X_n = k}$ можна розбити на дві суми ---
-    $S_1$ від $0$ до $N-1$ та $S_2$ від
-    $N$ до $\ceil*{\g n}-k$.
+    Знайдемо поточкову границю $\tilde{f}_n(i)$ при $n \to \infty$:
     \begin{gather*}
-        \frac{k!}{\theta^k} \cdot |S_2| \leq
-        \sum_{i=N}^{\ceil*{\gamma n}-k}
-        \frac{\theta^i}{i!} \frac{
-            (\ceil*{\g n} - k - i + 1) \dots (\ceil*{\g n} - 2) (\ceil*{\g n} - 1) \ceil*{\g n}
+        \lim_{n\to\infty} \tilde{f}_n(i) = (-1)^i \frac{\theta^i}{i!} \cdot
+        \lim_{n\to\infty} \frac{
+            (\ceil*{\g n} - k - i + 1) \dots \ceil*{\g n}
         }{
             (\theta + n - i - k) \dots (\theta + n - 1)
-        } \leq \\
-        \leq 
-        \sum_{i=N}^{\ceil*{\gamma n}-k}
-        \frac{\theta^i}{i!}
-        \left(\frac{
-            \ceil*{\g n}
-        }{
-            \theta + n - \ceil*{\g n}
-        }\right)^{i+k} \leq 
-        \sum_{i=N}^{\ceil*{\gamma n}-k}
-        \frac{\theta^i}{i!}
-        \left(\frac{
-            \ceil*{\g n}
-        }{
-            n - \ceil*{\g n}
-        }\right)^{i+k}.
+        } \cdot \underbrace{\lim_{n\to\infty} \mathds{1}\left\{i \leq \ceil*{\gamma n}-k\right\}}_{= 1}.
     \end{gather*}
-    Оскільки $\lim_{n\to\infty} \frac{
-        \ceil*{\g n}
+    Оскільки $\gamma n \leq \ceil*{\gamma n} \leq \gamma n + 1$, то 
+    $
+    \lim_{n\to\infty} \frac{
+        (\ceil*{\g n} - k - i + 1) \dots \ceil*{\g n}
     }{
-        n - \ceil*{\g n}
-    } = \frac{\gamma}{1-\gamma}$ для $\gamma \in [0, 1)$,
-    $\frac{
-        \ceil*{\g n}
+        (\theta + n - i - k) \dots (\theta + n - 1)
+    } = \gamma^{i + k}
+    $. Отже, 
+    \begin{gather*}
+        \lim_{n\to\infty} \tilde{f}_n(i) = (-1)^i \frac{\theta^i}{i!} \cdot \gamma^{i + k} = f(i).
+    \end{gather*}
+    Знайдемо тепер функцію $g$, для якої $|\tilde{f}_n(i)| \leq g(i)$ для всіх $i$ та $n$
+    і $\sum_{i=0}^{\infty} g(i) < \infty$.
+    Оскільки 
+    $
+    \lim_{n\to\infty} \frac{
+        (\ceil*{\g n} - k - i + 1) \dots \ceil*{\g n}
     }{
-        n - \ceil*{\g n}
-    } \leq C = C(\gamma)$, то
+        (\theta + n - i - k) \dots (\theta + n - 1)
+    } = \gamma^{i + k} \leq \gamma^k$, то 
+    ця послідовність з якогось номеру $n$ обмежена константою $C$, що не залежить від $i$, тому
+    з цього ж номера
     \begin{gather*}
-        \frac{k!}{\theta^k} \cdot |S_2| \leq C^k
-        \sum_{i=N}^{\ceil*{\gamma n}-k}
-        \frac{\theta^i}{i!} C^i \leq
-        C^k
-        \sum_{i=N}^{\infty}
-        \frac{\theta^i}{i!} C^i \to 0, \; N \to \infty.
+        |\tilde{f}_n(i)| \leq \frac{\theta^i}{i!} \cdot C = g(i).
     \end{gather*}
-    Якщо $\gamma = 1$, то
+    Оскільки $\sum_{i=0}^{\infty} g(i) = C \cdot \sum_{i=0} \frac{\theta^i}{i!} = C \cdot e^{\theta} < \infty$,
+    то $g$ є шуканою функцією.
+
+    Отже, 
     \begin{gather*}
-        \frac{
-            (\ceil*{\g n} - k - i + 1) \dots (\ceil*{\g n} - 2) (\ceil*{\g n} - 1) \ceil*{\g n}
-        }{
-            (\theta + n - i - k) \dots (\theta + n - 1)
-        } = \\ =
-        \frac{
-            (n - k - i + 1) \dots (n - 2) (n - 1) n
-        }{
-            (\theta + n - i - k) \dots (\theta + n - 1)
-        } \leq \\ \leq
-        \frac{
-            (n - k - i + 1) \dots (n - 2) (n - 1) n
-        }{
-            (n - i - k) \dots (n - 1)
-        } = \frac{n}{n - i - k} \to 1, \; n\to\infty,
+        \lim_{n\to\infty} \P{X_n = k} = \frac{\theta^k}{k!} \lim_{n\to\infty} \sum_{i=0}^{\infty} \tilde{f}_n(i) =
+        \frac{\theta^k}{k!} \sum_{i=0}^{\infty} f(i) = \\ = \frac{\theta^k}{k!} \sum_{i=0}^{\infty} (-1)^i \frac{\theta^i}{i!} \gamma^{i + k} = 
+        \frac{(\gamma \theta)^k}{k!} e^{-\gamma \theta},
     \end{gather*}
-    тому цей дріб теж обмежений і
-    $\lim_{N\to\infty} S_2 = 0$ також справджується.
-    Що стосується $S_1$, то для фіксованого $N$
-    \begin{gather*}
-        \lim_{n\to\infty} S_1 = \frac{\theta^k}{k!} \sum_{i=0}^{N-1} (-1)^i
-        \frac{\theta^i}{i!} \lim_{n\to\infty} 
-        \frac{
-            (\ceil*{\g n} - k - i + 1) \dots (\ceil*{\g n} - 2) (\ceil*{\g n} - 1) \ceil*{\g n}
-        }{
-            (\theta + n - i - k) \dots (\theta + n - 1)
-        } = \\ =
-        \frac{\theta^k}{k!} \sum_{i=0}^{N-1} (-1)^i
-        \frac{\theta^i}{i!} \gamma^{i+k} = 
-        \frac{(\gamma\theta)^k}{k!} \sum_{i=0}^{N-1} (-1)^i
-        \frac{(\gamma\theta)^i}{i!} \to \frac{(\gamma\theta)^k}{k!}e^{-\gamma\theta}, \; N\to\infty.
-    \end{gather*}
+    що і треба було довести.
 \end{proof}
+% Дослідимо окремо швидкість цієї збіжності для $\gamma = 1$. Розглянемо модуль різниці $\left|\P{X_n = k} - \P{X = k}\right|$,
+% де $X \sim \Poiss{\theta}$:
+% \begin{gather*}
+%     \left|\P{X_n = k} - \P{X = k}\right| =
+%     \frac{\theta^k}{k!} \left|\sum_{i=0}^{n-k} (-1)^i
+%     \frac{\theta^i}{i!} \frac{
+%         (n - k - i + 1) \dots n
+%     }{
+%         (\theta + n - i - k) \dots (\theta + n - 1)
+%     } - e^{-\theta}\right|.
+% \end{gather*}
 
 Користуючись позначеннями з леми \ref{main_lemma}, визначимо для $n \in \N$ точкові процеси
 $P_n$ на $(E, \mathcal{E}) = \left([0, 1], \mathcal{B}([0, 1])\right)$ за правилом

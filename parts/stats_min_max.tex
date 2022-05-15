@@ -41,7 +41,7 @@ $\max\left\{x_1,\dots,x_k \right\}$ є неперервними функціям
         0, & x < 0, \\
         1 - (1 - x)^m, & 0 \leq x < 1, \\
         1, & x \geq 1,
-    \end{cases} \\
+    \end{cases}
     \P{U_{(m)}^{[m]} \leq x} = \begin{cases}
         0, & x < 0, \\
         x^m, & 0 \leq x < 1, \\
@@ -57,25 +57,18 @@ $\max\left\{x_1,\dots,x_k \right\}$ є неперервними функціям
     \P{U_1 \leq x} \cdot ... \cdot \P{U_m \leq x}.
 \end{gather*}
 Отже, розподіли $\min(N)$ та $\max(N)$ мають вигляд
-\begin{gather*}
+\begin{gather}
     \P{\min(N) \leq x} = \sum_{m=0}^{\infty} \P{\min(N) \leq x \mid N([0, 1]) = m} \P{N([0, 1]) = m} = \\
      = \mathds{1}\left\{x\geq 1\right\}\cdot e^{-\theta} +
     \sum_{m=1}^{\infty} \P{\min(N) \leq x \mid N([0, 1]) = m} \cdot \frac{\theta^m}{m!} e^{-\theta} = \\
-\end{gather*}
-\begin{gather}
     = \begin{cases}
         0, & x < 0, \\
         \sum_{m=1}^{\infty} \left(1 - (1 - x)^m\right) \frac{\theta^m}{m!} e^{-\theta} = 1 - e^{-\theta x}, & 0 \leq x < 1, \\
         1, & x \geq 1;
-    \end{cases}
-\end{gather}
-$\begin{aligned}
+    \end{cases} \\
     \P{\max(N) \leq x} = \sum_{m=0}^{\infty} \P{\max(N) \leq x \mid N([0, 1]) = m} \P{N([0, 1]) = m} = \\
      = \mathds{1}\left\{x\geq 0\right\}\cdot e^{-\theta} +
     \sum_{m=1}^{\infty} \P{\max(N) \leq x \mid N([0, 1]) = m} \cdot \frac{\theta^m}{m!} e^{-\theta} = \\
-\end{aligned}$
-\vspace{-10pt}
-\begin{gather} 
     = \begin{cases}
         0, & x < 0, \\
         e^{-\theta} + \sum_{m=1}^{\infty} x^m \frac{\theta^m}{m!} e^{-\theta} = e^{\theta(x-1)}, & 0 \leq x < 1, \\
@@ -143,7 +136,6 @@ $\E\max(\widehat{P}_n) \approx \frac{1}{e - 1} \cdot n \approx 0.582 \cdot n$.
     співвідношення
     $\frac{m_n}{n} \overset{d}{\longrightarrow} m$, $\frac{M_n}{n} \overset{d}{\longrightarrow} M$,
     де функції розподілу випадкових величин $m$ та $M$ дорівнюють, відповідно,
-
     \begin{gather}
         F_m(x) = \begin{cases}
             0, & x < 0, \\
@@ -162,7 +154,6 @@ $\E\max(\widehat{P}_n) \approx \frac{1}{e - 1} \cdot n \approx 0.582 \cdot n$.
     $\frac{\widehat{M}_n}{n} \overset{d}{\longrightarrow} \widehat{M}$, де
     $\widehat{m}$ та $\widehat{M}$ є абсолютно неперервними випадковими величинами
     з функціями та щільностями розподілу
-
     \begin{gather}
         F_{\widehat{m}}(x) = \begin{cases}
             0, & x < 0, \\

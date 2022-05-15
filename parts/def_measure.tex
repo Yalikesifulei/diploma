@@ -68,6 +68,10 @@
         $\mu\left(\bigcup_{n=1}^{\infty} A_n\right) = \sum_{n=1}^{\infty}\mu(A_n)$.
     \end{enumerate}
 \end{definition}
+\begin{definition}
+    Міра $\mu$ на вимірному просторі $\left(X, \mathcal{A}\right)$ називається
+    \emph{ймовірнісною}, якщо $\mu(X) = 1$.
+\end{definition}
 \begin{definition}[\cite{Kallenberg_2017}, ст. 22]
     Нехай $\left(X, \mathcal{A}\right)$ --- вимірний простір, для якого $\{ x \} \in \mathcal{A}$
     для всіх $x \in X$.
@@ -93,9 +97,56 @@
     якщо міра компактних множин з $\mathcal{A}$ завжди є скінченною.
 \end{definition}
 \begin{definition}[\cite{Resnick_1987}, ст. 124]
-    Точкова міра $\mu$ називається \emph{простою},
-    якщо для всіх $x \in E$ $\mu\left(\{x\}\right) \leq 1$.
+    Точкова міра $\mu$ на вимірному просторі $\left(X, \mathcal{A}\right)$ називається \emph{простою},
+    якщо для всіх $x \in X$ $\mu\left(\{x\}\right) \leq 1$.
 \end{definition}
+% \begin{definition}[\cite{Bog}, ст. 147]
+%     Нехай $\left(X, \mathcal{A}\right)$ --- вимірний простір. Відображення
+%     $f: X \to \R$ називається \emph{вимірною функцією}, якщо 
+%     $\forall \; A \in \mathcal{A}: f^{-1}(A) \in \mathcal{B}(\R)$.
+% \end{definition}
+% \begin{definition}[\cite{Bog}, ст. 152]
+%     Нехай $\left(f_n, n\geq1\right)$ --- послідовність вимірних функцій
+%     на вимірному просторі
+%     $\left(X, \mathcal{A}\right)$, а $\mu$ --- міра на цьому просторі.
+%     Послідовність $\left(f_n, n\geq1\right)$ збігається до вимірної функції $f$
+%     на тому ж просторі, якщо
+%     $$\mu \left(
+%         \left\{
+%             x : \lim_{n\to\infty} f_n(x) \neq f(x)
+%         \right\}
+%     \right) = 0.$$
+%     Ця збіжність позначається $f_n \overset{\text{м.в.}}{\longrightarrow} f$.
+% \end{definition}
+% \begin{definition}[\cite{Bog}, ст. 152]
+%     Нехай $\left(f_n, n\geq1\right)$ --- послідовність вимірних функцій
+%     на вимірному просторі
+%     $\left(X, \mathcal{A}\right)$, а $\mu$ --- міра на цьому просторі.
+%     Послідовність $\left(f_n, n\geq1\right)$ \emph{збігається за мірою} до вимірної функції $f$,
+%     якщо
+%     $$\forall \; \varepsilon > 0 : \mu \left(
+%         \left\{
+%             x : \left|f_n(x) - f(x)\right| \geq \varepsilon
+%         \right\}
+%     \right) \to 0, \; n \to \infty.$$
+%     Ця збіжність позначається $f_n \overset{\mu}{\longrightarrow} f$.
+% \end{definition}
+\begin{theorem}\label{th:series_dct}
+    Нехай $\left(f_n, n \geq 1\right)$ --- послідовність функцій 
+    $\N_0 \to \R$, для яких $\sum_{i=0}^{\infty} |f_n(i)| < \infty$. Якщо
+    існують такі $f, g: \N_0 \to \R$, що
+    для всіх $i$ $f_n(i) \to f(i)$, $|f_n(i)| \leq g(i)$ і 
+    $\sum_{i=0}^{\infty} g(i) < \infty$, то
+    \begin{enumerate}
+        \item $\sum_{i=0}^{\infty} |f(i)| < \infty$;
+        \item $\sum_{i=0}^{\infty} f(i) = \lim_{n\to\infty} \sum_{i=0}^{\infty} f_n(i)$;
+        \item $\sum_{i=0}^{\infty} \left|f_n(i) - f(i)\right| \to 0, \; n \to \infty$.
+    \end{enumerate}
+\end{theorem}
+Теорема \ref{th:series_dct} є окремим випадком теореми Лебега про мажоровану збіжність
+(\cite{Bog}, ст. 164) для міри $\mu$ на $\left(\N_0, 2^{\N_0}\right)$,
+визначеної за правилом $\mu(A) = \card(A)$.
+
 \begin{definition}[\cite{Resnick_1987}, ст. 140]
     Нехай $\left(\mu_n, n \geq 1\right)$ --- послідовність мір на
     на вимірному просторі $\left(X, \mathcal{A}\right)$,
@@ -153,3 +204,33 @@
         \lim_{n\to\infty} \sup_{x\in[0, 1]}\left| \lambda_n(x) - x \right| = 0.
     \end{gather*}
 \end{definition}
+
+% \begin{definition}[\cite{prob_metrics}]
+%     \emph{Метрикою Колмогорова} для ймовірнісних мір на вимірному просторі
+%     $\left(\R, \mathcal{B}(\R)\right)$
+%     називається метрика, визначена за формулою
+%     \begin{gather}
+%         d_K(\mu, \nu) = \sup_{x \in \R} \left|
+%             \mu\left((-\infty, x]\right) - \nu\left((-\infty, x]\right)
+%         \right|.
+%     \end{gather}
+% \end{definition}
+
+% \begin{definition}[\cite{prob_metrics}]
+%     \emph{Метрикою повної варіації} для ймовірнісних мір на 
+%     вимірному просторі $\left(X, \mathcal{A}\right)$
+%     називається метрика, визначена за формулою
+%     \begin{gather}
+%         d_{TV}(\mu, \nu) = \sup_{A \in \mathcal{A}} \left|
+%             \mu\left(A\right) - \nu\left(A\right)
+%         \right|.
+%     \end{gather}
+%     Якщо $X$ є зліченним, то 
+%     \begin{gather}
+%         d_{TV}(\mu, \nu) = \frac{1}{2} \sum_{x \in X} \left|\mu(\{x\}) - \nu(\{x\})\right|.
+%     \end{gather}
+% \end{definition}
+
+% Варто зазначити, що для ймовірнісних мір на $\R$
+% має місце $d_K(\mu, \nu) \leq d_{TV}(\mu, \nu)$,
+% оскільки $\left\{(-\infty, x], x \in \R \right\} \subset \mathcal{B}(\R)$.
