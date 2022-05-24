@@ -1,0 +1,88 @@
+% !TEX root = ../main.tex
+Як було сказано раніше, формула \eqref{ESF_original}
+виникла під час дослідження вибірок генів.
+В реальних задачах $n$ може бути досить великим,
+тому постає питання наближеного обчислення відповідних ймовірностей.
+Так, добре дослідженими є граничні розподіли кількості циклів
+у випадкових перестановках з розподілом \eqref{ESF}.
+Зауважимо, що кількість нерухомих точок --- це кількість
+циклів довжини 1.
+
+Оскільки найпростішим випадком формули \eqref{ESF} є випадок рівномірного
+розподілу при $\theta = 1$, почнемо огляд наявних результатів з нього.
+Найвідомішим є так звана <<задача про неуважну секретарку>>,
+в якій необхідно знайти ймовірність того, що з $n$ листів з
+навмання написаними адресами $k$ надійдуть за призначенням.
+В термінах випадкової перестановки з розподілом
+$\ESF{n, 1}$ йдеться саме про кількість нерухомих точок. Хоча відповідні
+ймовірності дуже просто записати у явному вигляді, перейдемо одразу
+до більш складного результату:
+\begin{theorem}[\cite{LogStructures}, ст. 12]
+    Для $\sigma_n \sim \ESF{n, 1}$ та $j = 1,...,n$ 
+    \begin{gather}\label{cycles_distr_uniform}
+        \P{\cycle_j(\sigma_n) = k} = \frac{j^{-k}}{k!} \sum_{i=0}^{
+            \floor*{n/j} - k
+        } (-1)^i \frac{j^{-i}}{i!},
+    \end{gather}
+    де $\cycle_j(\sigma_n)$ позначає кількість
+    циклів довжини $j$ у $\sigma_n$.
+\end{theorem}
+З формули \eqref{cycles_distr_uniform} видно,
+що 
+\begin{gather}\label{cycles_limit_uniform_pointwise}
+    \lim_{n\to\infty} \P{\cycle_j(\sigma_n) = k} = 
+    \frac{j^{-k}}{k!} \sum_{i=0}^{\infty} (-1)^i \frac{j^{-i}}{i!} = 
+    \frac{j^{-k}}{k!} e^{-1/j},
+\end{gather}
+тобто граничним розподілом кількості
+циклів довжини $j$ у
+рівномірно випадковій перестановці на $\Sym{n}$
+є $\Poiss{1/j}$.
+Зокрема, в задачі про неуважну секретарку
+при великих $n$ ймовірність того, що за призначенням
+надійде $k$ листів, приблизно дорівнює
+$\frac{1}{k!} e^{-1}$. 
+
+Виявляється, що випадкові величини $X_j \sim \Poiss{1/j}$,
+які в силу \eqref{cycles_limit_uniform_pointwise}
+є граничними для $\cycle_j(\sigma_n)$ при $n\to\infty$,
+є незалежними:
+
+\begin{theorem}[\cite{LogStructures}, ст. 14]\label{cycles_limit_uniform_joint}
+    Нехай $\sigma_n \sim \ESF{n, 1}$. Тоді
+    для будь-якого $k \in \N$
+    випадковий вектор 
+    $\left(\cycle_{1}(\sigma_n), ..., \cycle_{k}(\sigma_n)\right)^T$
+    збігається за розподілом до
+    $\left(X_{1}, ..., X_{k}\right)^T$,
+    де $X_{j} \sim \Poiss{1/{j}}$ і 
+    всі $X_{1}, ..., X_{k}$ є незалежними.
+\end{theorem}
+
+Теорема \ref{cycles_limit_uniform_joint} узагальнюється на
+випадок $\sigma_n \sim \ESF{n, \theta}$ для довільних $\theta > 0$.
+\begin{theorem}[\cite{Arratia}, ст. 520]\label{cycles_limit_ewens_joint}
+    Нехай $\sigma_n \sim \ESF{n, \theta}$. Тоді
+    для будь-якого $k \in \N$
+    випадковий вектор 
+    $\left(\cycle_{1}(\sigma_n), ..., \cycle_{k}(\sigma_n)\right)^T$
+    збігається за розподілом до
+    $\left(X_{1}, ..., X_{k}\right)^T$,
+    де $X_{j} \sim \Poiss{\theta/{j}}$ і 
+    всі $X_{1}, ..., X_{k}$ є незалежними.
+\end{theorem}
+
+Також варто навести рівність (\cite{LogStructures}, ст. 59), яка пов'язує
+розподіли випадкових векторів $\left(\cycle_{1}(\sigma_n), ..., \cycle_{n}(\sigma_n)\right)^T$
+та $\left(X_1, ..., X_n\right)^T$ з теореми \ref{cycles_limit_ewens_joint}:
+\begin{gather}
+    \P{
+        \cycle_{1}(\sigma_n) = c_1, \cycle_{2}(\sigma_n) = c_2, ..., \cycle_{n}(\sigma_n) = c_n
+    } = \\ =
+    \P{
+        X_1 = c_1, X_2 = c_2, ..., X_n = c_n \mid
+        \sum_{j=1}^n j X_j = n
+    },
+\end{gather} 
+де $c_1, ..., c_n \in \N_0$ і
+$\sum_{j=1}^n j c_j = n$.
