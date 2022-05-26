@@ -1,6 +1,6 @@
 % !TEX program = xelatex
 % https://habr.com/ru/post/144648/
-\documentclass[a4paper,14pt,ukrainian]{extreport}
+\documentclass[a4paper,14pt]{extreport}
 \usepackage{xltxtra}
 
 \usepackage{extsizes}
@@ -9,7 +9,11 @@
 \defaultfontfeatures{Ligatures={TeX}} 
 \setmainfont[Ligatures=TeX]{Times New Roman}
 \setmonofont[Mapping=tex-text]{Courier New}
-\usepackage[ukrainian]{babel}
+\newfontfamily\cyrillicfonttt{Courier New}
+\usepackage{polyglossia}
+\setdefaultlanguage{ukrainian}
+\setotherlanguages{english}
+% \usepackage[english, main=ukrainian]{babel}
 
 \usepackage{graphicx} % для вставки картинок
 \usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools} % математические дополнения от АМС
@@ -103,7 +107,8 @@
 
 \usepackage{tocloft}
 \setlength\cftaftertoctitleskip{10pt} % отступ от ЗМІСТ до первого раздела
-\renewcommand{\cfttoctitlefont}{\hspace{0.38\textwidth} \bfseries\texorpdfstring{\MakeUppercase}{}}
+\renewcommand{\cfttoctitlefont}{\hfill\bfseries\texorpdfstring{\MakeUppercase}{}}
+\renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\cftbeforetoctitleskip}{0.em}
 %\renewcommand{\cftaftertoctitle}{\mbox{}\hfill \\ \mbox{}\hfill{\footnotesize Стр.}\vspace{-2.5em}}
 % \renewcommand{\cftchapfont}{\normalsize \texorpdfstring{\MakeUppercase{\chaptername}}{{\chaptername}} }
@@ -116,12 +121,13 @@
 
 \renewcommand\cftchappagefont{\mdseries}
 \renewcommand{\cftsecfont}{\hspace{-11pt}}
-\renewcommand{\cftsubsecfont}{\hspace{11pt}}
+\renewcommand{\cftsubsecfont}{\hspace{-11pt}}
 \renewcommand{\cftbeforechapskip}{0em}
 \renewcommand{\cftparskip}{-1mm}
 \renewcommand{\cftdotsep}{1}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
 \setcounter{tocdepth}{2} % задать глубину оглавления — до subsection включительно
 
 \newcommand{\likechapterheading}[1]{ 
@@ -135,6 +141,14 @@
 \newcommand{\likechapter}[1]{    
     \chapter*{#1}
     \addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{{#1}}}
+}
+
+\makeatletter
+    \newcommand{\l@likesection}[2]{{\@dottedtocline{0}{0pt}{0pt}{#1}{#2}}}
+\makeatother
+\newcommand{\likesection}[1]{    
+    \section*{#1}
+    \addcontentsline{toc}{section}{#1}
 }
 
 \usepackage[square,numbers,sort&compress]{natbib}
@@ -181,3 +195,23 @@
 
 \allowdisplaybreaks[1] % переніс gather
 \mathtoolsset{showonlyrefs} % Нумерують тільки ті формули або рівняння, на які є посилання у тексті
+
+% лічильники
+\usepackage{lastpage}
+\usepackage[figure,table]{totalcount}
+
+\makeatletter
+    \AtEndDocument{%
+      \immediate\write\@mainaux{%
+        \string\gdef\string\totref{\number\value{totreferences}}%
+      }%
+    }
+\makeatother
+
+\usepackage{etoolbox}
+% \pretocmd{\chapter}{\addtocounter{totfigures}{\value{figure}}}{}{}
+% \pretocmd{\chapter}{\addtocounter{tottables}{\value{table}}}{}{}
+% \setcounter{totfigures}{0}
+
+\newcounter{totreferences}
+\pretocmd{\bibitem}{\addtocounter{totreferences}{1}}{}{}

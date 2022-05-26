@@ -47,7 +47,6 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     Точковий процес $N$ на вимірному просторі
     $\left(E, \mathcal{E}\right)$ називається \emph{простим}, якщо
     $\P{\forall x \in E : N\left(\{ x \}\right) \leq 1} = 1$. 
-    % для всіх $x \in E$ виконується $\P{N\left(\{ x \}\right) \leq 1} = 1$.
 \end{definition}
 
 \begin{theorem}[\cite{Resnick_1987}, ст. 126]\label{th:point_proc_uniqueness}
@@ -88,7 +87,7 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     за правилом
     \begin{gather}
         \psi_N(f) = \E e^{-N(f)} = \int_{\Omega} e^{-N(\omega, f)} \d \mathbb{P} = 
-        \int_{M_p(E)} \exp\left\{ -\int_E f(x) \d \nu\right\} \d P_N (\nu)
+        \int_{M_p(E)} \exp\left\{ -\int_E f(x) \d \nu\right\} \d P_N (\nu).
     \end{gather}
 \end{definition}
 
@@ -134,7 +133,6 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
         та будь-якого невід'ємного цілого числа $k$
         \begin{gather*}
             \P{N(F) = k} = \begin{cases}
-                % \frac{(\mu(F))^k}{k!} \exp\left\{-\mu(F)\right\}, & \mu(F) < \infty \\
                 \frac{(\mu(F))^k}{k!} e^{-\mu(F)}, & \mu(F) < \infty, \\
                 0, & \mu(F) = \infty.
             \end{cases}
@@ -148,8 +146,14 @@ $P_N = \mathbb{P}\left[N \in \cdot \; \right]$
     \begin{gather}
         \psi_N(f) = \exp\left\{ 
             - \int_E (1 - e^{-f(x)}) \d \mu
-        \right\}
+        \right\}.
     \end{gather}
+\end{definition}
+
+\begin{definition}
+    Процес Пуассона на $E \subset \R^n$ з мірою інтенсивністю
+    $\lambda \cdot \mathrm{Leb}$, де $\mathrm{Leb}$ --- міра Лебега, називатимемо
+    \emph{однорідним процесом Пуассона з інтенсивністю $\lambda$}.
 \end{definition}
 
 Як і для невипадкових точкових мір, для точкових процесів також можна ввести поняття

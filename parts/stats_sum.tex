@@ -23,18 +23,18 @@ $\L{X}(p) = \E e^{-pX}$.
 Оскільки розподіл $\Sum(N)$ є сумішшю абсолютно неперервного розподілу та
 дискретного з атомом в 0, можна знайти перетворення Лапласа
 лише абсолютно неперервної частини, що також буде перетворення для
-$\Sum(\widehat{N})$.
+$\Sum(\widehat{N})$:
 \begin{gather}
     \L{\Sum(N)}(p) = \E e^{-p\cdot\Sum(N)} = 
     1 \cdot \P{\Sum(N) = 0} + \nonumber \\ +
     \E e^{-p\cdot\Sum(\widehat{N})} \cdot \P{\Sum(N) > 0} =
-    e^{-\theta} + \L{\Sum(\widehat{N})}(p) \cdot (1-e^{-\theta})
+    e^{-\theta} + \L{\Sum(\widehat{N})}(p) \cdot (1-e^{-\theta}),
     \nonumber \\
     \L{\Sum(\widehat{N})}(p) = \frac{1}{1 - e^{-\theta}}
     \left(\L{\Sum(N)}(p) - e^{-\theta}\right) = \nonumber \\ =
     \label{laplace_of_sum_cont}
     \frac{e^{-\theta}}{1 - e^{-\theta}} \cdot 
-    \left(\exp\left\{- \frac{\theta}{p}(e^{-p} - 1) \right\} - 1\right)
+    \left(\exp\left\{- \frac{\theta}{p}(e^{-p} - 1) \right\} - 1\right).
 \end{gather}
 
 $\Sum(\widehat{N})$ є абсолютно неперервною випадковою величиною,
@@ -44,7 +44,7 @@ $\L{\Sum(\widehat{N})}(p)$ є перетворенням Лапласа для �
 \begin{equation}\label{sum_cdf_laplace}
     \L{F_{\Sum(\widehat{N})}(x)}(p) = 
     \frac{e^{-\theta}}{1 - e^{-\theta}} \cdot \frac{1}{p} \cdot
-    \left(\exp\left\{- \frac{\theta}{p}(e^{-p} - 1) \right\} - 1\right)
+    \left(\exp\left\{- \frac{\theta}{p}(e^{-p} - 1) \right\} - 1\right).
 \end{equation}
 Знаходження оберненого перетворення для \eqref{sum_cdf_laplace}
 є доволі складним.
@@ -54,7 +54,7 @@ $\L{\Sum(\widehat{N})}(p)$ є перетворенням Лапласа для �
     \P{\Sum(N) \leq x} = 
     \sum_{m=0}^{\infty} \P{\Sum(N) \leq x \mid N([0, 1]) = m} \P{N([0, 1]) = m}
     = \\ = \mathds{1}\left\{x\geq 0\right\}\cdot e^{-\theta} +
-    \sum_{m=1}^{\infty} \P{\Sum(N) \leq x \mid N([0, 1]) = m} \frac{\theta^m}{m!} e^{-\theta}
+    \sum_{m=1}^{\infty} \P{\Sum(N) \leq x \mid N([0, 1]) = m} \frac{\theta^m}{m!} e^{-\theta}.
 \end{gather*}
 Згідно з \cite{ContUnivDistr} (ст. 296), умовні розподіли 
 $\P{\Sum(N) \leq x \mid N([0, 1]) = m}$
@@ -77,9 +77,9 @@ $\P{\Sum(N) \leq x}$  може бути виражена через $I_{\nu}(z)$
         \left(\frac{1}{4} z^2 \right)^{k}
     }{
         k! \Gamma(\nu + k + 1)
-    }
+    }.
 \end{equation*}
-Отримаємо відповідну формулу. Нехай $x \in [n, n+1)$,
+Отримаємо відповідну формулу. Нехай $x \in [n, n+1)$, тоді
 \begin{gather*}
     e^{\theta} \cdot \P{\Sum(N) \leq x} = 
     1 + \sum_{m=1}^{\infty} \P{\Sum(N) \leq x \mid N([0, 1]) = m} \frac{\theta^m}{m!} = \\ =
@@ -113,7 +113,7 @@ $\P{\Sum(N) \leq x}$  може бути виражена через $I_{\nu}(z)$
     = \sum_{k=0}^{n} \frac{(-1)^k}{k!}
     \left(\theta (x - k)\right)^{\frac{k}{2}} I_k\left(2\sqrt{\theta(x-k)}\right) + \\ +
     \sum_{m=0}^{n} \frac{\theta^m}{m!}
-    - \sum_{k=0}^{n} \sum_{l=0}^{n-k}  \frac{(-1)^k}{k!} \frac{1}{l! (l+k)!} (x - k)^{k+l} \theta^{k+l}
+    - \sum_{k=0}^{n} \sum_{l=0}^{n-k}  \frac{(-1)^k}{k!} \frac{1}{l! (l+k)!} (x - k)^{k+l} \theta^{k+l}.
 \end{gather*} 
 Позначимо $R(n) = \sum_{m=0}^{n} \frac{\theta^m}{m!}$,
 $L(n) = \sum_{k=0}^{n} \sum_{l=0}^{n-k} \frac{(-1)^k}{k!} \frac{1}{l! (l+k)!} (x - k)^{k+l} \theta^{k+l}$.
@@ -179,7 +179,7 @@ $g_k(x) = g_k(z(x)) = \left(\theta (x - k)\right)^{\frac{k}{2}} I_k\left(2\sqrt{
     \left(
         k I_k \left(2 \sqrt{\theta (x - k)} \right) + 
         \sqrt{\theta (x - k)} I_{k+1} \left(2 \sqrt{\theta (x - k)}\right)
-    \right)
+    \right).
 \end{gather*}
 Таким чином, отримуємо
 \begin{gather}
@@ -194,7 +194,7 @@ $g_k(x) = g_k(z(x)) = \left(\theta (x - k)\right)^{\frac{k}{2}} I_k\left(2\sqrt{
 \begin{gather*}
     \E\Sum(N) = 0\cdot \P{N([0, 1]) = 0} +
     \sum_{m=1}^{\infty} \frac{m}{2} \frac{\theta^m}{m!} e^{-\theta} =
-    \frac{e^{-\theta}}{2}\sum_{m=1}^{\infty} \frac{\theta^m}{(m-1)!} = \frac{\theta}{2}
+    \frac{e^{-\theta}}{2}\sum_{m=1}^{\infty} \frac{\theta^m}{(m-1)!} = \frac{\theta}{2}.
 \end{gather*}
 
 Сформулюємо отриманий результат у вигляді теореми.

@@ -4,9 +4,12 @@
 
 \begin{document}
 \input{parts/title.tex}
+\input{parts/abstract.tex}
 \tableofcontents
 \likechapter{Скорочення та умовні позначки}
     \input{parts/notation.tex}
+\likechapter{Вступ}
+    \input{parts/intro.tex}
 \chapter{Теоретичні основи}
     \section{Поняття з алгебри}
         \input{parts/def_algebra.tex}
@@ -14,20 +17,31 @@
         \input{parts/def_measure.tex}
     \section{Поняття з теорії випадкових процесів}
         \input{parts/def_process.tex}
+    \likesection{Висновки}
+        \input{parts/def_conclusions.tex}
 \chapter{Попередні відомості}
     \section{Поняття про перестановки Юенса}
         \input{parts/theory_history.tex}
     \section{Огляд наявних результатів}
+        \input{parts/theory_results.tex}
+    \likesection{Висновки}
+        \input{parts/theory_conclusions.tex}
 \chapter{Граничні теореми}
     \section{Граничний розподіл нерухомих точок}
         \input{parts/main_th_proof.tex}
     \section{Статистичні властивості нерухомих точок}
         \input{parts/stats.tex}
+    \likesection{Висновки}
+        \input{parts/theorems_conclusions.tex}
 \chapter{Чисельне моделювання та дослідження збіжності}
     \section{Алгоритми для генерування перестановок}
         \input{parts/sampling_couplings.tex}
     \section{Перевірка отриманих результатів}
         \input{parts/sampling_results.tex}
+    \likesection{Висновки}
+        \input{parts/sampling_conclusions.tex}
+\likechapter{Висновки}
+    \input{parts/conclusions.tex}
 \newpage
 \bibliographystyle{ugost2008}
 \bibliography{books}
