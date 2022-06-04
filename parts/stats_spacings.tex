@@ -1,4 +1,4 @@
-\subsection{Найменші і найбільші спейсинги}
+\subsection{Найменший і найбільший спейсинги}
 Визначимо граничні розподіли найменшого і найбільшого спейсингів --- відстаней
 між сусідніми нерухомими точками.
 \begin{remark}
@@ -103,7 +103,7 @@ $X_1, X_2, \dots, X_{n+1}$ з розподілом $\Exp{1}$
     \right)^T, \\
     \label{distr_equal_2}
     \left(
-        S_{(1)}, S_{(1)}, \dots, S_{(n+1)}
+        S_{(1)}, S_{(2)}, \dots, S_{(n+1)}
     \right)^T
     \overset{d}{=}
     \left(
@@ -233,7 +233,7 @@ $\E\smin(N) \approx 0.48483$ і $\E\smax(N) \approx 0.7966$.
     $\frac{\Delta_n}{n} \overset{d}{\longrightarrow} \Delta$, де
     \begin{gather}
         \delta \overset{d}{=}
-        \frac{X_1}{(\nu+1)\sum_{i=1}^{\nu+1} X_i}, \;
+        \frac{X_{\nu+1}}{(\nu+1)\sum_{i=1}^{\nu+1} X_i}, \;
         \Delta \overset{d}{=} 
         \frac{\sum_{i=1}^{\nu+1} \frac{X_i}{i}}{\sum_{i=1}^{\nu+1} X_i},
     \end{gather}
