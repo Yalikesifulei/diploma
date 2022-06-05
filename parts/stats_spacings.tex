@@ -117,8 +117,8 @@ $X_1, X_2, \dots, X_{n+1}$ з розподілом $\Exp{1}$
     \frac{X_{n+1}}{n+1} + \frac{X_{n}}{n} + \dots + \frac{X_{n-i+2}}{n-i+2} = 
     \sum_{k=0}^{i-1} \frac{X_{n+1-k}}{n+1-k}.
 \end{gather}
-Рівності \eqref{distr_equal_2} та \eqref{distr_equal_3}
-можна доповнити наступною рівністю:
+Рівності \eqref{distr_equal_1}, \eqref{distr_equal_2} та \eqref{distr_equal_3}
+можна доповнити ще однією:
 \begin{lemma}\label{distr_equal}
     Для порядкових статистик спейсингів 
     $S_{(1)}^{[n+1]}, ..., S_{(n+1)}^{[n+1]}$
@@ -203,18 +203,18 @@ $S_{(1)}^{[n+1]} \overset{d}{=} \frac{X_{n+1}}{(n+1)\sum_{i=1}^{n+1} X_i}$
 \end{gather*}
 Оскільки $\P{\nu = n} = \frac{\theta^n}{n!}e^{-\theta}$, то
 \begin{gather*}
-    \E\smin(N) = \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{\theta^n}{n\cdot n!} =
-    \frac{e^{-\theta}}{\theta} \sum_{n=1}^{\infty} \frac{1}{n!} \int_0^{\theta} t^{n-1} \d t = 
-    \frac{e^{-\theta}}{\theta} \int_0^{\theta} \left( \sum_{n=1}^{\infty} \frac{t^{n-1}}{n!} \right) \d t = \\ =
+    \E\smin(N) = \sum_{n=0}^{\infty} \frac{1}{(n+1)^2} \frac{\theta^n}{n!}e^{-\theta} = \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{\theta^n}{n\cdot n!} =
+    \frac{e^{-\theta}}{\theta} \sum_{n=1}^{\infty} \frac{1}{n!} \int_0^{\theta} t^{n-1} \d t = \\ =
+    \frac{e^{-\theta}}{\theta} \int_0^{\theta} \left( \sum_{n=1}^{\infty} \frac{t^{n-1}}{n!} \right) \d t =
     \frac{e^{-\theta}}{\theta} \int_0^{\theta} \frac{1}{t} \left( \sum_{n=1}^{\infty} \frac{t^{n}}{n!} \right) \d t = 
     \frac{e^{-\theta}}{\theta}\int_0^\theta \frac{e^t-1}{t}\d t, \\
-    \E\smax(N) = \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{H_n}{n!} \theta^n = 
-    \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{\theta^n}{n!} \int_0^1 \left(1 + s + ... + s^{n-1}\right) \d s = \\ =
-    \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{\theta^n}{n!} \int_0^1 \frac{1 - s^n}{1 - s} \d s = 
+    \E\smax(N) = \sum_{n=0}^{\infty} \frac{H_{n+1}}{n+1} \frac{\theta^n}{n!}e^{-\theta} = \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{H_n}{n!} \theta^n = \\ =
+    \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{\theta^n}{n!} \int_0^1 \left(1 + s + ... + s^{n-1}\right) \d s =
+    \frac{e^{-\theta}}{\theta}\sum_{n=1}^{\infty} \frac{\theta^n}{n!} \int_0^1 \frac{1 - s^n}{1 - s} \d s = \\ =
     \frac{e^{-\theta}}{\theta} \int_0^1 \frac{1}{1 - s} \left(
         \sum_{n=1}^{\infty} \frac{(1 - s^n)\theta^n}{n!}
-    \right) \d s = \\ =
-    \frac{e^{-\theta}}{\theta} \int_0^1 \frac{e^{\theta} - e^{s \theta}}{1 - s} \d s = 
+    \right) \d s = 
+    \frac{e^{-\theta}}{\theta} \int_0^1 \frac{e^{\theta} - e^{s \theta}}{1 - s} \d s = \\ =
     \left[ t = \theta (1 - s)\right] = 
     \frac{e^{-\theta}}{\theta} \int_0^{\theta} \frac{e^{\theta} - e^{\theta - t}}{t} \d t = 
     \frac{1}{\theta} \int_0^{\theta} \frac{1-e^{-t}}{t}\d t.
