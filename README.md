@@ -3,6 +3,8 @@
 _Національний технічний університет України «Київський політехнічний інститут імені Ігоря Сікорського»,
 Інститут прикладного системного аналізу, кафедра ММСА._
 
+---
+
 В даній роботі розглядаються граничні теореми для
 випадкових перестановок на симетричній групі $\mathrm{S}_n$
 при $n\to\infty$, що мають однопараметричний розподіл Юенса $\mathrm{ESF}(n, \theta)$ _(Ewens permutations)_,
@@ -20,6 +22,14 @@ $P_n = \sum_{i : \sigma_n(i) = i} \delta_{i / n}$, де $\sigma_n \sim \mathrm{E
 Також сформулювано і доведено граничні теореми для деяких статистик нерухомих точок $\sigma_n$: 
 найменшої та найбільшої точок, суми таких точок, найменшої та найбільшої відстані між сусідніми.
 
+---
+
+Сама [дипломна робота](https://github.com/Yalikesifulei/diploma/blob/master/main.pdf).
+
+[Презентація](https://github.com/Yalikesifulei/diploma/blob/master/presentation/main.pdf) для студентської міні-конференції «The Skorokhod readings» від Інституту математику НАН України (англійською).
+[Presentation](https://github.com/Yalikesifulei/diploma/blob/master/presentation/main.pdf) for «The Skorokhod readings» mini-conference for students by the Institute of Mathematics of NAS of Ukraine (in English).
+
+---
 
 _Дякую дипломному керівнику Андрію Борисовичу Ільєнку за допомогу в написанні роботи._
 
