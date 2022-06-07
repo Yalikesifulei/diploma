@@ -1,0 +1,43 @@
+\renewcommand{\P}[1]{\mathbb{P}\left(#1\right)}
+
+\newcommand{\Pn}[1]{\mathbb{P}'\left(#1\right)}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\g}{\gamma}
+\newcommand{\Poiss}[1]{\mathrm{Pois}\left(#1\right)}
+\newcommand{\Unif}[1]{\mathrm{U}\left(#1\right)}
+\newcommand{\Exp}[1]{\mathrm{Exp}\left(#1\right)}
+\newcommand{\Sym}[1]{\mathrm{S}_{#1}}
+\newcommand{\ESF}[1]{\mathrm{ESF}\left(#1\right)}
+\DeclareMathOperator{\card}{card}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclareMathOperator{\Sum}{sum}
+\renewcommand{\L}[1]{\mathcal{L}\left\{#1\right\}}
+\DeclareMathOperator{\smax}{s-max}
+\DeclareMathOperator{\smin}{s-min}
+\DeclareMathOperator{\cycle}{c}
+\DeclareMathOperator{\inv}{i}
+\newcommand{\cov}[2]{\mathrm{cov}\left(#1, #2\right)}
+
+\renewcommand{\d}{\mathrm{d}}
+
+\newcommand*{\defeq}{\stackrel{\text{def}}{=}}
+\makeatletter
+\newcommand\incircbin
+{%
+  \mathpalette\@incircbin
+}
+\newcommand\@incircbin[2]
+{%
+  \mathbin%
+  {%
+    \ooalign{\hidewidth$#1#2$\hidewidth\crcr$#1\bigcirc$}%
+  }%
+}
+\newcommand{\oeq}{\incircbin{=}}
+\makeatother
