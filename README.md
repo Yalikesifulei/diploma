@@ -27,6 +27,7 @@ $P_n = \sum_{i : \sigma_n(i) = i} \delta_{i / n}$, де $\sigma_n \sim \mathrm{E
 Сама [дипломна робота](https://github.com/Yalikesifulei/diploma/blob/master/main.pdf).
 
 [Презентація](https://github.com/Yalikesifulei/diploma/blob/master/presentation/main.pdf) для студентської міні-конференції «The Skorokhod readings» від Інституту математику НАН України (англійською).
+
 [Presentation](https://github.com/Yalikesifulei/diploma/blob/master/presentation/main.pdf) for «The Skorokhod readings» mini-conference for students by the Institute of Mathematics of NAS of Ukraine (in English).
 
 ---
