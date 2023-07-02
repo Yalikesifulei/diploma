@@ -1,10 +1,9 @@
 % !TEX program = xelatex
-% https://habr.com/ru/post/144648/
 \documentclass[a4paper,14pt]{extreport}
 \usepackage{xltxtra}
 
 \usepackage{extsizes}
-%\usepackage{cmap} % для кодировки шрифтов в pdf
+%\usepackage{cmap} % для кодування шрифтів в pdf
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures={TeX}} 
 \setmainfont[Ligatures=TeX]{Times New Roman}
@@ -15,13 +14,13 @@
 \setotherlanguages{english}
 % \usepackage[english, main=ukrainian]{babel}
 
-\usepackage{graphicx} % для вставки картинок
-\usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools} % математические дополнения от АМС
-\usepackage{indentfirst} % отделять первую строку раздела абзацным отступом тоже
-\usepackage[usenames,dvipsnames]{color} % названия цветов
+\usepackage{graphicx} % для вставки зображень
+\usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools} % математичні доповнення від АМС
+\usepackage{indentfirst} % відступ на початку абзаців
+\usepackage[usenames,dvipsnames]{color} % назви кольорів
 \usepackage{makecell}
-\usepackage{multirow} % улучшенное форматирование таблиц
-\usepackage{ulem} % подчеркивания
+\usepackage{multirow} % форматування таблиць
+\usepackage{ulem} % підкреслення
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -31,7 +30,7 @@
 % \usetikzlibrary{arrows,decorations.markings}
 
 \usepackage[nodisplayskipstretch]{setspace}
-\onehalfspacing % полуторный интервал
+\onehalfspacing % інтервал 1.5
 \frenchspacing
 
 \usepackage{fancyhdr}
@@ -76,16 +75,12 @@
     {\thesubsection.}
     {1em}{}
 
-% Настройка вертикальных и горизонтальных отступов
+% Вертикальні та горизонтальні відступи
 \titlespacing*{\chapter}{0pt}{-30pt}{4pt}
 \titlespacing*{\section}{\parindent}{*2}{*1}
 \titlespacing*{\subsection}{\parindent}{*2}{*1}
 
 \usepackage{geometry}
-% \geometry{left=3cm}
-% \geometry{right=1.5cm}
-% \geometry{top=2.4cm}
-% \geometry{bottom=2.4cm}
 \geometry{left=2.5cm}
 \geometry{right=1cm}
 \geometry{top=2cm}
@@ -106,7 +101,7 @@
 %\renewcommand{\labelenumii}{\arabic{enumii})}
 
 \usepackage{tocloft}
-\setlength\cftaftertoctitleskip{10pt} % отступ от ЗМІСТ до первого раздела
+\setlength\cftaftertoctitleskip{10pt} % відступ від ЗМІСТ до першого розділу
 \renewcommand{\cfttoctitlefont}{\hfill\bfseries\texorpdfstring{\MakeUppercase}{}}
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\cftbeforetoctitleskip}{0.em}
@@ -128,7 +123,7 @@
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftsecaftersnum}{.}
 \renewcommand{\cftsubsecaftersnum}{.}
-\setcounter{tocdepth}{2} % задать глубину оглавления — до subsection включительно
+\setcounter{tocdepth}{2} % зміст - до subsection включно
 
 \newcommand{\likechapterheading}[1]{ 
     \begin{center}
@@ -152,8 +147,8 @@
 }
 
 \usepackage[square,numbers,sort&compress]{natbib}
-\renewcommand{\bibnumfmt}[1]{#1.\hfill} % нумерация источников в самом списке — через точку
-\renewcommand{\bibsection}{\likechapter{Список використаної літератури}} % заголовок специального раздела
+\renewcommand{\bibnumfmt}[1]{#1.\hfill} % нумерація джерел через крапку
+\renewcommand{\bibsection}{\likechapter{Список використаної літератури}}
 \setlength{\bibsep}{0pt}
 
 \usepackage[hidelinks]{hyperref}
